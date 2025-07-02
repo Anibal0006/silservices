@@ -3,420 +3,425 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>NovaBoost - Automatización y Ventas</title>
+<title>NovaBoost - Tu Negocio, Potenciado</title>
 
 <!-- Fuentes modernas -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto&display=swap" rel="stylesheet" />
 
 <style>
-  /* Reset */
+  /* Reset básico */
   *, *::before, *::after {
     box-sizing: border-box;
   }
   body {
     margin: 0; padding: 0;
-    font-family: 'Open Sans', sans-serif;
-    background: linear-gradient(135deg, #0a1a2b, #001f3f);
+    font-family: 'Roboto', sans-serif;
+    background-color: #000;
     color: #eee;
     min-height: 100vh;
-    line-height: 1.6;
+    overflow-x: hidden;
+    line-height: 1.5;
   }
 
-  /* Contenedor principal */
+  /* Contenedor principal con padding */
   .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
-    padding: 1rem 2rem 3rem 2rem;
+    padding: 1rem 2rem 4rem 2rem;
   }
 
   /* Header */
   header {
     text-align: center;
-    padding: 4rem 0 3rem 0;
-    color: #00f0ff;
-    font-family: 'Montserrat', sans-serif;
-    text-shadow: 0 0 15px #00f0ff66;
+    padding: 4rem 1rem 3rem 1rem;
+    font-family: 'Poppins', sans-serif;
   }
   header h1 {
+    font-weight: 700;
     font-size: 3.8rem;
-    margin-bottom: 0.3rem;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
+    margin-bottom: 0.2rem;
+    color: #00f0ff;
+    text-shadow: 0 0 15px #00f0ffaa;
   }
   header p {
-    font-size: 1.3rem;
     font-weight: 600;
-    color: #b3f0ffcc;
+    font-size: 1.4rem;
+    color: #aaf0ffcc;
+    max-width: 700px;
+    margin: 0 auto;
   }
 
-  /* Navegación */
+  /* Navegación fija arriba */
   nav {
-    background: #003350dd;
+    position: sticky;
+    top: 0;
+    background: #111;
     display: flex;
     justify-content: center;
     gap: 2rem;
     padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 500;
-    box-shadow: 0 0 15px #00f0ff88;
+    z-index: 900;
+    box-shadow: 0 0 20px #00f0ff88;
   }
   nav a {
     color: #00f0ff;
     font-weight: 600;
-    font-size: 1.1rem;
     text-decoration: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 25px;
+    padding: 0.6rem 1.3rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
-  nav a:hover {
+  nav a:hover,
+  nav a:focus {
     background-color: #00f0ff;
-    color: #003350;
+    color: #000;
     box-shadow: 0 0 12px #00f0ffbb;
+    outline: none;
   }
 
   /* Secciones */
   section {
-    margin-top: 4rem;
+    margin-top: 5rem;
   }
   section h2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     font-size: 2.8rem;
-    text-align: center;
     color: #00e6ff;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 20px #00e6ffaa;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px #00e6ffaa;
+  }
+  section p.lead {
+    max-width: 720px;
+    margin: 0 auto 2.8rem auto;
+    font-size: 1.2rem;
+    color: #b4f8ffdd;
+    text-align: center;
   }
 
-  /* Acordeón Cómo ayudamos */
-  .accordion {
+  /* Servicios descriptivos */
+  .services-detailed {
     max-width: 900px;
     margin: 0 auto;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 0 20px #00e6ff55;
   }
-  .accordion-item {
-    background: #004a70cc;
-    border-bottom: 2px solid #007eb8aa;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .accordion-item:hover {
-    background: #007eb8bb;
-  }
-  .accordion-header {
-    padding: 1.5rem 2rem;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #c4f9ffdd;
-    position: relative;
-    user-select: none;
-  }
-  .accordion-header::after {
-    content: '+';
-    position: absolute;
-    right: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.8rem;
-    color: #00f0ffbb;
+  .service-item {
+    background: #0b1f30dd;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.8rem;
+    box-shadow: 0 0 20px #00caffaa;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
     transition: transform 0.3s ease;
   }
-  .accordion-header.active::after {
-    content: '−';
-    color: #00e6ff;
+  .service-item:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 35px #00ffffcc;
   }
-  .accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 2rem;
-    color: #c0efffdd;
-    font-size: 1rem;
-    transition: max-height 0.4s ease, padding 0.4s ease;
-  }
-  .accordion-content p {
-    padding: 1rem 0 2rem 0;
-  }
-
-  /* Servicios */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-    gap: 2.5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .service-card {
-    background: #005a9aee;
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 0 20px #00d8ffbb;
-    color: #d0faff;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .service-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 0 40px #00f7ffdd;
-  }
-  .service-card h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.7rem;
-    margin-bottom: 1rem;
-    color: #00f0ff;
-    text-shadow: 0 0 12px #00f0ffcc;
-  }
-  .service-card p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-
-  /* Ventanas flotantes ordenadas */
-  .floating-windows {
-    position: fixed;
-    top: 150px;
-    right: 40px;
+  .service-icon {
+    flex-shrink: 0;
+    width: 90px;
+    height: 90px;
+    background: #00e6ff;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
-    gap: 1.8rem;
-    max-width: 280px;
-    z-index: 900;
+    align-items: center;
+    justify-content: center;
+    color: #003344;
+    font-size: 42px;
+    font-weight: 900;
+    text-shadow: 0 0 8px #004466;
   }
-  .floating-window {
-    background: #007bb8dd;
-    border-radius: 18px;
-    padding: 1.3rem 1.8rem;
-    box-shadow: 0 0 25px #00eaffbb;
-    color: #ddf6ff;
-    font-weight: 600;
+  .service-content h3 {
+    margin: 0 0 0.5rem 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    color: #00f0ff;
+    text-shadow: 0 0 8px #00cfff;
+  }
+  .service-content p {
+    margin: 0;
     font-size: 1.1rem;
-    line-height: 1.3;
-    cursor: default;
-    user-select: none;
-    transition: transform 0.25s ease;
-  }
-  .floating-window:hover {
-    transform: scale(1.05);
-  }
-  /* Evitar que las ventanas tapen el footer y el contenido principal en pantallas pequeñas */
-  @media (max-width: 992px) {
-    .floating-windows {
-      position: static;
-      max-width: 100%;
-      margin: 2rem auto 0;
-      flex-direction: row;
-      justify-content: center;
-      gap: 2rem;
-      padding: 0 1rem;
-    }
-    .floating-window {
-      flex: 1;
-      font-size: 1rem;
-      text-align: center;
-    }
+    color: #b4faffcc;
   }
 
-  /* Contacto */
+  /* Sección de multimedia */
+  .media-section {
+    max-width: 900px;
+    margin: 0 auto 4rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.8rem;
+    justify-content: center;
+  }
+  .media-video,
+  .media-image {
+    flex: 1 1 400px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #00cfffaa;
+    overflow: hidden;
+  }
+  video, img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Contacto: formulario moderno */
   form.contact-form {
     max-width: 480px;
-    margin: 3rem auto 5rem auto;
-    background: #005f9eee;
+    margin: 3rem auto 6rem auto;
+    background: #002433ee;
     padding: 2rem 2.5rem;
-    border-radius: 25px;
-    box-shadow: 0 0 30px #00cfffbb;
-    color: #e0fbff;
+    border-radius: 30px;
+    box-shadow: 0 0 30px #00e6ffcc;
+    color: #ccf7ff;
     display: flex;
     flex-direction: column;
     gap: 1.3rem;
   }
   form.contact-form input,
   form.contact-form textarea {
-    background: #007bb8cc;
+    background: #005a7fdd;
     border: none;
-    border-radius: 12px;
-    padding: 1rem 1.3rem;
-    font-size: 1rem;
-    color: #e0fbff;
+    border-radius: 15px;
+    padding: 1rem 1.2rem;
+    font-size: 1.1rem;
+    color: #cceeffee;
     font-weight: 600;
     transition: background-color 0.3s ease;
     resize: vertical;
   }
   form.contact-form input::placeholder,
   form.contact-form textarea::placeholder {
-    color: #b3e9ffcc;
+    color: #9fdfffbb;
   }
   form.contact-form input:focus,
   form.contact-form textarea:focus {
-    background: #0099e6cc;
+    background: #0076b8cc;
     outline: none;
-    box-shadow: 0 0 12px #00eaffbb;
+    box-shadow: 0 0 15px #00d8ffcc;
   }
   form.contact-form button {
-    background: #00d4ff;
-    color: #002634;
-    font-weight: 900;
-    font-size: 1.2rem;
+    background: #00f0ff;
+    color: #002631;
+    font-weight: 800;
+    font-size: 1.25rem;
     padding: 1rem 0;
-    border-radius: 30px;
+    border-radius: 40px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease;
   }
-  form.contact-form button:hover {
+  form.contact-form button:hover,
+  form.contact-form button:focus {
     background-color: #00b5d6;
-    box-shadow: 0 0 20px #00cfffdd;
+    box-shadow: 0 0 20px #00b5d6cc;
+    outline: none;
   }
 
-  /* Footer */
+  /* Footer elegante */
   footer {
-    background: #002e48;
+    background: #001d2f;
     padding: 1.7rem 1rem;
     color: #0095bddd;
     text-align: center;
     font-weight: 600;
+    font-family: 'Poppins', sans-serif;
     box-shadow: inset 0 3px 10px #004970bb;
-    font-size: 0.95rem;
+    font-size: 1rem;
     user-select: none;
   }
 
-  /* Botón WhatsApp flotante */
+  /* Botón flotante WhatsApp */
   .whatsapp-float {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 35px;
+    right: 35px;
     background: #25d366;
-    width: 65px;
-    height: 65px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    box-shadow: 0 5px 20px #25d366cc;
+    box-shadow: 0 5px 22px #25d366cc;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 36px;
+    font-size: 40px;
     color: white;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.25s ease;
     z-index: 10000;
     text-decoration: none;
   }
   .whatsapp-float:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 25px #25d366ff;
+    box-shadow: 0 6px 30px #25d366ff;
   }
 
-  /* Scroll to top button */
+  /* Ventanas flotantes: organizadas abajo */
+  .floating-windows {
+    position: fixed;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1.8rem;
+    z-index: 9000;
+    max-width: 95vw;
+    overflow-x: auto;
+    padding: 0 1rem;
+  }
+  .floating-window {
+    background: #004b6eee;
+    border-radius: 20px;
+    padding: 1rem 1.8rem;
+    box-shadow: 0 0 25px #00eaffbb;
+    color: #ccfaff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    white-space: nowrap;
+    cursor: default;
+    user-select: none;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  .floating-window:hover {
+    transform: scale(1.05);
+  }
+
+  /* Scroll top */
   #scrollUpBtn {
     position: fixed;
-    bottom: 110px;
-    right: 30px;
+    bottom: 105px;
+    right: 120px;
     background: #00ffffcc;
     border: none;
-    padding: 0.8rem 1rem;
+    padding: 0.9rem 1.2rem;
     border-radius: 50%;
-    font-size: 26px;
+    font-size: 28px;
     cursor: pointer;
-    box-shadow: 0 0 15px #00ffffaa;
+    box-shadow: 0 0 18px #00ffffaa;
     color: #001f2d;
     display: none;
-    z-index: 1000;
+    z-index: 9999;
     transition: background-color 0.3s ease;
   }
   #scrollUpBtn:hover {
     background: #00ddd0;
   }
 
-  /* Responsive texto y espaciados */
+  /* Responsive */
   @media (max-width: 768px) {
     header h1 {
-      font-size: 2.7rem;
+      font-size: 2.9rem;
     }
     section h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
-    .service-card {
-      padding: 1.6rem;
+    .service-item {
+      flex-direction: column;
+      padding: 1.5rem 1.8rem;
+      text-align: center;
+    }
+    .service-icon {
+      margin-bottom: 1rem;
+    }
+    .media-section {
+      flex-direction: column;
+      gap: 2rem;
     }
     form.contact-form {
-      margin: 3rem 1rem 4rem 1rem;
-      padding: 1.8rem 1.5rem;
+      max-width: 95vw;
+      margin: 2rem auto 5rem auto;
+      padding: 1.5rem 1.8rem;
+    }
+    .floating-windows {
+      bottom: 100px;
+      max-width: 100vw;
+      padding: 0 0.6rem;
+      gap: 1rem;
+    }
+    #scrollUpBtn {
+      right: 30px;
+      bottom: 105px;
     }
   }
 </style>
+
 </head>
 <body>
 
 <header>
   <h1>NovaBoost</h1>
-  <p>Impulsamos tu negocio con automatización y estrategias que aumentan ventas</p>
+  <p>Potenciamos tu negocio con webs personalizadas, Instagram y marketing digital.</p>
 </header>
 
 <nav>
-  <a href="#inicio">Inicio</a>
-  <a href="#como-ayudamos">Cómo ayudamos</a>
   <a href="#servicios">Servicios</a>
+  <a href="#multimedia">Multimedia</a>
   <a href="#contacto">Contacto</a>
 </nav>
 
-<section id="inicio" class="container">
-  <!-- Puedes poner aquí una intro más visual o imagen si quieres -->
-</section>
+<section id="servicios" class="container" aria-label="Servicios principales">
+  <h2>Servicios Profesionales para tu Empresa</h2>
+  <p class="lead">Creamos soluciones digitales completas para que aumentes tus ingresos y facilites la gestión de tus clientes.</p>
 
-<section id="como-ayudamos" class="container">
-  <h2>¿Cómo ayudamos a tu empresa?</h2>
-  <div class="accordion">
-    <div class="accordion-item">
-      <div class="accordion-header">Automatización de tareas repetitivas</div>
-      <div class="accordion-content">
-        <p>Implementamos sistemas que ejecutan procesos tediosos y manuales automáticamente, ahorrándote tiempo y esfuerzo.</p>
+  <div class="services-detailed">
+
+    <div class="service-item" tabindex="0" aria-describedby="desc-web">
+      <div class="service-icon" aria-hidden="true">🌐</div>
+      <div class="service-content">
+        <h3>Páginas web con sistema de citas</h3>
+        <p id="desc-web">Diseñamos y desarrollamos páginas web profesionales donde tus clientes puedan agendar citas fácilmente, mejorando la experiencia y aumentando tus ventas.</p>
       </div>
     </div>
-    <div class="accordion-item">
-      <div class="accordion-header">Optimización de procesos internos</div>
-      <div class="accordion-content">
-        <p>Analizamos y mejoramos tus métodos de trabajo para aumentar eficiencia y reducir errores.</p>
+
+    <div class="service-item" tabindex="0" aria-describedby="desc-insta">
+      <div class="service-icon" aria-hidden="true">📱</div>
+      <div class="service-content">
+        <h3>Proyectos en Instagram</h3>
+        <p id="desc-insta">Creamos estrategias visuales para atraer vistas, seguidores y clientes desde Instagram hacia tu página web, impulsando tu marca y ventas.</p>
       </div>
     </div>
-    <div class="accordion-item">
-      <div class="accordion-header">Diseño de embudos de ventas digitales</div>
-      <div class="accordion-content">
-        <p>Planificamos y creamos estrategias online para atraer y convertir más clientes.</p>
+
+    <div class="service-item" tabindex="0" aria-describedby="desc-estetica">
+      <div class="service-icon" aria-hidden="true">🎨</div>
+      <div class="service-content">
+        <h3>Mejora estética y diseño web</h3>
+        <p id="desc-estetica">Optimizamos la imagen y funcionalidad de tu web para que sea atractiva, profesional y fácil de usar, generando confianza en tus visitantes.</p>
       </div>
     </div>
+
   </div>
 </section>
 
-<section id="servicios" class="container">
-  <h2>Servicios</h2>
-  <div class="services-grid">
-    <article class="service-card">
-      <h3>Automatización</h3>
-      <p>Herramientas como Zapier, Make, Airtable y más para automatizar tareas repetitivas.</p>
-    </article>
-    <article class="service-card">
-      <h3>Embudos de venta</h3>
-      <p>Estrategias para convertir visitantes en clientes reales y aumentar tus ingresos.</p>
-    </article>
-    <article class="service-card">
-      <h3>Integración</h3>
-      <p>Conectamos CRM, web, correo y redes sociales para mejorar flujos y evitar pérdidas de información.</p>
-    </article>
+<section id="multimedia" class="container" aria-label="Multimedia y videos">
+  <h2>Vive la experiencia NovaBoost</h2>
+  <p class="lead">Te mostramos ejemplos y demos para que veas el nivel profesional que podemos ofrecerte.</p>
+
+  <div class="media-section" aria-live="polite">
+
+    <video class="media-video" controls autoplay muted loop playsinline 
+      src="https://cdn.pixabay.com/download/video/2023/02/25/video-7204935e94.mp4?filename=digital-technology-abstract-7685.mp4" 
+      title="Video demostración NovaBoost"></video>
+
+    <img class="media-image" 
+      src="https://cdn.pixabay.com/photo/2016/11/29/05/15/code-1869236_1280.jpg" 
+      alt="Código fuente profesional y diseño web" loading="lazy" />
+
   </div>
 </section>
 
-<!-- Ventanas flotantes ordenadas -->
-<div class="floating-windows" aria-hidden="true" tabindex="-1">
-  <div class="floating-window">Automatización eficiente</div>
-  <div class="floating-window">Embudo de ventas digital</div>
-  <div class="floating-window">Integración perfecta</div>
-</div>
-
-<section id="contacto" class="container">
+<section id="contacto" class="container" aria-label="Formulario de contacto">
   <h2>Contacto</h2>
   <form class="contact-form" action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST" autocomplete="off" >
-    <input type="text" name="name" placeholder="Tu nombre" required />
-    <input type="email" name="email" placeholder="Tu correo electrónico" required />
-    <textarea name="message" placeholder="Tu mensaje" rows="5" required></textarea>
+    <input type="text" name="name" placeholder="Tu nombre" required aria-label="Nombre" />
+    <input type="email" name="email" placeholder="Tu correo electrónico" required aria-label="Correo electrónico" />
+    <textarea name="message" placeholder="Tu mensaje" rows="5" required aria-label="Mensaje"></textarea>
     <input type="hidden" name="_captcha" value="false" />
     <input type="hidden" name="_next" value="https://anibal0006.github.io/silservices/gracias.html" />
     <button type="submit" aria-label="Enviar mensaje">Enviar</button>
@@ -436,30 +441,10 @@
 <button id="scrollUpBtn" aria-label="Subir arriba">&#8679;</button>
 
 <script>
-  // Acordeón funcionalidad
-  document.querySelectorAll('.accordion-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const isActive = header.classList.contains('active');
-      document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
-      document.querySelectorAll('.accordion-content').forEach(c => {
-        c.style.maxHeight = null;
-        c.style.paddingTop = '0';
-        c.style.paddingBottom = '0';
-      });
-      if (!isActive) {
-        header.classList.add('active');
-        const content = header.nextElementSibling;
-        content.style.maxHeight = content.scrollHeight + 'px';
-        content.style.paddingTop = '1rem';
-        content.style.paddingBottom = '1rem';
-      }
-    });
-  });
-
-  // Botón subir arriba
+  // Mostrar botón subir arriba al hacer scroll
   const scrollBtn = document.getElementById('scrollUpBtn');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 250) {
       scrollBtn.style.display = 'block';
     } else {
       scrollBtn.style.display = 'none';
