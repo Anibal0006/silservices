@@ -1,164 +1,394 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NovaBoost</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0d0d0d;
-      color: #f0f0f0;
-    }
-    header {
-      background-color: #000;
-      padding: 2rem;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      color: #00ffff;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      background-color: #111;
-      padding: 1rem 0;
-    }
-    nav a {
-      color: #00ffff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    section h2 {
-      color: #00ffff;
-      margin-bottom: 1rem;
-    }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .service {
-      background: #1a1a1a;
-      padding: 1.5rem;
-      border-radius: 10px;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: #000;
-      color: #666;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 0.8rem;
-      margin-bottom: 1rem;
-      background: #1a1a1a;
-      border: 1px solid #333;
-      color: #f0f0f0;
-      border-radius: 5px;
-    }
-    button {
-      padding: 0.8rem 1.5rem;
-      background: #00ffff;
-      color: #000;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NovaBoost Mejorada</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0a0a1a, #001f2d);
+    color: #e0f7fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  header {
+    width: 100%;
+    padding: 3rem 2rem;
+    background: rgba(0, 255, 255, 0.1);
+    text-align: center;
+    box-shadow: 0 0 20px #00ffffaa;
+    border-bottom: 2px solid #00ffff;
+  }
+  header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #00fff7;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+  }
+  nav {
+    width: 100%;
+    background: #002a40;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav a {
+    color: #00ffff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  nav a:hover {
+    background-color: #00ffff;
+    color: #001f2d;
+    box-shadow: 0 0 10px #00ffff;
+  }
+  section {
+    max-width: 1100px;
+    padding: 4rem 1.5rem;
+    width: 100%;
+  }
+  section h2 {
+    font-size: 2.2rem;
+    color: #00fff7;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 0 10px #00fff7;
+  }
+  /* Acordeón para Cómo ayudamos */
+  .accordion {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .accordion-item {
+    background: #00334d;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 20px #00ffff44;
+    overflow: hidden;
+  }
+  .accordion-header {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-weight: 700;
+    color: #00fff7;
+    user-select: none;
+    position: relative;
+  }
+  .accordion-header::after {
+    content: '+';
+    position: absolute;
+    right: 20px;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  .accordion-header.active::after {
+    content: '-';
+  }
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1.5rem;
+    color: #b2f7f9;
+    transition: max-height 0.4s ease;
+  }
+  .accordion-content p {
+    padding: 1rem 0;
+  }
+  /* Servicios con cards flotantes */
+  .services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+  }
+  .service {
+    background: #00334d;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00ffff44;
+    width: 280px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+  .service:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 0 40px #00ffffaa;
+    z-index: 10;
+  }
+  .service h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #00fff7;
+    text-shadow: 0 0 6px #00fff7;
+  }
+  .service p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #b2f7f9;
+  }
+  /* Cards flotantes extra */
+  .floating-card {
+    position: fixed;
+    background: #002a4055;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 0 25px #00ffffbb;
+    color: #00ffffcc;
+    font-weight: 600;
+    width: 220px;
+    cursor: default;
+    user-select: none;
+    transition: transform 0.3s ease;
+  }
+  .floating-card:hover {
+    transform: scale(1.05);
+  }
+  /* Posiciones de las cards flotantes */
+  .float1 {
+    top: 150px;
+    left: 20px;
+  }
+  .float2 {
+    top: 350px;
+    right: 20px;
+  }
+  .float3 {
+    top: 550px;
+    left: 50px;
+  }
+  /* Formulario */
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #002a40dd;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 25px #00ffffbb;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  input, textarea {
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    resize: none;
+    background: #004060;
+    color: #e0f7fa;
+    transition: box-shadow 0.3s ease;
+  }
+  input:focus, textarea:focus {
+    box-shadow: 0 0 10px #00ffff;
+    background: #005f73;
+  }
+  button {
+    background: #00ffff;
+    border: none;
+    color: #001f2d;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 1rem;
+    box-shadow: 0 0 15px #00ffff;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #00ddd0;
+    box-shadow: 0 0 20px #00ddd0;
+  }
+  /* Footer */
+  footer {
+    width: 100%;
+    background: #001f2d;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    color: #009c9f;
+    font-weight: 500;
+    box-shadow: inset 0 1px 5px #004f61;
+    margin-top: auto;
+  }
+  /* Botón flotante WhatsApp */
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25d366;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px #25d366bb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 1000;
+    text-decoration: none;
+  }
+  .whatsapp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px #25d366ff;
+  }
+  /* Botón subir arriba */
+  #scrollUpBtn {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    background: #00ffffcc;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 0 15px #00ffffaa;
+    color: #001f2d;
+    display: none;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+  }
+  #scrollUpBtn:hover {
+    background: #00ddd0;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>NovaBoost</h1>
-    <p>Impulsamos tu negocio con automatización y estrategias que aumentan ventas</p>
-  </header>
 
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#explicacion">Cómo ayudamos</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
+<header>
+  <h1>NovaBoost</h1>
+  <p>Impulsamos tu negocio con automatización y estrategias que aumentan ventas</p>
+</header>
 
-  <section id="explicacion">
-    <h2>¿Cómo ayudamos a tu empresa?</h2>
-    <p>Automatizamos tareas repetitivas, optimizamos tus procesos internos y diseñamos embudos de ventas digitales. Así puedes ahorrar tiempo, reducir errores humanos y aumentar ingresos con menos esfuerzo.</p>
-  </section>
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#explicacion">Cómo ayudamos</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#contacto">Contacto</a>
+</nav>
 
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="services">
-      <div class="service">
-        <h3>Automatización de procesos</h3>
-        <p>Configuramos sistemas para que tareas repetitivas se hagan solas con herramientas como Zapier, Make, Airtable y más.</p>
-      </div>
-      <div class="service">
-        <h3>Optimización de embudos de venta</h3>
-        <p>Diseñamos estrategias de conversión digital para captar clientes potenciales y convertirlos en ventas reales.</p>
-      </div>
-      <div class="service">
-        <h3>Integración de herramientas</h3>
-        <p>Conectamos tus plataformas (CRM, web, correo, redes) para que funcionen juntas y no pierdas información.</p>
+<section id="explicacion">
+  <h2>¿Cómo ayudamos a tu empresa?</h2>
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header">Automatización de tareas repetitivas</div>
+      <div class="accordion-content">
+        <p>Implementamos sistemas para que procesos tediosos y manuales se ejecuten solos, ahorrándote tiempo y esfuerzo.</p>
       </div>
     </div>
-  </section>
+    <div class="accordion-item">
+      <div class="accordion-header">Optimización de procesos internos</div>
+      <div class="accordion-content">
+        <p>Analizamos y mejoramos tus métodos de trabajo para aumentar eficiencia y reducir errores.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">Diseño de embudos de ventas digitales</div>
+      <div class="accordion-content">
+        <p>Planificamos y creamos estrategias online para atraer y convertir más clientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST">
-  <input type="text" name="name" placeholder="Nombre" required />
-  <input type="email" name="email" placeholder="Correo electrónico" required />
-  <textarea name="message" placeholder="Mensaje" rows="5" required></textarea>
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://anibal0006.github.io/silservices/gracias.html">
-  <button type="submit">Enviar</button>
-</form>
+<section id="servicios">
+  <h2>Servicios</h2>
+  <div class="services">
+    <div class="service floating-card float1">
+      <h3>Automatización</h3>
+      <p>Zapier, Make, Airtable y otras herramientas para tareas automáticas.</p>
+    </div>
+    <div class="service floating-card float2">
+      <h3>Embudos de venta</h3>
+      <p>Estrategias para convertir visitantes en clientes reales.</p>
+    </div>
+    <div class="service floating-card float3">
+      <h3>Integración</h3>
+      <p>Conexión entre CRM, web, correo y redes sociales para optimizar flujos.</p>
+    </div>
+  </div>
+</section>
 
-  </section>
+<section id="contacto">
+  <h2>Contacto</h2>
+  <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST">
+    <input type="text" name="name" placeholder="Nombre" required />
+    <input type="email" name="email" placeholder="Correo electrónico" required />
+    <textarea name="message" placeholder="Mensaje" rows="5" required></textarea>
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_next" value="https://anibal0006.github.io/silservices/gracias.html" />
+    <button type="submit">Enviar</button>
+  </form>
+</section>
 
-  <footer>
-    <p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
-  </footer>
+<footer>
+  <p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
+</footer>
+
 <!-- Botón flotante WhatsApp -->
-<a 
-  href="https://wa.me/34679016719" 
-  target="_blank" 
-  rel="noopener" 
-  style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25d366;
-    color: white;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    text-decoration: none;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    z-index: 1000;
-  "
-  title="Contáctanos por WhatsApp"
->
-  💬
+<a href="https://wa.me/34679016719" target="_blank" rel="noopener" class="whatsapp-btn" title="Contáctanos por WhatsApp">
+  &#128172;
 </a>
+
+<!-- Botón subir arriba -->
+<button id="scrollUpBtn" title="Subir arriba">&#8679;</button>
+
+<script>
+  // Acordeón funcionalidad
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const active = header.classList.contains('active');
+      document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
+      document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
+
+      if (!active) {
+        header.classList.add('active');
+        const content = header.nextElementSibling;
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Mostrar botón subir arriba al hacer scroll
+  const scrollBtn = document.getElementById('scrollUpBtn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollBtn.style.display = 'block';
+    } else {
+      scrollBtn.style.display = 'none';
+    }
+  });
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
 </body>
 </html>
