@@ -12,260 +12,34 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;}
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #050505;
-      color: #fff;
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-    header {
-      background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      text-align: center;
-      position: relative;
-    }
-    header::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.6);
-      z-index: 0;
-    }
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3.5rem;
-      color: #00ffff;
-      z-index: 1;
-    }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      max-width: 700px;
-      z-index: 1;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #000;
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
-    nav a {
-      color: #00ffff;
-      margin: 0 1.5rem;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-    nav a:hover {color: #fff;}
-    section {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-      position: relative;
-      text-align: center;
-    }
-    h2 {
-      font-size: 2.8rem;
-      color: #00ffff;
-      margin-bottom: 2rem;
-      font-family: 'Orbitron', sans-serif;
-    }
-    p {
-      max-width: 800px;
-      margin: 0 auto 2rem auto;
-      font-size: 1.1rem;
-      color: #ddd;
-    }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: rgba(0, 0, 0, 0.6);
-      border: 1px solid #00ffff33;
-      padding: 2rem;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      transition: transform 0.4s, box-shadow 0.4s;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 20px rgba(0,255,255,0.15);
-    }
-    .card h3 {
-      color: #00cccc;
-      margin-bottom: 1rem;
-    }
-    .video-section iframe {
-      width: 100%;
-      height: 480px;
-      border-radius: 10px;
-      margin-top: 2rem;
-    }
-    form {
-      background: #121212;
-      padding: 2rem;
-      border-radius: 15px;
-      max-width: 600px;
-      margin: auto;
-    }
-    input, textarea, button {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-    input, textarea {
-      background: #1f1f1f;
-      color: #fff;
-    }
-    button {
-      background: #00ffff;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    button:hover {background: #00cccc;}
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: white;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      text-decoration: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      z-index: 1000;
-    }
+    body {font-family: 'Montserrat', sans-serif; background-color: #050505; color: #fff; overflow-x: hidden; line-height: 1.6;}
+    h2 {font-size: 2.8rem; color: #00ffff; margin-bottom: 2rem; font-family: 'Orbitron', sans-serif; text-align: center;}
+    p {max-width: 800px; margin: 0 auto 2rem auto; font-size: 1.1rem; color: #ddd; text-align: center;}
+    .feature-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 2rem; max-width: 1200px; margin: auto;}
+    .card {background: rgba(0, 0, 0, 0.6); border: 1px solid #00ffff33; padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px); transition: transform 0.4s, box-shadow 0.4s;}
+    .card:hover {transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,255,255,0.15);}
+    .card h3 {color: #00cccc; margin-bottom: 1rem; text-align: center;}
   </style>
 </head>
 <body>
-  <header data-aos="fade-down">
-    <h1>NovaBoost</h1>
-    <p>Impulsamos tu marca con diseño visual, automatización inteligente y estrategias de conversión.</p>
-  </header>
-
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#valoraciones">Valoraciones</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-
-  <section id="inicio" data-aos="fade-up">
-    <h2>Bienvenido a la nueva era digital</h2>
-    <p>¿Te gustaría tener una web profesional, automatizada y lista para vender incluso mientras duermes? En NovaBoost te damos las herramientas visuales, técnicas y estratégicas para hacerlo realidad.</p>
-  </section>
-
-  <section id="servicios" data-aos="fade-up">
-    <h2>Lo que hacemos por tu negocio</h2>
-    <div class="feature-grid">
-      <div class="card" data-aos="fade-up">
-        <h3>Diseño Web Impactante</h3>
-        <p>Páginas modernas, adaptadas a móvil, con estética 4K y sistemas de reservas automáticos.</p>
-      </div>
-      <div class="card" data-aos="fade-up">
-        <h3>Visual Marketing para Instagram</h3>
-        <p>Diseños atractivos, reels animados, estrategias visuales para destacar y convertir seguidores en clientes.</p>
-      </div>
-      <div class="card" data-aos="fade-up">
-        <h3>Automatización Avanzada</h3>
-        <p>Conectamos tu web, redes, CRM y correo para que trabajen en automático mientras tú gestionas tu negocio.</p>
-      </div>
-      <div class="card" data-aos="fade-up">
-        <h3>Asesoría Creativa</h3>
-        <p>Ideas, auditoría de marca, análisis de retención y creación de embudos efectivos personalizados.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="proyectos" class="video-section" data-aos="fade-up">
-    <h2>Proyectos y Resultados</h2>
-    <p>Clientes reales que aumentaron visibilidad, ventas y profesionalismo con nuestra ayuda.</p>
-    <iframe src="https://www.youtube.com/embed/ViFCOveYRCg" frameborder="0" allowfullscreen></iframe>
-  </section>
-
   <section id="valoraciones" data-aos="fade-up">
     <h2>Valoraciones y Experiencias Reales</h2>
     <div class="feature-grid">
-      <!-- Aquí colocamos las reseñas correctamente separadas -->
-      <!-- Usa las reseñas previamente compartidas aquí -->
+      <div class="card" data-aos="fade-up"><h3>★★★★★</h3><p>"NovaBoost transformó por completo nuestra presencia online. El diseño es espectacular y hemos aumentado nuestras ventas."</p><p>- Laura G., Tienda de Ropa</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★☆</h3><p>"Excelente servicio, muy profesionales y rápidos en la entrega de nuestra web y automatizaciones."</p><p>- Carlos M., Consultor</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★★</h3><p>"El equipo de NovaBoost nos ayudó a crear reels y publicaciones para Instagram que atrajeron más clientes en poco tiempo."</p><p>- Ana P., Estilista</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★★</h3><p>"Gracias a la asesoría de NovaBoost optimizamos nuestros embudos de venta y automatizamos procesos, ahorrando mucho tiempo."</p><p>- Javier L., Agencia de Viajes</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★★</h3><p>"Increíble atención al detalle, nuestra web luce moderna y profesional. Los clientes nos felicitan constantemente por ella."</p><p>- Marta S., Coach de Vida</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★★</h3><p>"Gracias a NovaBoost automatizamos reservas y pagos. Ahora tenemos más tiempo para atender a nuestros clientes."</p><p>- David R., Centro de Pilates</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★☆</h3><p>"El equipo entendió nuestra visión y la plasmó perfectamente en la web. Hemos aumentado nuestras visitas y solicitudes."</p><p>- Carla L., Agencia de Eventos</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★★</h3><p>"Me ayudaron con reels y diseño de Instagram, mejorando mi imagen y atrayendo nuevos clientes en mi estética."</p><p>- Luisa M., Estética Facial</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★☆</h3><p>"Muy buen servicio y comunicación, resolvieron todas mis dudas y dejaron la web lista para captar clientes."</p><p>- Pedro G., Abogado</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★★</h3><p>"Su asesoría estratégica fue clave para entender cómo convertir visitas en clientes, muy recomendable."</p><p>- Alejandro T., Consultoría Financiera</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★★</h3><p>"Contratamos a NovaBoost para nuestro restaurante y ahora gestionamos reservas de forma automática, ahorramos tiempo y ganamos más."</p><p>- Sonia F., Restaurante Familiar</p></div>
+      <div class="card" data-aos="fade-up"><h3>★★★★☆</h3><p>"Excelente trabajo, el diseño es impecable y la atención al cliente es muy buena."</p><p>- Ricardo H., Fotógrafo</p></div>
     </div>
   </section>
-
-  <section id="faq" data-aos="fade-up">
-    <h2>Preguntas Frecuentes</h2>
-    <div class="feature-grid">
-      <div class="card" data-aos="fade-up">
-        <h3>¿Cuánto tarda en estar lista mi web?</h3>
-        <p>El tiempo medio de desarrollo es de 7 a 14 días, dependiendo de la complejidad de tu proyecto.</p>
-      </div>
-      <div class="card" data-aos="fade-up">
-        <h3>¿Puedo automatizar reservas y pagos?</h3>
-        <p>Sí, configuramos sistemas de reservas y pasarelas de pago para automatizar procesos en tu web.</p>
-      </div>
-      <div class="card" data-aos="fade-up">
-        <h3>¿Ofrecen diseño para redes sociales?</h3>
-        <p>Ofrecemos paquetes de visual marketing y reels para Instagram que refuerzan tu presencia digital.</p>
-      </div>
-      <div class="card" data-aos="fade-up">
-        <h3>¿Cómo empiezo?</h3>
-        <p>Contáctanos por el formulario o WhatsApp y cuéntanos sobre tu proyecto para comenzar hoy mismo.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto" data-aos="fade-up">
-    <h2>¿Listo para despegar?</h2>
-    <p>Completa este formulario o escríbenos directamente por WhatsApp y empecemos a trabajar en tu proyecto.</p>
-    <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST">
-      <input type="text" name="name" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo electrónico" required>
-      <textarea name="message" rows="5" placeholder="¿En qué te ayudamos?" required></textarea>
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://anibal0006.github.io/silservices/gracias.html">
-      <button type="submit">Enviar mensaje</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 NovaBoost. Todos los derechos reservados. Diseño profesional, visual y estratégico.</p>
-  </footer>
-
-  <a href="https://wa.me/34679016719" class="whatsapp" title="Contáctanos por WhatsApp">💬</a>
-
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-  </script>
+  <script>AOS.init({duration: 1000, once: true});</script>
 </body>
 </html>
