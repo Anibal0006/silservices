@@ -3,37 +3,40 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NovaBoost - Creatividad Profesional</title>
-<meta name="description" content="Agencia creativa con diseño visual, automatización y estrategias digitales que convierten visitas en clientes." />
+<title>NovaBoost - Impulsa tu Marca Digital</title>
+<meta name="description" content="Agencia creativa para marcas que desean crecer con diseño visual, automatización y estrategias digitales." />
 <link rel="icon" href="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" type="image/png" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+Pro:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lato:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 <style>
-body,html{margin:0;padding:0;font-family:'Inter',sans-serif;background:#1C1C1C;color:#EDEDED;scroll-behavior:smooth;}
+body,html{margin:0;padding:0;font-family:'Lato',sans-serif;background:#121212;color:#F0F0F0;scroll-behavior:smooth;}
 header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative;overflow:hidden;}
-header img{max-width:120px;margin-bottom:1rem;opacity:0;animation:fadeIn 2s forwards;}
-@keyframes fadeIn{to{opacity:1;}}
-header h1{font-family:'Source Serif Pro',serif;font-size:2.5rem;color:#D6C9B8;margin:0;}
+header img{max-width:120px;margin-bottom:1rem;opacity:0;animation:fadeInLogo 2s forwards;}
+@keyframes fadeInLogo{to{opacity:1;transform:scale(1.05);}}
+header h1{font-family:'Poppins',sans-serif;font-size:2.8rem;color:#00B894;margin:0;}
 header p{color:#ccc;max-width:600px;margin:1rem;font-size:1.1rem;}
-button{background:#5C6F7B;color:#fff;padding:0.8rem 1.5rem;border:none;border-radius:25px;cursor:pointer;font-weight:600;transition:all 0.4s;}
-button:hover{background:#D6C9B8;color:#1C1C1C;transform:translateY(-3px);}
-nav{display:flex;justify-content:center;background:#2A2A2A;padding:1rem;position:sticky;top:0;z-index:999;}
-nav a{color:#EDEDED;margin:0 1rem;text-decoration:none;font-weight:500;transition:color 0.3s;}
-nav a:hover{color:#D6C9B8;}
+button{background:#00B894;color:#fff;padding:0.8rem 1.5rem;border:none;border-radius:30px;cursor:pointer;font-weight:600;position:relative;overflow:hidden;transition:all 0.3s;}
+button::after{content:"";position:absolute;background:rgba(255,255,255,0.3);border-radius:50%;transform:scale(0);width:100%;height:100%;top:0;left:0;opacity:0;transition:transform 0.5s,opacity 1s;}
+button:active::after{transform:scale(2);opacity:0;}
+button:hover{background:#00A17A;transform:scale(1.05);}
+nav{display:flex;justify-content:center;background:#1E1E1E;padding:1rem;position:sticky;top:0;z-index:999;}
+nav a{color:#F0F0F0;margin:0 1rem;text-decoration:none;font-weight:500;transition:color 0.3s;}
+nav a:hover{color:#00B894;}
 section{padding:4rem 2rem;text-align:center;}
-h2{color:#D6C9B8;margin-bottom:1rem;font-family:'Source Serif Pro',serif;font-size:2rem;}
+h2{color:#00B894;margin-bottom:1rem;font-family:'Poppins',sans-serif;font-size:2rem;}
 p{max-width:600px;margin:0 auto 1rem;}
 .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1000px;margin:auto;}
-.card{background:#2A2A2A;padding:1.5rem;border-radius:12px;transition:transform 0.3s,box-shadow 0.3s;border:1px solid #D6C9B833;}
-.card:hover{transform:scale(1.03);box-shadow:0 10px 20px rgba(214,201,184,0.2);}
+.card{background:#1E1E1E;padding:1.5rem;border-radius:12px;transition:transform 0.3s,box-shadow 0.3s;border:1px solid #00B89433;}
+.card:hover{transform:rotateY(5deg) rotateX(5deg) scale(1.02);box-shadow:0 10px 25px rgba(0,184,148,0.3);}
+.marquee{overflow:hidden;white-space:nowrap;background:#181818;padding:1rem 0;}
+.marquee-content{display:inline-block;animation:marquee 25s linear infinite;}
+.marquee-content span{display:inline-block;margin:0 2rem;color:#F0F0F0;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
 .parallax{background-attachment:fixed;background-position:center;background-repeat:no-repeat;background-size:cover;height:300px;width:100%;border-radius:10px;margin:2rem 0;}
-.glider-contain{max-width:90%;margin:auto;}
-.glider-slide{background:#2A2A2A;padding:1rem;border-radius:10px;margin:0 0.5rem;border:1px solid #5C6F7B33;}
-footer{padding:2rem;background:#2A2A2A;color:#bbb;text-align:center;}
+footer{padding:2rem;background:#1E1E1E;color:#aaa;text-align:center;}
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;z-index:1000;}
 form{max-width:500px;margin:2rem auto;text-align:left;}
-form input,form textarea{width:100%;padding:0.8rem;margin-bottom:1rem;border:none;border-radius:8px;background:#2A2A2A;color:#fff;}
+form input,form textarea{width:100%;padding:0.8rem;margin-bottom:1rem;border:none;border-radius:8px;background:#1E1E1E;color:#fff;}
 form button{width:100%;}
 </style>
 </head>
@@ -41,67 +44,67 @@ form button{width:100%;}
 
 <header>
 <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost">
-<h1 class="animate__animated animate__fadeInDown">NovaBoost</h1>
-<p class="animate__animated animate__fadeInUp">Transformamos tu marca con diseño visual y estrategias digitales que convierten visitas en clientes de forma automática.</p>
-<button onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Comienza Ahora</button>
+<h1>NovaBoost</h1>
+<p>Impulsamos tu marca con diseño visual, automatización inteligente y estrategias digitales que convierten visitas en clientes.</p>
+<button onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Impulsa tu marca ahora</button>
 </header>
 
 <nav>
-  <a href="#servicios">Servicios</a>
-  <a href="#portfolio">Portfolio</a>
-  <a href="#valoraciones">Valoraciones</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contacto">Contacto</a>
+<a href="#servicios">Servicios</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#valoraciones">Valoraciones</a>
+<a href="#faq">FAQ</a>
+<a href="#contacto">Contacto</a>
 </nav>
 
-<section id="servicios">
-<h2>Servicios</h2>
+<section id="servicios" data-aos="fade-up">
+<h2>Nuestros Servicios</h2>
 <div class="feature-grid">
-<div class="card"><h3>Diseño Web Elegante</h3><p>Páginas con estilo profesional, funcionales y optimizadas para conversión.</p></div>
-<div class="card"><h3>Automatización Inteligente</h3><p>CRM, reservas y pagos automáticos para tu negocio.</p></div>
-<div class="card"><h3>Contenido Visual</h3><p>Diseño visual coherente para redes y publicidad digital.</p></div>
-<div class="card"><h3>Funnel de Conversión</h3><p>Estrategias automáticas para convertir visitas en clientes fieles.</p></div>
+<div class="card" data-aos="zoom-in"><h3>Diseño Web Impactante</h3><p>Webs modernas, móviles y optimizadas para convertir visitas en clientes.</p></div>
+<div class="card" data-aos="zoom-in"><h3>Automatización</h3><p>Reservas, pagos y CRM automatizados mientras gestionas tu negocio.</p></div>
+<div class="card" data-aos="zoom-in"><h3>Marketing Visual</h3><p>Contenido atractivo y reels para destacar en redes y atraer clientes.</p></div>
+<div class="card" data-aos="zoom-in"><h3>Estrategias de Conversión</h3><p>Embudos que convierten visitas en ventas automáticamente.</p></div>
 </div>
 </section>
 
-<div class="parallax" style="background-image:url('https://source.unsplash.com/1600x600/?abstract,tech');"></div>
+<div class="parallax" style="background-image:url('https://source.unsplash.com/1600x600/?technology,creative');"></div>
 
-<section id="portfolio">
+<section id="portfolio" data-aos="fade-up">
 <h2>Portfolio</h2>
-<p>Algunos de nuestros trabajos con clientes que lograron expandirse con nosotros.</p>
-<img src="https://source.unsplash.com/800x400/?design,creative" style="width:90%;max-width:800px;border-radius:10px;" loading="lazy">
+<p>Algunos proyectos donde ayudamos a nuestros clientes a crecer digitalmente.</p>
+<img src="https://source.unsplash.com/800x400/?website,design" style="width:90%;max-width:800px;border-radius:10px;" loading="lazy">
 </section>
 
 <section id="valoraciones">
 <h2>Valoraciones</h2>
-<div class="glider-contain">
-  <div class="glider">
-    <div class="glider-slide"><p>★★★★★ "NovaBoost nos ayudó a duplicar reservas online." - Laura G.</p></div>
-    <div class="glider-slide"><p>★★★★★ "Automatización impecable y diseño premium." - Carlos M.</p></div>
-    <div class="glider-slide"><p>★★★★★ "Mi web ahora vende mientras duermo." - Ana P.</p></div>
-    <div class="glider-slide"><p>★★★★★ "Servicio rápido y visualmente impactante." - Javier L.</p></div>
-    <div class="glider-slide"><p>★★★★★ "Triplicamos reservas con NovaBoost." - Marta F.</p></div>
-    <div class="glider-slide"><p>★★★★★ "Nuestra clínica ahora tiene reservas automáticas." - Andrés V.</p></div>
-    <div class="glider-slide"><p>★★★★★ "Mejoramos nuestra imagen en redes." - Hugo S.</p></div>
-    <div class="glider-slide"><p>★★★★★ "Captamos más clientes con embudos efectivos." - Sofía R.</p></div>
+<div class="marquee">
+  <div class="marquee-content">
+    <span>★★★★★ "NovaBoost duplicó nuestras reservas en 2 meses." - Laura</span>
+    <span>★★★★★ "Automatización impecable y diseño premium." - Carlos</span>
+    <span>★★★★★ "Mi web vende mientras duermo gracias a NovaBoost." - Ana</span>
+    <span>★★★★★ "Rápidos y visualmente impactantes." - Javier</span>
+    <span>★★★★★ "Triplicamos nuestras reservas online." - Marta</span>
+    <span>★★★★★ "Nuestra clínica tiene reservas automáticas." - Andrés</span>
+    <span>★★★★★ "Mejoramos nuestra presencia en redes." - Hugo</span>
+    <span>★★★★★ "Embudos efectivos que aumentan clientes." - Sofía</span>
   </div>
 </div>
 </section>
 
-<section id="faq">
+<section id="faq" data-aos="fade-up">
 <h2>Preguntas Frecuentes</h2>
 <div class="feature-grid">
-<div class="card"><h3>¿Cuánto tarda la web?</h3><p>Normalmente entre 7 a 14 días, dependiendo del proyecto.</p></div>
-<div class="card"><h3>¿Incluyen automatizaciones?</h3><p>Sí, CRM, pagos, reservas y funnels automáticos.</p></div>
-<div class="card"><h3>¿Gestionan redes sociales?</h3><p>Sí, con paquetes de gestión y contenido mensual.</p></div>
+<div class="card"><h3>¿Cuánto tarda la web?</h3><p>De 7 a 14 días según el proyecto.</p></div>
+<div class="card"><h3>¿Incluyen automatizaciones?</h3><p>Sí, CRM, reservas y pagos automáticos.</p></div>
+<div class="card"><h3>¿Gestionan redes sociales?</h3><p>Sí, paquetes mensuales de contenido y gestión.</p></div>
 </div>
 </section>
 
-<div class="parallax" style="background-image:url('https://source.unsplash.com/1600x600/?technology,dark');"></div>
+<div class="parallax" style="background-image:url('https://source.unsplash.com/1600x600/?abstract,creative');"></div>
 
-<section id="contacto">
+<section id="contacto" data-aos="fade-up">
 <h2>Contáctanos</h2>
-<p>Comienza hoy a potenciar tu marca con NovaBoost.</p>
+<p>Completa el formulario y potencia tu marca con NovaBoost.</p>
 <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST">
 <input type="text" name="name" placeholder="Tu nombre" required>
 <input type="email" name="email" placeholder="Tu email" required>
@@ -114,23 +117,11 @@ form button{width:100%;}
 <p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
 </footer>
 
-<a href="https://wa.me/34679016719" class="whatsapp">💬</a>
+<a href="https://wa.me/34679016719" class="whatsapp" title="Contáctanos por WhatsApp">💬</a>
 
-<script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
-<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
-ScrollReveal().reveal('section', { distance:'50px', duration:1000, easing:'ease-out', origin:'bottom', interval:200 });
-new Glider(document.querySelector('.glider'), {
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  draggable: true,
-  dots: true,
-  arrows: false,
-  scrollLock: true,
-  duration: 2.5,
-  rewind: true,
-  autoplay: 1
-});
+AOS.init({duration:1000, once:true});
 </script>
 
 </body>
