@@ -6,47 +6,43 @@
 <title>NovaBoost - Agencia Creativa Digital</title>
 <meta name="description" content="Impulsamos tu marca con diseño visual, automatización inteligente y estrategias de conversión."/>
 <link rel="icon" href="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" type="image/png" />
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Raleway:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css" />
 <style>
-body,html{margin:0;padding:0;font-family:'Montserrat',sans-serif;background:#000;color:#fff;overflow-x:hidden;}
-header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;text-align:center;}
-header h1{font-size:3rem;color:#00ffff;margin:0;}
-header p{color:#ccc;max-width:600px;margin:1rem;}
-button{background:#00ffff;color:#000;padding:0.8rem 1.5rem;border:none;border-radius:5px;cursor:pointer;font-weight:bold;transition:background 0.3s,transform 0.3s;}
-button:hover{background:#00cccc;transform:scale(1.05);}
+body,html{margin:0;padding:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#0d0d0d,#1a0033);color:#fff;overflow-x:hidden;}
+header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden;text-align:center;background:linear-gradient(270deg,#0d0d0d,#330033,#0d0d0d);background-size:600% 600%;animation:gradient 15s ease infinite;}
+@keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+header h1{font-family:'Raleway',sans-serif;font-size:3rem;color:#C6FF00;margin:0;}
+header p{color:#ddd;max-width:600px;margin:1rem;}
+button{background:#C6FF00;color:#000;padding:0.8rem 1.5rem;border:none;border-radius:50px;cursor:pointer;font-weight:bold;transition:background 0.4s,box-shadow 0.4s,transform 0.4s;}
+button:hover{background:#9C27B0;color:#fff;box-shadow:0 0 20px #9C27B0;transform:scale(1.05);}
 section{padding:4rem 2rem;text-align:center;}
-h2{color:#00ffff;margin-bottom:1rem;font-family:'Orbitron',sans-serif;}
-p{color:#ddd;max-width:600px;margin:auto;margin-bottom:1rem;}
-footer{padding:2rem;background:#000;color:#777;text-align:center;}
+h2{color:#C6FF00;margin-bottom:1rem;font-family:'Raleway',sans-serif;}
+p{color:#ccc;max-width:600px;margin:auto;margin-bottom:1rem;}
+footer{padding:2rem;background:#0a0a0a;color:#777;text-align:center;}
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;z-index:1000;}
-.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1200px;margin:auto;}
-.card{background:rgba(0,0,0,0.6);padding:1.5rem;border-radius:10px;border:1px solid #00ffff33;transition:transform 0.3s,box-shadow 0.3s;}
-.card:hover{transform:translateY(-10px);box-shadow:0 10px 20px rgba(0,255,255,0.2);}
-.glider-contain{max-width:90%;margin:auto;}
-.glider-slide{background:#111;padding:1rem;border-radius:10px;margin:0 0.5rem;border:1px solid #00ffff33;}
-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
-header>*{z-index:1;}
-nav{display:flex;justify-content:center;background:#000;padding:1rem;position:sticky;top:0;z-index:999;}
-nav a{color:#00ffff;margin:0 1rem;text-decoration:none;font-weight:bold;transition:color 0.3s;}
+nav{display:flex;justify-content:center;background:#0a0a0a;padding:1rem;position:sticky;top:0;z-index:999;}
+nav a{color:#C6FF00;margin:0 1rem;text-decoration:none;font-weight:bold;transition:color 0.3s;}
 nav a:hover{color:#fff;}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1200px;margin:auto;}
+.card{background:rgba(255,255,255,0.05);padding:1.5rem;border-radius:15px;border:1px solid #C6FF0033;transition:transform 0.4s,box-shadow 0.4s;}
+.card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 10px 30px rgba(156,39,176,0.4);}
+.glider-contain{max-width:90%;margin:auto;}
+.glider-slide{background:rgba(255,255,255,0.05);padding:1rem;border-radius:10px;margin:0 0.5rem;border:1px solid #C6FF0033;}
 form{max-width:500px;margin:2rem auto;text-align:left;}
-form input, form textarea{width:100%;padding:0.8rem;margin-bottom:1rem;border:none;border-radius:5px;background:#111;color:#fff;}
+form input, form textarea{width:100%;padding:0.8rem;margin-bottom:1rem;border:none;border-radius:8px;background:#111;color:#fff;}
 form button{width:100%;}
 </style>
 </head>
 <body>
 
 <header>
-<canvas id="particles"></canvas>
-<h1 class="animate__animated animate__fadeInDown">NovaBoost</h1>
-<p class="animate__animated animate__fadeInUp">Impulsamos tu marca con diseño visual, automatización inteligente y estrategias de conversión.</p>
+<h1>NovaBoost</h1>
+<p>Impulsamos tu marca con diseño visual, automatización inteligente y estrategias de conversión.</p>
 <button onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">¡Quiero impulsar mi marca!</button>
 </header>
 
-<nav data-aos="fade-down">
+<nav>
   <a href="#servicios">Servicios</a>
   <a href="#portfolio">Portfolio</a>
   <a href="#valoraciones">Valoraciones</a>
@@ -54,39 +50,39 @@ form button{width:100%;}
   <a href="#contacto">Contacto</a>
 </nav>
 
-<section id="servicios" data-aos="fade-up">
+<section id="servicios">
 <h2>Servicios</h2>
 <div class="feature-grid">
-<div class="card"><h3>Diseño Web</h3><p>Diseños rápidos y que convierten visitantes en clientes.</p></div>
+<div class="card"><h3>Diseño Web</h3><p>Diseños impactantes y que convierten visitantes en clientes.</p></div>
 <div class="card"><h3>Automatización</h3><p>Automatiza reservas, pagos y CRM para ahorrar tiempo.</p></div>
-<div class="card"><h3>Marketing Visual</h3><p>Contenido para redes que atrae y fideliza clientes.</p></div>
+<div class="card"><h3>Marketing Visual</h3><p>Contenido de redes que atrae y fideliza clientes.</p></div>
 <div class="card"><h3>Consultoría Estratégica</h3><p>Estrategias personalizadas de conversión para tu negocio.</p></div>
 </div>
 </section>
 
-<section id="portfolio" data-aos="fade-up">
+<section id="portfolio">
 <h2>Portfolio</h2>
 <p>Descubre proyectos que ayudaron a crecer a nuestros clientes.</p>
-<img src="https://source.unsplash.com/800x400/?website,design" style="width:90%;max-width:800px;border-radius:10px;" loading="lazy">
+<img src="https://source.unsplash.com/800x400/?website,creative" style="width:90%;max-width:800px;border-radius:10px;" loading="lazy">
 </section>
 
-<section id="valoraciones" data-aos="fade-up">
+<section id="valoraciones">
 <h2>Valoraciones</h2>
 <div class="glider-contain">
   <div class="glider">
-    <div class="glider-slide"><p>★★★★★ "NovaBoost transformó nuestra web y duplicamos ventas." - Laura G., Tienda de Ropa</p></div>
-    <div class="glider-slide"><p>★★★★★ "Automatización impecable y diseño premium que nos ahorró horas de trabajo." - Carlos M., Consultor</p></div>
-    <div class="glider-slide"><p>★★★★★ "Mi web ahora vende mientras duermo gracias a NovaBoost." - Ana P., Tienda Online</p></div>
-    <div class="glider-slide"><p>★★★★★ "Servicio rápido, claro y visualmente impactante." - Javier L., Coach</p></div>
-    <div class="glider-slide"><p>★★★★★ "Triplicamos nuestras reservas online con NovaBoost." - Marta F., Academia de Idiomas</p></div>
-    <div class="glider-slide"><p>★★★★★ "Nuestra clínica ahora tiene reservas automáticas y diseño elegante." - Andrés V., Veterinario</p></div>
-    <div class="glider-slide"><p>★★★★★ "Mejoramos redes sociales y branding de forma profesional." - Hugo S., Fotógrafo</p></div>
-    <div class="glider-slide"><p>★★★★★ "Aumentamos la captación de clientes con embudos bien diseñados." - Sofía R., Spa</p></div>
+    <div class="glider-slide"><p>★★★★★ "NovaBoost transformó nuestra web y duplicamos ventas." - Laura G.</p></div>
+    <div class="glider-slide"><p>★★★★★ "Automatización impecable y diseño premium que nos ahorró horas de trabajo." - Carlos M.</p></div>
+    <div class="glider-slide"><p>★★★★★ "Mi web ahora vende mientras duermo gracias a NovaBoost." - Ana P.</p></div>
+    <div class="glider-slide"><p>★★★★★ "Servicio rápido, claro y visualmente impactante." - Javier L.</p></div>
+    <div class="glider-slide"><p>★★★★★ "Triplicamos nuestras reservas online con NovaBoost." - Marta F.</p></div>
+    <div class="glider-slide"><p>★★★★★ "Nuestra clínica ahora tiene reservas automáticas y diseño elegante." - Andrés V.</p></div>
+    <div class="glider-slide"><p>★★★★★ "Mejoramos redes sociales y branding de forma profesional." - Hugo S.</p></div>
+    <div class="glider-slide"><p>★★★★★ "Aumentamos la captación de clientes con embudos bien diseñados." - Sofía R.</p></div>
   </div>
 </div>
 </section>
 
-<section id="faq" data-aos="fade-up">
+<section id="faq">
 <h2>Preguntas Frecuentes</h2>
 <div class="feature-grid">
 <div class="card"><h3>¿Cuánto tarda la web?</h3><p>De 7 a 14 días según el proyecto.</p></div>
@@ -95,46 +91,10 @@ form button{width:100%;}
 </div>
 </section>
 
-<section id="contacto" data-aos="fade-up">
+<section id="contacto">
 <h2>Contáctanos</h2>
 <p>Llena este formulario para comenzar tu proyecto con NovaBoost.</p>
 <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST">
 <input type="text" name="name" placeholder="Tu nombre" required>
 <input type="email" name="email" placeholder="Tu email" required>
-<textarea name="message" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
-<button type="submit">Enviar</button>
-</form>
-</section>
-
-<footer>
-<p>&copy; 2025 NovaBoost. Agencia Creativa Digital.</p>
-</footer>
-
-<a href="https://wa.me/34679016719" class="whatsapp">💬</a>
-
-<script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({duration:1000, once:true});
-new Glider(document.querySelector('.glider'),{
-  slidesToShow:1,
-  slidesToScroll:1,
-  draggable:true,
-  dots:true,
-  arrows:{
-    prev:'.glider-prev',
-    next:'.glider-next'
-  }
-});
-</script>
-<script>
-const c=document.getElementById('particles'),ctx=c.getContext('2d');
-c.width=innerWidth;c.height=innerHeight;
-let pArr=[];class P{constructor(){this.x=Math.random()*c.width;this.y=Math.random()*c.height;this.r=Math.random()*2+1;this.sx=Math.random()*1-0.5;this.sy=Math.random()*1-0.5;}u(){this.x+=this.sx;this.y+=this.sy;if(this.x<0||this.x>c.width)this.sx=-this.sx;if(this.y<0||this.y>c.height)this.sy=-this.sy;}d(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle='#00ffff';ctx.fill();}}
-for(let i=0;i<100;i++)pArr.push(new P());
-function anim(){ctx.clearRect(0,0,c.width,c.height);pArr.forEach(p=>{p.u();p.d();});requestAnimationFrame(anim);}anim();
-window.onresize=()=>{c.width=innerWidth;c.height=innerHeight;};
-</script>
-
-</body>
-</html>
+<textarea name="message" rows="
