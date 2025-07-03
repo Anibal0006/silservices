@@ -1,55 +1,289 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NovaBoost | Webs que Venden</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-body {margin:0; padding:0; background:linear-gradient(135deg,#e0f7fa,#ffffff); font-family:'Poppins',sans-serif; overflow-x:hidden;}
-.floating-text {position:absolute; animation:float 6s ease-in-out infinite; font-size:2rem; color:#00796b; font-weight:600;}
-@keyframes float {0%{transform:translateY(0);}50%{transform:translateY(-20px);}100%{transform:translateY(0);}}
-.center-content {display:flex; flex-direction:column; justify-content:center; align-items:center; height:100vh; text-align:center; padding:20px;}
-h1 {font-size:3rem; color:#004d40; font-weight:700; margin-bottom:20px;}
-p {font-size:1.5rem; max-width:600px; color:#00695c;}
-.cta-button {margin-top:30px; padding:15px 30px; background-color:#004d40; color:white; font-size:1.2rem; border:none; border-radius:10px; cursor:pointer; transition:background-color 0.3s ease;}
-.cta-button:hover {background-color:#00695c;}
-.navbar {position:fixed; top:0; width:100%; background:#004d40; color:white; display:flex; justify-content:space-between; align-items:center; padding:10px 20px; font-family:'Poppins',sans-serif;}
-.navbar a {color:white; text-decoration:none; margin:0 10px; font-weight:600;}
-.footer {background:#004d40; color:white; text-align:center; padding:20px; font-family:'Poppins',sans-serif;}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaBoost - Agencia Creativa Digital</title>
+  <meta name="description" content="NovaBoost impulsa tu marca con diseño visual, automatización inteligente y estrategias de conversión." />
+  <meta name="keywords" content="diseño web, marketing digital, automatización, branding, NovaBoost" />
+  <meta name="author" content="NovaBoost" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4203/4203973.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;}
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #050505;
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    header {
+      background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.5rem;
+      color: #00ffff;
+      z-index: 1;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      max-width: 700px;
+      z-index: 1;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #000;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    nav a {
+      color: #00ffff;
+      margin: 0 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {color: #fff;}
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2.8rem;
+      color: #00ffff;
+      margin-bottom: 2rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+    p {
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffff33;
+      padding: 2rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,255,255,0.15);
+    }
+    .card h3 {
+      color: #00cccc;
+      margin-bottom: 1rem;
+    }
+    .video-section iframe {
+      width: 100%;
+      height: 480px;
+      border-radius: 10px;
+      margin-top: 2rem;
+    }
+    form {
+      background: #121212;
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: auto;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    input, textarea {
+      background: #1f1f1f;
+      color: #fff;
+    }
+    button {
+      background: #00ffff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {background: #00cccc;}
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+  </style>
 </head>
 <body>
-<div class="navbar">
-  <div><strong>NovaBoost</strong></div>
-  <div>
-    <a href="#">Inicio</a>
+  <header data-aos="fade-down">
+    <h1>NovaBoost</h1>
+    <p>Impulsamos tu marca con diseño visual, automatización inteligente y estrategias de conversión.</p>
+  </header>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
     <a href="#servicios">Servicios</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#valoraciones">Valoraciones</a>
     <a href="#contacto">Contacto</a>
-  </div>
-</div>
-<div class="floating-text" style="top:10%;left:10%;">🚀 Webs que venden</div>
-<div class="floating-text" style="top:20%;right:10%;">✨ Diseño visual impactante</div>
-<div class="floating-text" style="top:35%;left:15%;">⚡ Automatización inteligente</div>
-<div class="floating-text" style="top:50%;right:15%;">📈 Más ventas y reservas</div>
-<div class="floating-text" style="top:65%;left:20%;">🔥 Tu web trabaja por ti</div>
-<div class="center-content">
-  <h1>NovaBoost</h1>
-  <p>Diseñamos páginas web modernas, visuales y automáticas para que tu negocio atraiga clientes y convierta visitas en ventas.</p>
-  <button class="cta-button" onclick="window.location.href='#contacto'">Contáctanos y crece ahora</button>
-</div>
-<section id="servicios" style="padding:60px 20px; text-align:center;">
-  <h2 style="color:#004d40; font-size:2rem;">Nuestros Servicios</h2>
-  <p style="max-width:600px; margin:auto;">Creamos webs impactantes, automatizamos tus procesos y potenciamos tu presencia en redes para que consigas más ventas con menos esfuerzo.</p>
-</section>
-<section id="contacto" style="padding:60px 20px; text-align:center;">
-  <h2 style="color:#004d40; font-size:2rem;">Contáctanos</h2>
-  <p style="max-width:600px; margin:auto;">Listo para transformar tu negocio con una web que vende sola. Escríbenos y empieza ahora.</p>
-  <a href="https://wa.me/34679016719" class="cta-button" target="_blank">Hablar por WhatsApp</a>
-  <p style="margin-top:20px;">O escríbenos a <a href="mailto:anibal.vargas1@icloud.com" style="color:#004d40; font-weight:600;">anibal.vargas1@icloud.com</a></p>
-</section>
-<div class="footer">
-  © 2025 NovaBoost - Todos los derechos reservados
-</div>
+  </nav>
+
+  <section id="inicio" data-aos="fade-up">
+    <h2>Bienvenido a la nueva era digital</h2>
+    <p>¿Te gustaría tener una web profesional, automatizada y lista para vender incluso mientras duermes? En NovaBoost te damos las herramientas visuales, técnicas y estratégicas para hacerlo realidad.</p>
+  </section>
+
+  <section id="servicios" data-aos="fade-up">
+    <h2>Lo que hacemos por tu negocio</h2>
+    <div class="feature-grid">
+      <div class="card" data-aos="fade-up">
+        <h3>Diseño Web Impactante</h3>
+        <p>Páginas modernas, adaptadas a móvil, con estética 4K y sistemas de reservas automáticos.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>Visual Marketing para Instagram</h3>
+        <p>Diseños atractivos, reels animados, estrategias visuales para destacar y convertir seguidores en clientes.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>Automatización Avanzada</h3>
+        <p>Conectamos tu web, redes, CRM y correo para que trabajen en automático mientras tú gestionas tu negocio.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>Asesoría Creativa</h3>
+        <p>Ideas, auditoría de marca, análisis de retención y creación de embudos efectivos personalizados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos" class="video-section" data-aos="fade-up">
+    <h2>Proyectos y Resultados</h2>
+    <p>Clientes reales que aumentaron visibilidad, ventas y profesionalismo con nuestra ayuda.</p>
+    <iframe src="https://www.youtube.com/embed/ViFCOveYRCg" frameborder="0" allowfullscreen></iframe>
+  </section>
+
+  <section id="valoraciones" data-aos="fade-up">
+    <h2>Valoraciones y Experiencias Reales</h2>
+    <div class="feature-grid">
+      <div class="card" data-aos="fade-up">
+        <h3>★★★★★</h3>
+        <p>\"NovaBoost transformó por completo nuestra presencia online. El diseño es espectacular y hemos aumentado nuestras ventas.\"</p>
+        <p>- Laura G., Tienda de Ropa</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>★★★★☆</h3>
+        <p>\"Excelente servicio, muy profesionales y rápidos en la entrega de nuestra web y automatizaciones.\"</p>
+        <p>- Carlos M., Consultor</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>★★★★★</h3>
+        <p>\"El equipo de NovaBoost nos ayudó a crear reels y publicaciones para Instagram que atrajeron más clientes en poco tiempo.\"</p>
+        <p>- Ana P., Estilista</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>★★★★★</h3>
+        <p>\"Gracias a la asesoría de NovaBoost optimizamos nuestros embudos de venta y automatizamos procesos, ahorrando mucho tiempo.\"</p>
+        <p>- Javier L., Agencia de Viajes</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" data-aos="fade-up">
+    <h2>Preguntas Frecuentes</h2>
+    <div class="feature-grid">
+      <div class="card" data-aos="fade-up">
+        <h3>¿Cuánto tarda en estar lista mi web?</h3>
+        <p>El tiempo medio de desarrollo es de 7 a 14 días, dependiendo de la complejidad de tu proyecto.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>¿Puedo automatizar reservas y pagos?</h3>
+        <p>Sí, configuramos sistemas de reservas y pasarelas de pago para automatizar procesos en tu web.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>¿Ofrecen diseño para redes sociales?</h3>
+        <p>Ofrecemos paquetes de visual marketing y reels para Instagram que refuerzan tu presencia digital.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>¿Cómo empiezo?</h3>
+        <p>Contáctanos por el formulario o WhatsApp y cuéntanos sobre tu proyecto para comenzar hoy mismo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" data-aos="fade-up">
+    <h2>¿Listo para despegar?</h2>
+    <p>Completa este formulario o escríbenos directamente por WhatsApp y empecemos a trabajar en tu proyecto.</p>
+    <form action=\"https://formsubmit.co/Anibal.vargas1@icloud.com\" method=\"POST\">
+      <input type=\"text\" name=\"name\" placeholder=\"Tu nombre\" required>
+      <input type=\"email\" name=\"email\" placeholder=\"Tu correo electrónico\" required>
+      <textarea name=\"message\" rows=\"5\" placeholder=\"¿En qué te ayudamos?\" required></textarea>
+      <input type=\"hidden\" name=\"_captcha\" value=\"false\">
+      <input type=\"hidden\" name=\"_next\" value=\"https://anibal0006.github.io/silservices/gracias.html\">
+      <button type=\"submit\">Enviar mensaje</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 NovaBoost. Todos los derechos reservados. Diseño profesional, visual y estratégico.</p>
+  </footer>
+
+  <a href=\"https://wa.me/34679016719\" class=\"whatsapp\" title=\"Contáctanos por WhatsApp\">💬</a>
+
+  <script src=\"https://unpkg.com/aos@2.3.1/dist/aos.js\"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
 </body>
 </html>
