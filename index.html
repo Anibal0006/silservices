@@ -18,8 +18,6 @@ header p{color:#555;max-width:600px;margin:1rem;font-size:1.6rem;opacity:0;anima
 @keyframes fadeUp{to{opacity:1;transform:translateY(-10px);}}
 button{background:#FF6B6B;color:#fff;padding:1rem 2rem;border:none;border-radius:40px;cursor:pointer;font-weight:600;transition:all 0.3s;font-size:1.1rem;position:relative;overflow:hidden;}
 button:hover{background:#E63946;box-shadow:0 0 12px rgba(255,107,107,0.4);transform:scale(1.05);}
-button::after{content:"";position:absolute;width:100px;height:100px;background:rgba(255,255,255,0.3);transform:scale(0);border-radius:50%;opacity:0;pointer-events:none;animation:ripple 0.6s;}
-@keyframes ripple{to{transform:scale(4);opacity:0;}}
 nav{display:flex;justify-content:center;background:#fff;padding:1rem;position:sticky;top:0;z-index:999;box-shadow:0 2px 6px rgba(0,0,0,0.05);}
 nav a{color:#333;margin:0 1rem;text-decoration:none;font-weight:500;transition:color 0.3s;}
 nav a:hover{color:#FF6B6B;}
@@ -47,7 +45,7 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
 </head>
 <body>
 
-<canvas id="bubbles"></canvas>
+<canvas id="lines"></canvas>
 
 <header>
 <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost">
@@ -94,8 +92,6 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
     <div class="marquee-item">★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinaria</div>
     <div class="marquee-item">★★★★★ "Nuestra imagen mejoró mucho." - Hugo, Fotógrafo</div>
     <div class="marquee-item">★★★★★ "Funnels efectivos que convierten." - Sofía, Spa Urbano</div>
-    <div class="marquee-item">★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</div>
-    <div class="marquee-item">★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</div>
   </div>
 </div>
 <p style="font-size:0.9rem;color:#555;">Mantén pulsado el mouse para pausar y suéltalo para continuar.</p>
@@ -139,55 +135,54 @@ const showSections = () => {
 window.addEventListener('scroll', showSections);
 showSections();
 
-// Pausar/Reanudar valoraciones en movimiento
+// Pausar/Reanudar valoraciones
 const marqueeTrack = document.getElementById('marqueeTrack');
 document.addEventListener('mousedown', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused'));
 document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
 
-// Burbujas flotantes distribuidas por toda la página
-const canvas = document.getElementById('bubbles');
+// LÍNEAS DE LUZ animadas de fondo en toda la página
+const canvas = document.getElementById('lines');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-let bubblesArray = [];
-let lastScrollY = window.scrollY;
-class Bubble {
+let lines = [];
+class Line {
   constructor() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.radius = Math.random() * 30 + 10;
-    this.speedX = Math.random() * 0.4 - 0.2;
-    this.speedY = Math.random() * 0.4 - 0.2;
-    this.color = 'rgba(255,107,107,0.06)';
+    this.length = Math.random() * 300 + 100;
+    this.speed = Math.random() * 1 + 0.5;
+    this.opacity = Math.random() * 0.05 + 0.02;
   }
   draw() {
     ctx.beginPath();
-    ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
+    ctx.moveTo(this.x, this.y);
+    ctx.lineTo(this.x + this.length, this.y);
+    ctx.strokeStyle = `rgba(255,107,107,${this.opacity})`;
+    ctx.lineWidth = 1;
+    ctx.stroke();
   }
-  update(scrollDirection) {
-    this.x += this.speedX * (scrollDirection ? 1 : -1);
-    this.y += this.speedY * (scrollDirection ? 1 : -1);
-    if(this.x > canvas.width + this.radius) this.x = -this.radius;
-    if(this.x < -this.radius) this.x = canvas.width + this.radius;
-    if(this.y > canvas.height + this.radius) this.y = -this.radius;
-    if(this.y < -this.radius) this.y = canvas.height + this.radius;
+  update() {
+    this.x -= this.speed;
+    if(this.x + this.length < 0) {
+      this.x = canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.length = Math.random() * 300 + 100;
+      this.speed = Math.random() * 1 + 0.5;
+      this.opacity = Math.random() * 0.05 + 0.02;
+    }
     this.draw();
   }
 }
 function init() {
-  bubblesArray = [];
-  for (let i = 0; i < 60; i++) { bubblesArray.push(new Bubble()); }
+  lines = [];
+  for(let i=0;i<30;i++) { lines.push(new Line()); }
 }
 function animate() {
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  let currentScrollY = window.scrollY;
-  let scrollDirection = currentScrollY > lastScrollY;
-  bubblesArray.forEach(bubble => bubble.update(scrollDirection));
-  lastScrollY = currentScrollY;
+  lines.forEach(line => line.update());
   requestAnimationFrame(animate);
 }
 window.addEventListener('resize', () => {
