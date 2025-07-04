@@ -45,7 +45,7 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
 </head>
 <body>
 
-<canvas id="particles"></canvas>
+<canvas id="triangles"></canvas>
 
 <header>
 <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost">
@@ -124,68 +124,60 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
 <a href="https://wa.me/34679016719" class="whatsapp" title="WhatsApp NovaBoost">💬</a>
 
 <script>
-// Mostrar secciones con animación al hacer scroll
+// Mostrar secciones con animación
 const sections = document.querySelectorAll('section');
-const showSections = () => {
-  sections.forEach(sec => {
-    const rect = sec.getBoundingClientRect();
-    if(rect.top <= window.innerHeight - 50) sec.classList.add('visible');
-  });
-};
-window.addEventListener('scroll', showSections);
-showSections();
+const showSections = () => { sections.forEach(sec => { const rect = sec.getBoundingClientRect(); if(rect.top <= window.innerHeight - 50) sec.classList.add('visible'); }); };
+window.addEventListener('scroll', showSections); showSections();
 
-// Pausar/Reanudar valoraciones
+// Pausar valoraciones
 const marqueeTrack = document.getElementById('marqueeTrack');
 document.addEventListener('mousedown', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused'));
 document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
 
-// Partículas que siguen scroll y mouse
-const canvas = document.getElementById('particles');
+// Triángulos en movimiento
+const canvas = document.getElementById('triangles');
 const ctx = canvas.getContext('2d');
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-let particles = [];
+canvas.width = innerWidth; canvas.height = innerHeight;
+let triangles = [];
 let mouse = { x: innerWidth / 2, y: innerHeight / 2 };
 window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
 window.addEventListener('resize', () => { canvas.width = innerWidth; canvas.height = innerHeight; init(); });
 window.addEventListener('scroll', () => { mouse.y += (window.scrollY - mouse.y) * 0.05; });
-
-class Particle {
-  constructor() {
+class Triangle {
+  constructor(){
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 3 + 1;
+    this.size = Math.random() * 20 + 10;
     this.speedX = (Math.random() - 0.5) * 0.5;
     this.speedY = (Math.random() - 0.5) * 0.5;
+    this.opacity = 0.05 + Math.random() * 0.1;
   }
-  update() {
+  update(){
     let dx = mouse.x - this.x;
     let dy = mouse.y - this.y;
-    this.x += dx * 0.002 + this.speedX;
-    this.y += dy * 0.002 + this.speedY;
-    if(this.x < 0) this.x = canvas.width;
-    if(this.x > canvas.width) this.x = 0;
-    if(this.y < 0) this.y = canvas.height;
-    if(this.y > canvas.height) this.y = 0;
+    this.x += dx * 0.0005 + this.speedX;
+    this.y += dy * 0.0005 + this.speedY;
+    if(this.x < -this.size) this.x = canvas.width + this.size;
+    if(this.x > canvas.width + this.size) this.x = -this.size;
+    if(this.y < -this.size) this.y = canvas.height + this.size;
+    if(this.y > canvas.height + this.size) this.y = -this.size;
   }
-  draw() {
+  draw(){
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(255,107,107,0.15)';
+    ctx.moveTo(this.x, this.y);
+    ctx.lineTo(this.x + this.size, this.y);
+    ctx.lineTo(this.x + this.size/2, this.y - this.size);
+    ctx.closePath();
+    ctx.fillStyle = `rgba(255,107,107,${this.opacity})`;
     ctx.fill();
   }
 }
-
-function init() {
-  particles = [];
-  for(let i = 0; i < 50; i++) { particles.push(new Particle()); }
-}
-function animate() {
+function init(){ triangles=[]; for(let i=0;i<40;i++){ triangles.push(new Triangle()); } }
+function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p => { p.update(); p.draw(); });
+  triangles.forEach(t=>{ t.update(); t.draw(); });
   requestAnimationFrame(animate);
 }
 init();
