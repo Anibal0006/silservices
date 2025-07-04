@@ -45,7 +45,7 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
 </head>
 <body>
 
-<canvas id="lines"></canvas>
+<canvas id="particles"></canvas>
 
 <header>
 <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost">
@@ -135,61 +135,59 @@ const showSections = () => {
 window.addEventListener('scroll', showSections);
 showSections();
 
-// Pausar/Reanudar valoraciones en movimiento
+// Pausar/Reanudar valoraciones
 const marqueeTrack = document.getElementById('marqueeTrack');
 document.addEventListener('mousedown', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused'));
 document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
 
-// Líneas de luz flotantes sincronizadas con scroll
-const canvas = document.getElementById('lines');
+// Partículas que siguen scroll y mouse
+const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-let lines = [];
-let lastScrollY = window.scrollY;
-class Line {
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+let particles = [];
+let mouse = { x: innerWidth / 2, y: innerHeight / 2 };
+window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+window.addEventListener('resize', () => { canvas.width = innerWidth; canvas.height = innerHeight; init(); });
+window.addEventListener('scroll', () => { mouse.y += (window.scrollY - mouse.y) * 0.05; });
+
+class Particle {
   constructor() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.length = Math.random() * 300 + 100;
-    this.baseSpeed = Math.random() * 0.5 + 0.3;
-    this.speed = this.baseSpeed;
-    this.opacity = Math.random() * 0.05 + 0.02;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.5;
+    this.speedY = (Math.random() - 0.5) * 0.5;
+  }
+  update() {
+    let dx = mouse.x - this.x;
+    let dy = mouse.y - this.y;
+    this.x += dx * 0.002 + this.speedX;
+    this.y += dy * 0.002 + this.speedY;
+    if(this.x < 0) this.x = canvas.width;
+    if(this.x > canvas.width) this.x = 0;
+    if(this.y < 0) this.y = canvas.height;
+    if(this.y > canvas.height) this.y = 0;
   }
   draw() {
     ctx.beginPath();
-    ctx.moveTo(this.x, this.y);
-    ctx.lineTo(this.x + this.length, this.y);
-    ctx.strokeStyle = `rgba(255,107,107,${this.opacity})`;
-    ctx.lineWidth = 1;
-    ctx.stroke();
-  }
-  update(direction) {
-    this.x += this.speed * direction;
-    if(this.x + this.length < 0) this.x = canvas.width;
-    if(this.x > canvas.width) this.x = -this.length;
-    this.draw();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,107,107,0.15)';
+    ctx.fill();
   }
 }
+
 function init() {
-  lines = [];
-  for(let i=0;i<30;i++){lines.push(new Line());}
+  particles = [];
+  for(let i = 0; i < 50; i++) { particles.push(new Particle()); }
 }
 function animate() {
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  let currentScrollY = window.scrollY;
-  let direction = currentScrollY > lastScrollY ? -1 : 1;
-  lines.forEach(line => line.update(direction));
-  lastScrollY = currentScrollY;
+  particles.forEach(p => { p.update(); p.draw(); });
   requestAnimationFrame(animate);
 }
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  init();
-});
 init();
 animate();
 </script>
