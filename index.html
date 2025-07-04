@@ -16,17 +16,22 @@ header h1{font-family:'DM Sans',sans-serif;font-size:8rem;font-weight:700;margin
 @keyframes gradientShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 header p{color:#555;max-width:600px;margin:1rem;font-size:1.6rem;opacity:0;animation:fadeUp 2s forwards;animation-delay:1s;}
 @keyframes fadeUp{to{opacity:1;transform:translateY(-10px);}}
-button{background:#FF6B6B;color:#fff;padding:1rem 2rem;border:none;border-radius:40px;cursor:pointer;font-weight:600;transition:all 0.3s;font-size:1.1rem;}
+button{background:#FF6B6B;color:#fff;padding:1rem 2rem;border:none;border-radius:40px;cursor:pointer;font-weight:600;transition:all 0.3s;font-size:1.1rem;position:relative;overflow:hidden;}
 button:hover{background:#E63946;box-shadow:0 0 12px rgba(255,107,107,0.4);transform:scale(1.05);}
+button::after{content:"";position:absolute;width:100px;height:100px;background:rgba(255,255,255,0.3);transform:scale(0);border-radius:50%;opacity:0;pointer-events:none;animation:ripple 0.6s;}
+@keyframes ripple{to{transform:scale(4);opacity:0;}}
 nav{display:flex;justify-content:center;background:#fff;padding:1rem;position:sticky;top:0;z-index:999;box-shadow:0 2px 6px rgba(0,0,0,0.05);}
 nav a{color:#333;margin:0 1rem;text-decoration:none;font-weight:500;transition:color 0.3s;}
 nav a:hover{color:#FF6B6B;}
-section{padding:4rem 2rem;text-align:center;}
+section{padding:4rem 2rem;text-align:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease, transform 1s ease;}
+section.visible{opacity:1;transform:translateY(0);}
 h2{color:#FF6B6B;margin-bottom:1rem;font-weight:700;font-size:2.8rem;font-family:'DM Sans',sans-serif;}
 p{max-width:600px;margin:0 auto 1rem;font-size:1.2rem;}
 .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1000px;margin:auto;}
 .card{background:#fff;padding:1.5rem;border-radius:15px;transition:transform 0.3s,box-shadow 0.3s;border:1px solid #ff6b6b22;}
 .card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(255,107,107,0.15);}
+.card h3:hover{animation: vibrate 0.3s infinite;}
+@keyframes vibrate{0%{transform:translateX(0);}25%{transform:translateX(-2px);}50%{transform:translateX(2px);}75%{transform:translateX(-2px);}100%{transform:translateX(0);}}
 .marquee-container{overflow:hidden;background:#FFEFEF;padding:1rem 0;cursor:pointer;position:relative;width:100%;}
 .marquee-track{display:flex;gap:4rem;animation:marquee 60s linear infinite;}
 .marquee-track.paused{animation-play-state:paused;}
@@ -37,6 +42,7 @@ footer{padding:2rem;background:#fff;color:#555;text-align:center;}
 form{max-width:500px;margin:2rem auto;text-align:left;}
 form input,form textarea{width:100%;padding:0.8rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;background:#fff;color:#333;}
 form button{width:100%;}
+canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
 </style>
 </head>
 <body>
@@ -122,6 +128,17 @@ form button{width:100%;}
 <a href="https://wa.me/34679016719" class="whatsapp" title="WhatsApp NovaBoost">💬</a>
 
 <script>
+// Mostrar secciones con animación al hacer scroll
+const sections = document.querySelectorAll('section');
+const showSections = () => {
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if(rect.top <= window.innerHeight - 50) sec.classList.add('visible');
+  });
+};
+window.addEventListener('scroll', showSections);
+showSections();
+
 // Pausar/Reanudar valoraciones en movimiento
 const marqueeTrack = document.getElementById('marqueeTrack');
 document.addEventListener('mousedown', () => marqueeTrack.classList.add('paused'));
@@ -129,22 +146,21 @@ document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused
 document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
 
-// Burbujas flotantes en toda la página
+// Burbujas flotantes distribuidas por toda la página
 const canvas = document.getElementById('bubbles');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let bubblesArray = [];
 let lastScrollY = window.scrollY;
-
 class Bubble {
   constructor() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.radius = Math.random() * 30 + 15;
-    this.speedX = Math.random() * 0.5 - 0.25;
-    this.speedY = Math.random() * 0.5 - 0.25;
-    this.color = 'rgba(255,107,107,0.05)';
+    this.radius = Math.random() * 30 + 10;
+    this.speedX = Math.random() * 0.4 - 0.2;
+    this.speedY = Math.random() * 0.4 - 0.2;
+    this.color = 'rgba(255,107,107,0.06)';
   }
   draw() {
     ctx.beginPath();
@@ -162,12 +178,10 @@ class Bubble {
     this.draw();
   }
 }
-
 function init() {
   bubblesArray = [];
-  for (let i = 0; i < 50; i++) { bubblesArray.push(new Bubble()); }
+  for (let i = 0; i < 60; i++) { bubblesArray.push(new Bubble()); }
 }
-
 function animate() {
   ctx.clearRect(0,0,canvas.width,canvas.height);
   let currentScrollY = window.scrollY;
@@ -176,13 +190,11 @@ function animate() {
   lastScrollY = currentScrollY;
   requestAnimationFrame(animate);
 }
-
 window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   init();
 });
-
 init();
 animate();
 </script>
