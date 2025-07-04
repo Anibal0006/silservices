@@ -6,36 +6,36 @@
 <title>NovaBoost - Impulsa tu Marca</title>
 <meta name="description" content="Agencia creativa con diseño visual y automatización inteligente para captar clientes automáticamente." />
 <link rel="icon" href="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" type="image/png" />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
 <style>
-body,html{margin:0;padding:0;background:#F5F7FA;color:#212121;font-family:'Poppins',sans-serif;scroll-behavior:smooth;overflow-x:hidden;position:relative;}
+body,html{margin:0;padding:0;background:#FAFAFA;color:#333;font-family:'Inter',sans-serif;scroll-behavior:smooth;overflow-x:hidden;position:relative;}
 header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;}
-header img{max-width:140px;margin-bottom:1rem;animation:fadeIn 2s;}
+header img{max-width:150px;margin-bottom:1rem;animation:fadeIn 2s;}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-header h1{font-size:7rem;font-weight:700;margin:0;color:#1E88E5;animation:titlePulse 5s infinite;}
-@keyframes titlePulse{0%,100%{transform:scale(1);color:#1E88E5;}50%{transform:scale(1.1);color:#1565C0;}}
-header p{color:#424242;max-width:600px;margin:1rem;font-size:1.6rem;opacity:0;animation:fadeUp 2s forwards;animation-delay:1s;}
+header h1{font-family:'DM Sans',sans-serif;font-size:8rem;font-weight:700;margin:0;color:#FF6B6B;animation:titlePulse 5s infinite;}
+@keyframes titlePulse{0%,100%{transform:scale(1);color:#FF6B6B;}50%{transform:scale(1.1);color:#E63946;}}
+header p{color:#555;max-width:600px;margin:1rem;font-size:1.6rem;opacity:0;animation:fadeUp 2s forwards;animation-delay:1s;}
 @keyframes fadeUp{to{opacity:1;transform:translateY(-10px);}}
-button{background:#1E88E5;color:#fff;padding:1rem 2rem;border:none;border-radius:40px;cursor:pointer;font-weight:600;transition:all 0.3s;font-size:1.1rem;}
-button:hover{background:#1565C0;box-shadow:0 0 12px rgba(30,136,229,0.5);transform:scale(1.05);}
-nav{display:flex;justify-content:center;background:#FFFFFF;padding:1rem;position:sticky;top:0;z-index:999;box-shadow:0 2px 6px rgba(0,0,0,0.05);}
-nav a{color:#212121;margin:0 1rem;text-decoration:none;font-weight:500;transition:color 0.3s;}
-nav a:hover{color:#1E88E5;}
+button{background:#FF6B6B;color:#fff;padding:1rem 2rem;border:none;border-radius:40px;cursor:pointer;font-weight:600;transition:all 0.3s;font-size:1.1rem;}
+button:hover{background:#E63946;box-shadow:0 0 12px rgba(255,107,107,0.4);transform:scale(1.05);}
+nav{display:flex;justify-content:center;background:#fff;padding:1rem;position:sticky;top:0;z-index:999;box-shadow:0 2px 6px rgba(0,0,0,0.05);}
+nav a{color:#333;margin:0 1rem;text-decoration:none;font-weight:500;transition:color 0.3s;}
+nav a:hover{color:#FF6B6B;}
 section{padding:4rem 2rem;text-align:center;}
-h2{color:#1E88E5;margin-bottom:1rem;font-weight:700;font-size:2.8rem;}
+h2{color:#FF6B6B;margin-bottom:1rem;font-weight:700;font-size:2.8rem;font-family:'DM Sans',sans-serif;}
 p{max-width:600px;margin:0 auto 1rem;font-size:1.2rem;}
 .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1000px;margin:auto;}
-.card{background:#FFFFFF;padding:1.5rem;border-radius:15px;transition:transform 0.3s,box-shadow 0.3s;border:1px solid #1e88e522;}
-.card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(30,136,229,0.15);}
-.marquee-container{overflow:hidden;background:#E3F2FD;padding:1rem 0;cursor:pointer;position:relative;width:100%;}
+.card{background:#fff;padding:1.5rem;border-radius:15px;transition:transform 0.3s,box-shadow 0.3s;border:1px solid #ff6b6b22;}
+.card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(255,107,107,0.15);}
+.marquee-container{overflow:hidden;background:#FFEFEF;padding:1rem 0;cursor:pointer;position:relative;width:100%;}
 .marquee-track{display:flex;gap:4rem;animation:marquee 60s linear infinite;}
 .marquee-track.paused{animation-play-state:paused;}
-.marquee-item{flex-shrink:0;white-space:nowrap;font-weight:500;font-size:1.1rem;color:#212121;}
+.marquee-item{flex-shrink:0;white-space:nowrap;font-weight:500;font-size:1.1rem;color:#333;}
 @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-footer{padding:2rem;background:#FFFFFF;color:#555;text-align:center;}
+footer{padding:2rem;background:#fff;color:#555;text-align:center;}
 .whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;z-index:1000;box-shadow:0 2px 5px rgba(0,0,0,0.2);}
 form{max-width:500px;margin:2rem auto;text-align:left;}
-form input,form textarea{width:100%;padding:0.8rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;background:#fff;color:#212121;}
+form input,form textarea{width:100%;padding:0.8rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;background:#fff;color:#333;}
 form button{width:100%;}
 </style>
 </head>
@@ -127,7 +127,7 @@ document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused
 document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
 
-// Burbujas flotantes que se mueven según scroll
+// Burbujas flotantes animadas con scroll
 const canvas = document.getElementById('bubbles');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -142,7 +142,7 @@ class Bubble {
     this.radius = Math.random() * 30 + 15;
     this.speedX = Math.random() * 0.5 - 0.25;
     this.speedY = Math.random() * 0.5 - 0.25;
-    this.color = 'rgba(30,136,229,0.05)';
+    this.color = 'rgba(255,107,107,0.05)';
   }
   draw() {
     ctx.beginPath();
