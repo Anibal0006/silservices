@@ -1,1 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NovaBoost - Impulsa tu Marca</title>
+<meta name="description" content="Agencia creativa con diseño visual y automatización inteligente para captar clientes automáticamente." />
+<link rel="icon" href="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" type="image/png" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body,html{margin:0;padding:0;background:#EEF1F5;color:#222831;font-family:'Space Grotesk',sans-serif;scroll-behavior:smooth;overflow-x:hidden;position:relative;}
+header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;}
+header img{max-width:130px;margin-bottom:1rem;animation:fadeIn 2s;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+header h1{font-size:6rem;font-weight:700;margin:0;color:#00ADB5;animation:titlePulse 5s infinite;}
+@keyframes titlePulse{0%,100%{transform:scale(1);color:#00ADB5;}50%{transform:scale(1.08);color:#00969D;}}
+header p{color:#393E46;max-width:600px;margin:1rem;font-size:1.4rem;opacity:0;animation:fadeUp 2s forwards;animation-delay:1s;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(-10px);}}
+button{background:#00ADB5;color:#fff;padding:1rem 2rem;border:none;border-radius:40px;cursor:pointer;font-weight:600;transition:all 0.3s;font-size:1rem;}
+button:hover{background:#00969D;box-shadow:0 0 12px rgba(0,173,181,0.5);transform:scale(1.05);}
+nav{display:flex;justify-content:center;background:#FFFFFF;padding:1rem;position:sticky;top:0;z-index:999;box-shadow:0 2px 6px rgba(0,0,0,0.05);}
+nav a{color:#222831;margin:0 1rem;text-decoration:none;font-weight:500;transition:color 0.3s;}
+nav a:hover{color:#00ADB5;}
+section{padding:4rem 2rem;text-align:center;}
+h2{color:#00ADB5;margin-bottom:1rem;font-weight:700;font-size:2.5rem;}
+p{max-width:600px;margin:0 auto 1rem;font-size:1.1rem;}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1000px;margin:auto;}
+.card{background:#FFFFFF;padding:1.5rem;border-radius:15px;transition:transform 0.3s,box-shadow 0.3s;border:1px solid #00adb522;}
+.card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(0,173,181,0.15);}
+.marquee-container{overflow:hidden;background:#DDE4EA;padding:1rem 0;cursor:pointer;position:relative;width:100%;}
+.marquee-track{display:flex;gap:4rem;animation:marquee 60s linear infinite;}
+.marquee-track.paused{animation-play-state:paused;}
+.marquee-item{flex-shrink:0;white-space:nowrap;font-weight:500;font-size:1.1rem;color:#222831;}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+footer{padding:2rem;background:#FFFFFF;color:#555;text-align:center;}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;z-index:1000;box-shadow:0 2px 5px rgba(0,0,0,0.2);}
+form{max-width:500px;margin:2rem auto;text-align:left;}
+form input,form textarea{width:100%;padding:0.8rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;background:#fff;color:#222831;}
+form button{width:100%;}
+.bubble{position:absolute;border-radius:50%;background:rgba(0,173,181,0.07);pointer-events:none;}
+</style>
+</head>
+<body>
+
+<!-- Burbujas flotantes con movimiento mientras haces scroll -->
+<canvas id="bubbles"></canvas>
+
+<header>
+<img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost">
+<h1>NovaBoost</h1>
+<p>Impulsamos tu marca con diseño visual elegante y automatización que atrae clientes mientras descansas.</p>
+<button onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Impulsar mi marca</button>
+</header>
+
+<nav>
+<a href="#servicios">Servicios</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#valoraciones">Valoraciones</a>
+<a href="#faq">FAQ</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+<section id="servicios">
+<h2>Servicios</h2>
+<div class="feature-grid">
+<div class="card"><h3>Diseño Web</h3><p>Webs elegantes, rápidas y diseñadas para convertir visitas en clientes.</p></div>
+<div class="card"><h3>Automatización</h3><p>CRM, reservas y pagos automáticos que trabajan por ti.</p></div>
+<div class="card"><h3>Marketing Visual</h3><p>Contenido visual premium para redes sociales que atrae clientes.</p></div>
+<div class="card"><h3>Funnels de Ventas</h3><p>Embudo de ventas automatizado que convierte sin esfuerzo manual.</p></div>
+</div>
+</section>
+
+<section id="portfolio">
+<h2>Portfolio</h2>
+<p>Casos de éxito impulsados con NovaBoost.</p>
+<img src="https://source.unsplash.com/800x400/?website,creative" alt="Portfolio NovaBoost" style="width:90%;max-width:800px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" loading="lazy">
+</section>
+
+<section id="valoraciones">
+<h2>Valoraciones</h2>
+<div class="marquee-container" id="marqueeContainer">
+  <div class="marquee-track" id="marqueeTrack">
+    <div class="marquee-item">★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</div>
+    <div class="marquee-item">★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</div>
+    <div class="marquee-item">★★★★★ "Mi tienda online vende mientras duermo." - Ana, Tienda Online</div>
+    <div class="marquee-item">★★★★★ "Visualmente impactante y rápido." - Javier, Coach</div>
+    <div class="marquee-item">★★★★★ "Triplicamos reservas con NovaBoost." - Marta, Academia de Idiomas</div>
+    <div class="marquee-item">★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinaria</div>
+    <div class="marquee-item">★★★★★ "Nuestra imagen mejoró mucho." - Hugo, Fotógrafo</div>
+    <div class="marquee-item">★★★★★ "Funnels efectivos que convierten." - Sofía, Spa Urbano</div>
+    <div class="marquee-item">★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</div>
+    <div class="marquee-item">★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</div>
+  </div>
+</div>
+<p style="font-size:0.9rem;color:#555;">Mantén pulsado el mouse para pausar y suéltalo para continuar.</p>
+</section>
+
+<section id="faq">
+<h2>Preguntas Frecuentes</h2>
+<div class="feature-grid">
+<div class="card"><h3>¿En cuánto tiempo entregan?</h3><p>Normalmente de 7 a 14 días según el proyecto.</p></div>
+<div class="card"><h3>¿Incluyen automatización?</h3><p>Sí, CRM, pagos y reservas automáticas incluidas.</p></div>
+<div class="card"><h3>¿Gestionan redes sociales?</h3><p>Sí, con planes de contenido visual premium.</p></div>
+</div>
+</section>
+
+<section id="contacto">
+<h2>Contáctanos</h2>
+<p>Completa el formulario y potencia tu negocio con NovaBoost.</p>
+<form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST">
+<input type="text" name="name" placeholder="Tu nombre" required>
+<input type="email" name="email" placeholder="Tu email" required>
+<textarea name="message" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
+<button type="submit">Enviar</button>
+</form>
+</section>
+
+<footer>
+<p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
+</footer>
+
+<a href="https://wa.me/34679016719" class="whatsapp" title="WhatsApp NovaBoost">💬</a>
+
+<script>
+// Pausar/Reanudar valoraciones en movimiento
+const marqueeTrack = document.getElementById('marqueeTrack');
+document.addEventListener('mousedown', () => marqueeTrack.classList.add('paused'));
+document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused'));
+document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
+document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
+
+// Burbujas animadas flotando mientras haces scroll
+const canvas = document.getElementById('bubbles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+let bubblesArray = [];
+
+class Bubble {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.radius = Math.random() * 30 + 10;
+    this.speedX = Math.random() * 0.6 - 0.3;
+    this.speedY = Math.random() * 0.6 - 0.3;
+    this.color = 'rgba(0,173,181,0.07)';
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY + window.scrollY*0.0002;
+    if(this.x > canvas.width + this.radius) this.x = -this.radius;
+    if(this.x < -this.radius) this.x = canvas.width + this.radius;
+    if(this.y > canvas.height + this.radius) this.y = -this.radius;
+    if(this.y < -this.radius) this.y = canvas.height + this.radius;
+    this.draw();
+  }
+}
+
+function init() {
+  bubblesArray = [];
+  for (let i = 0; i < 50; i++) { bubblesArray.push(new Bubble()); }
+}
+
+function animate() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  bubblesArray.forEach(bubble => bubble.update());
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  init();
+});
+
+init();
+animate();
+</script>
+
+</body>
+</html>
 
