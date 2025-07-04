@@ -12,9 +12,10 @@ body,html{margin:0;padding:0;background:#FAFAFA;color:#333;font-family:'Inter',s
 header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;}
 header img{max-width:150px;margin-bottom:1rem;animation:fadeIn 2s;}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-header h1{font-family:'DM Sans',sans-serif;font-size:8rem;font-weight:700;margin:0;background: linear-gradient(270deg,#FF6B6B,#E63946,#FF6B6B);background-size: 600% 600%;-webkit-background-clip: text;-webkit-text-fill-color: transparent;animation: gradientShift 15s ease infinite;transition: transform 0.3s, filter 0.3s;}
-header h1:hover{transform:scale(1.05);filter:brightness(1.2);}
+header h1{font-family:'DM Sans',sans-serif;font-size:8rem;font-weight:700;margin:0;background: linear-gradient(270deg,#FF6B6B,#E63946,#FF6B6B);background-size: 600% 600%;-webkit-background-clip: text;-webkit-text-fill-color: transparent;animation: gradientShift 15s ease infinite, bounceIn 1.5s;}
+header h1:hover{filter:brightness(1.2);}
 @keyframes gradientShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+@keyframes bounceIn{0%{transform:scale(0.9);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
 header p{color:#555;max-width:600px;margin:1rem;font-size:1.6rem;opacity:0;animation:fadeUp 2s forwards;animation-delay:1s;}
 @keyframes fadeUp{to{opacity:1;transform:translateY(-10px);}}
 button{background:#FF6B6B;color:#fff;padding:1rem 2rem;border:none;border-radius:40px;cursor:pointer;font-weight:600;transition:all 0.3s;font-size:1.1rem;}
@@ -44,7 +45,7 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
 </head>
 <body>
 
-<canvas id="circles"></canvas>
+<canvas id="shapes"></canvas>
 
 <header>
 <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost">
@@ -135,45 +136,43 @@ document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused
 document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
 
-// CÍRCULOS flotantes en movimiento
-const canvas = document.getElementById('circles');
+// CUADRADOS flotantes en movimiento
+const canvas = document.getElementById('shapes');
 const ctx = canvas.getContext('2d');
 canvas.width = innerWidth; canvas.height = innerHeight;
-let circles = [];
+let squares = [];
 let mouse = { x: innerWidth / 2, y: innerHeight / 2 };
 window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
 window.addEventListener('resize', () => { canvas.width = innerWidth; canvas.height = innerHeight; init(); });
 window.addEventListener('scroll', () => { mouse.y += (window.scrollY - mouse.y) * 0.05; });
-class Circle {
+class Square {
   constructor(){
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.radius = Math.random() * 20 + 10;
+    this.size = Math.random() * 20 + 10;
     this.speedX = (Math.random() - 0.5) * 0.5;
     this.speedY = (Math.random() - 0.5) * 0.5;
-    this.opacity = 0.03 + Math.random() * 0.07;
+    this.opacity = 0.04 + Math.random() * 0.08;
   }
   update(){
     let dx = mouse.x - this.x;
     let dy = mouse.y - this.y;
     this.x += dx * 0.0015 + this.speedX;
     this.y += dy * 0.0015 + this.speedY;
-    if(this.x < -this.radius) this.x = canvas.width + this.radius;
-    if(this.x > canvas.width + this.radius) this.x = -this.radius;
-    if(this.y < -this.radius) this.y = canvas.height + this.radius;
-    if(this.y > canvas.height + this.radius) this.y = -this.radius;
+    if(this.x < -this.size) this.x = canvas.width + this.size;
+    if(this.x > canvas.width + this.size) this.x = -this.size;
+    if(this.y < -this.size) this.y = canvas.height + this.size;
+    if(this.y > canvas.height + this.size) this.y = -this.size;
   }
   draw(){
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
     ctx.fillStyle = `rgba(255,107,107,${this.opacity})`;
-    ctx.fill();
+    ctx.fillRect(this.x, this.y, this.size, this.size);
   }
 }
-function init(){ circles=[]; for(let i=0;i<40;i++){ circles.push(new Circle()); } }
+function init(){ squares=[]; for(let i=0;i<40;i++){ squares.push(new Square()); } }
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  circles.forEach(c=>{ c.update(); c.draw(); });
+  squares.forEach(s=>{ s.update(); s.draw(); });
   requestAnimationFrame(animate);
 }
 init();
