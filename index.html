@@ -128,6 +128,30 @@ footer {
 .whatsapp img {
   width: 28px; height: 28px;
 }
+/* Marquee valoraciones */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  width: 100%;
+}
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 30s linear infinite;
+}
+.marquee-content.paused {
+  animation-play-state: paused;
+}
+.marquee span {
+  display: inline-block;
+  margin-right: 3rem;
+  font-size: 1rem;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
 </style>
 </head>
 
@@ -161,13 +185,18 @@ footer {
 
 <section id="valoraciones">
   <h2>Valoraciones</h2>
-  <div class="feature-grid">
-    <div class="card"><p>★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</p></div>
-    <div class="card"><p>★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</p></div>
-    <div class="card"><p>★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</p></div>
-    <div class="card"><p>★★★★★ "Visualmente impactante y rápido." - Javier, Coach</p></div>
-    <div class="card"><p>★★★★★ "Triplicamos reservas con NovaBoost." - Marta, Academia</p></div>
-    <div class="card"><p>★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinario</p></div>
+  <div class="marquee" id="marquee">
+    <div class="marquee-content" id="marqueeContent">
+      <span>★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</span>
+      <span>★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</span>
+      <span>★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</span>
+      <span>★★★★★ "Visualmente impactante y rápido." - Javier, Coach</span>
+      <span>★★★★★ "Triplicamos reservas con NovaBoost." - Marta, Academia</span>
+      <span>★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinario</span>
+      <span>★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</span>
+      <span>★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</span>
+      <span>★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</span>
+    </div>
   </div>
 </section>
 
@@ -196,6 +225,13 @@ function toggleTheme() {
   const icon = document.getElementById('themeToggle');
   icon.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 }
+
+// Control pausa valoraciones al mantener click/touch
+const marqueeContent = document.getElementById('marqueeContent');
+document.addEventListener('mousedown', () => marqueeContent.classList.add('paused'));
+document.addEventListener('mouseup', () => marqueeContent.classList.remove('paused'));
+document.addEventListener('touchstart', () => marqueeContent.classList.add('paused'));
+document.addEventListener('touchend', () => marqueeContent.classList.remove('paused'));
 </script>
 </body>
 </html>
