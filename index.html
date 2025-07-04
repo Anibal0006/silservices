@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>NovaBoost - Impulsa tu Marca</title>
-<meta name="description" content="Agencia creativa con diseño visual premium y automatización inteligente para captar clientes automáticamente.">
+<meta name="description" content="Agencia creativa con diseño visual premium y automatización para captar clientes mientras descansas.">
 <link rel="icon" href="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" type="image/png" />
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -12,72 +12,42 @@
   --color-bg: #fdfaf5;
   --color-primary: #2c3e50;
   --color-accent: #c59d5f;
-  --color-accent-light: #f1e3c3;
   --color-text: #2c3e50;
 }
-.dark-mode {
-  --color-bg: #1e1e1e;
-  --color-primary: #f0f0f0;
-  --color-accent: #c59d5f;
-  --color-accent-light: #444;
-  --color-text: #f0f0f0;
-}
-* {margin:0;padding:0;box-sizing:border-box;}
-html,body {scroll-behavior:smooth;overflow-x:hidden;background:var(--color-bg);color:var(--color-text);font-family:'Nunito Sans',sans-serif;}
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 0;
+html, body {
+  margin:0; padding:0; box-sizing:border-box;
+  background: var(--color-bg); color: var(--color-text);
+  font-family: 'Nunito Sans', sans-serif;
+  scroll-behavior: smooth; overflow-x: hidden;
 }
 header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
   background: linear-gradient(135deg, #f8f4e3, #ffffff);
-  position: relative;
+}
+header img {
+  max-width: 140px; margin-bottom: 1rem;
 }
 header h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 10vw, 8rem);
-  color: var(--color-primary);
-  position: relative;
-  animation: titleAnim 2s ease forwards;
-}
-@keyframes titleAnim {
-  0% {opacity:0; transform:translateY(-50px);}
-  100% {opacity:1; transform:translateY(0);}
+  font-size: clamp(3rem, 9vw, 9rem);
+  color: var(--color-primary); margin: 0;
 }
 header p {
-  font-size: 1.4rem;
+  max-width: 600px; font-size: 1.3rem; margin: 1rem;
   color: var(--color-primary);
-  margin-top: 1rem;
 }
 button {
-  background: var(--color-accent);
-  color: #fff;
-  padding: 0.9rem 2rem;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  font-size: 1.1rem;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+  background: var(--color-accent); color: #fff;
+  padding: 0.9rem 2rem; border: none; border-radius: 50px;
+  cursor: pointer; font-weight: 600; font-size: 1rem;
+  position: relative; overflow: hidden; z-index: 1;
 }
 button::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
   background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
   animation: rotate 4s linear infinite;
 }
@@ -89,129 +59,78 @@ button:hover {
   background: var(--color-primary);
 }
 section {
-  padding: 5rem 2rem;
-  text-align: center;
-  max-width: 1000px;
-  margin: auto;
+  padding: 4rem 1rem; max-width: 1000px; margin: auto; text-align: center;
 }
 h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--color-primary);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
 }
 .card {
-  background: var(--color-accent-light);
-  padding: 1.5rem;
-  border-radius: 15px;
+  background: rgba(0,0,0,0.05);
+  padding: 1.5rem; border-radius: 15px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-}
-.marquee-container {
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-}
-.marquee-track {
-  display: inline-block;
-  white-space: nowrap;
-  animation: marquee 30s linear infinite;
-}
-.marquee-track.paused {
-  animation-play-state: paused;
-}
-.marquee-item {
-  display: inline-block;
-  padding: 0 2rem;
-  font-size: 1.2rem;
-  color: var(--color-primary);
-}
-@keyframes marquee {
-  0% {transform: translateX(100%);}
-  100% {transform: translateX(-100%);}
-}
-.stats {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 3rem;
-}
-.stat {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--color-accent);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 footer {
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-  color: #777;
-}
-.theme-toggle {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  background: var(--color-accent);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  z-index: 1000;
+  text-align: center; padding: 2rem; font-size: 0.9rem; color: #777;
 }
 </style>
 </head>
+
 <body>
-<canvas id="canvas"></canvas>
-<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 <header>
-  <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost" style="width:100px;margin-bottom:1rem;">
+  <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost">
   <h1>NovaBoost</h1>
   <p>Impulsamos tu marca con diseño visual premium y automatización que capta clientes mientras descansas.</p>
   <button onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Impulsar mi marca</button>
 </header>
 
-<section id="stats">
-  <h2>Resultados que hablan</h2>
-  <div class="stats">
-    <div><div class="stat" data-target="120">0</div><p>Clientes Felices</p></div>
-    <div><div class="stat" data-target="350">0</div><p>Proyectos Completados</p></div>
-    <div><div class="stat" data-target="95">0</div><p>% de Retención</p></div>
+<section id="servicios">
+  <h2>Servicios</h2>
+  <div class="feature-grid">
+    <div class="card"><h3>Diseño Web Premium</h3><p>Webs elegantes y optimizadas que convierten visitas en clientes.</p></div>
+    <div class="card"><h3>Automatización</h3><p>CRM, pagos y reservas funcionando en automático para ti.</p></div>
+    <div class="card"><h3>Marketing Visual</h3><p>Contenido visual premium que fideliza a tu audiencia.</p></div>
+    <div class="card"><h3>Funnels de Venta</h3><p>Embudos de conversión estratégicos que venden solos.</p></div>
+    <div class="card"><h3>SEO Estratégico</h3><p>Posiciona tu web en Google para atraer clientes constantes.</p></div>
+    <div class="card"><h3>Branding</h3><p>Construye una identidad visual sólida y memorable.</p></div>
   </div>
+</section>
+
+<section id="portfolio">
+  <h2>Portfolio</h2>
+  <p>Transformamos negocios con estrategias visuales y automatizadas.</p>
+  <img src="https://source.unsplash.com/800x400/?business,website" alt="Portfolio NovaBoost" style="width:90%;max-width:800px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" loading="lazy">
 </section>
 
 <section id="valoraciones">
   <h2>Valoraciones</h2>
-  <div class="marquee-container">
-    <div class="marquee-track" id="marqueeTrack">
-      <div class="marquee-item">★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</div>
-      <div class="marquee-item">★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</div>
-      <div class="marquee-item">★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</div>
-      <div class="marquee-item">★★★★★ "Visualmente impactante y rápido." - Javier, Coach</div>
-      <div class="marquee-item">★★★★★ "Triplicamos reservas con NovaBoost." - Marta, Academia de Idiomas</div>
-      <div class="marquee-item">★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinario</div>
-    </div>
+  <div class="feature-grid">
+    <div class="card"><p>★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</p></div>
+    <div class="card"><p>★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</p></div>
+    <div class="card"><p>★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</p></div>
+    <div class="card"><p>★★★★★ "Visualmente impactante y rápido." - Javier, Coach</p></div>
+    <div class="card"><p>★★★★★ "Triplicamos reservas con NovaBoost." - Marta, Academia</p></div>
+    <div class="card"><p>★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinario</p></div>
   </div>
 </section>
 
 <section id="contacto">
   <h2>Contáctanos</h2>
   <p>Rellena este formulario para comenzar tu transformación con NovaBoost.</p>
-  <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST">
+  <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST" style="display:flex;flex-direction:column;gap:1rem;max-width:400px;margin:auto;">
     <input type="text" name="name" placeholder="Tu nombre" required>
-    <input type="email" name="email" placeholder="Tu email" required>
-    <textarea name="message" rows="4" placeholder="Cuéntanos en qué podemos ayudarte" required></textarea>
+    <input type="email" name="email" placeholder="Tu correo electrónico" required>
+    <textarea name="message" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
     <button type="submit">Enviar</button>
   </form>
 </section>
@@ -219,84 +138,5 @@ footer {
 <footer>
 <p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
 </footer>
-
-<script>
-// Modo oscuro
-function toggleTheme(){
-  document.body.classList.toggle('dark-mode');
-}
-
-// Estadísticas animadas
-const counters = document.querySelectorAll('.stat');
-counters.forEach(counter => {
-  counter.innerText = '0';
-  const updateCounter = () => {
-    const target = +counter.getAttribute('data-target');
-    const c = +counter.innerText;
-    const increment = target / 200;
-    if(c < target) {
-      counter.innerText = `${Math.ceil(c + increment)}`;
-      setTimeout(updateCounter, 15);
-    } else {
-      counter.innerText = target;
-    }
-  };
-  updateCounter();
-});
-
-// Marquee pausa
-const marqueeTrack = document.getElementById('marqueeTrack');
-document.addEventListener('mousedown', () => marqueeTrack.classList.add('paused'));
-document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused'));
-document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
-document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
-
-// Canvas formas flotantes
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-let circles = [];
-
-class Circle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.radius = Math.random() * 20 + 5;
-    this.dx = (Math.random() - 0.5) * 0.5;
-    this.dy = (Math.random() - 0.5) * 0.5;
-    this.opacity = 0.1 + Math.random() * 0.2;
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(197,157,95,${this.opacity})`;
-    ctx.fill();
-  }
-  update() {
-    this.x += this.dx;
-    this.y += this.dy;
-    if(this.x + this.radius > canvas.width || this.x - this.radius < 0) this.dx = -this.dx;
-    if(this.y + this.radius > canvas.height || this.y - this.radius < 0) this.dy = -this.dy;
-    this.draw();
-  }
-}
-function init(){
-  circles = [];
-  for(let i=0; i<40; i++) circles.push(new Circle());
-}
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  circles.forEach(circle => circle.update());
-  requestAnimationFrame(animate);
-}
-init();
-animate();
-window.addEventListener('resize', () => {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-  init();
-});
-</script>
 </body>
 </html>
