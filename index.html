@@ -124,7 +124,7 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
 <a href="https://wa.me/34679016719" class="whatsapp" title="WhatsApp NovaBoost">💬</a>
 
 <script>
-// Mostrar secciones con animación
+// Mostrar secciones
 const sections = document.querySelectorAll('section');
 const showSections = () => { sections.forEach(sec => { const rect = sec.getBoundingClientRect(); if(rect.top <= window.innerHeight - 50) sec.classList.add('visible'); }); };
 window.addEventListener('scroll', showSections); showSections();
@@ -136,7 +136,7 @@ document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused
 document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
 
-// Triángulos en movimiento
+// Triángulos en movimiento con rango ampliado
 const canvas = document.getElementById('triangles');
 const ctx = canvas.getContext('2d');
 canvas.width = innerWidth; canvas.height = innerHeight;
@@ -157,8 +157,8 @@ class Triangle {
   update(){
     let dx = mouse.x - this.x;
     let dy = mouse.y - this.y;
-    this.x += dx * 0.0005 + this.speedX;
-    this.y += dy * 0.0005 + this.speedY;
+    this.x += dx * 0.0015 + this.speedX; // rango x3
+    this.y += dy * 0.0015 + this.speedY; // rango x3
     if(this.x < -this.size) this.x = canvas.width + this.size;
     if(this.x > canvas.width + this.size) this.x = -this.size;
     if(this.y < -this.size) this.y = canvas.height + this.size;
