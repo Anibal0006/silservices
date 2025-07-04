@@ -65,18 +65,18 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
 <section id="servicios">
 <h2>Servicios</h2>
 <div class="feature-grid">
-<div class="card"><h3>Diseño Web</h3><p>Webs elegantes, rápidas y diseñadas para convertir visitas en clientes.</p></div>
-<div class="card"><h3>Automatización</h3><p>CRM, reservas y pagos automáticos que trabajan por ti.</p></div>
-<div class="card"><h3>Marketing Visual</h3><p>Contenido visual premium para redes sociales que atrae clientes.</p></div>
-<div class="card"><h3>Funnels de Ventas</h3><p>Embudo de ventas automatizado que convierte sin esfuerzo manual.</p></div>
-<div class="card"><h3>SEO Estratégico</h3><p>Optimización de posicionamiento para captar tráfico orgánico de calidad.</p></div>
-<div class="card"><h3>Branding e Identidad</h3><p>Diseño de marca e identidad visual coherente para tu negocio.</p></div>
+<div class="card"><h3>Diseño Web</h3><p>Webs elegantes, rápidas y optimizadas para convertir.</p></div>
+<div class="card"><h3>Automatización</h3><p>CRM, reservas y pagos automáticos mientras descansas.</p></div>
+<div class="card"><h3>Marketing Visual</h3><p>Contenido visual premium para redes que atrae clientes.</p></div>
+<div class="card"><h3>Funnels de Ventas</h3><p>Automatización de embudos para captar leads con facilidad.</p></div>
+<div class="card"><h3>SEO Estratégico</h3><p>Optimización en Google para atraer tráfico de calidad.</p></div>
+<div class="card"><h3>Branding & Identidad</h3><p>Construimos marcas memorables con coherencia visual.</p></div>
 </div>
 </section>
 
 <section id="portfolio">
 <h2>Portfolio</h2>
-<p>Casos de éxito impulsados con NovaBoost.</p>
+<p>Proyectos que transformaron negocios con NovaBoost.</p>
 <img src="https://source.unsplash.com/800x400/?website,creative" alt="Portfolio NovaBoost" style="width:90%;max-width:800px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" loading="lazy">
 </section>
 
@@ -86,10 +86,10 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
   <div class="marquee-track" id="marqueeTrack">
     <div class="marquee-item">★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</div>
     <div class="marquee-item">★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</div>
-    <div class="marquee-item">★★★★★ "Mi tienda online vende mientras duermo." - Ana, Tienda Online</div>
+    <div class="marquee-item">★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</div>
     <div class="marquee-item">★★★★★ "Visualmente impactante y rápido." - Javier, Coach</div>
     <div class="marquee-item">★★★★★ "Triplicamos reservas con NovaBoost." - Marta, Academia de Idiomas</div>
-    <div class="marquee-item">★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinaria</div>
+    <div class="marquee-item">★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinario</div>
     <div class="marquee-item">★★★★★ "Nuestra imagen mejoró mucho." - Hugo, Fotógrafo</div>
     <div class="marquee-item">★★★★★ "Funnels efectivos que convierten." - Sofía, Spa Urbano</div>
   </div>
@@ -100,15 +100,15 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
 <section id="faq">
 <h2>Preguntas Frecuentes</h2>
 <div class="feature-grid">
-<div class="card"><h3>¿En cuánto tiempo entregan?</h3><p>Normalmente de 7 a 14 días según el proyecto.</p></div>
-<div class="card"><h3>¿Incluyen automatización?</h3><p>Sí, CRM, pagos y reservas automáticas incluidas.</p></div>
-<div class="card"><h3>¿Gestionan redes sociales?</h3><p>Sí, con planes de contenido visual premium.</p></div>
+<div class="card"><h3>¿Cuánto tarda el desarrollo?</h3><p>Entre 7 y 14 días según complejidad.</p></div>
+<div class="card"><h3>¿Incluyen automatización?</h3><p>Sí, integraciones de pagos, reservas y CRM.</p></div>
+<div class="card"><h3>¿Gestionan redes sociales?</h3><p>Sí, con paquetes de contenido visual premium.</p></div>
 </div>
 </section>
 
 <section id="contacto">
 <h2>Contáctanos</h2>
-<p>Completa el formulario y potencia tu negocio con NovaBoost.</p>
+<p>Rellena el formulario para comenzar a escalar tu negocio con NovaBoost.</p>
 <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST">
 <input type="text" name="name" placeholder="Tu nombre" required>
 <input type="email" name="email" placeholder="Tu email" required>
@@ -135,25 +135,27 @@ const showSections = () => {
 window.addEventListener('scroll', showSections);
 showSections();
 
-// Pausar/Reanudar valoraciones
+// Pausar/Reanudar valoraciones en movimiento
 const marqueeTrack = document.getElementById('marqueeTrack');
 document.addEventListener('mousedown', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused'));
 document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
 
-// LÍNEAS DE LUZ animadas de fondo en toda la página
+// Líneas de luz flotantes sincronizadas con scroll
 const canvas = document.getElementById('lines');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let lines = [];
+let lastScrollY = window.scrollY;
 class Line {
   constructor() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
     this.length = Math.random() * 300 + 100;
-    this.speed = Math.random() * 1 + 0.5;
+    this.baseSpeed = Math.random() * 0.5 + 0.3;
+    this.speed = this.baseSpeed;
     this.opacity = Math.random() * 0.05 + 0.02;
   }
   draw() {
@@ -164,25 +166,23 @@ class Line {
     ctx.lineWidth = 1;
     ctx.stroke();
   }
-  update() {
-    this.x -= this.speed;
-    if(this.x + this.length < 0) {
-      this.x = canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.length = Math.random() * 300 + 100;
-      this.speed = Math.random() * 1 + 0.5;
-      this.opacity = Math.random() * 0.05 + 0.02;
-    }
+  update(direction) {
+    this.x += this.speed * direction;
+    if(this.x + this.length < 0) this.x = canvas.width;
+    if(this.x > canvas.width) this.x = -this.length;
     this.draw();
   }
 }
 function init() {
   lines = [];
-  for(let i=0;i<30;i++) { lines.push(new Line()); }
+  for(let i=0;i<30;i++){lines.push(new Line());}
 }
 function animate() {
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  lines.forEach(line => line.update());
+  let currentScrollY = window.scrollY;
+  let direction = currentScrollY > lastScrollY ? -1 : 1;
+  lines.forEach(line => line.update(direction));
+  lastScrollY = currentScrollY;
   requestAnimationFrame(animate);
 }
 window.addEventListener('resize', () => {
