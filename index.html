@@ -32,17 +32,22 @@ html, body {
 header {
   min-height: 100vh; display: flex; flex-direction: column;
   justify-content: center; align-items: center; text-align: center;
-  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--bg-color), #f8f8f8);
+  transition: background 0.4s;
 }
-header img { max-width: 140px; margin-bottom: 1rem; z-index: 1; }
+header img {
+  max-width: 140px; margin-bottom: 1rem;
+}
 header h1 {
   font-family: 'Playfair Display', serif;
   font-size: clamp(3rem, 9vw, 9rem);
-  color: var(--primary-color); margin: 0; z-index: 1;
+  color: var(--primary-color); margin: 0;
+  transition: color 0.4s;
 }
 header p {
   max-width: 600px; font-size: 1.3rem; margin: 1rem;
-  color: var(--primary-color); z-index: 1;
+  color: var(--primary-color);
+  transition: color 0.4s;
 }
 button {
   background: var(--accent-color); color: #fff;
@@ -51,70 +56,106 @@ button {
   position: relative; overflow: hidden; z-index: 1;
   transition: background 0.3s;
 }
-button:hover { background: var(--primary-color); }
-.theme-toggle {
-  position: fixed; top: 15px; right: 15px;
-  background: none; border: none; font-size: 1.5rem;
-  cursor: pointer; color: var(--accent-color); z-index: 1000;
+button::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+  animation: rotate 4s linear infinite;
 }
-section { padding: 4rem 1rem; max-width: 1000px; margin: auto; text-align: center; position: relative; }
+@keyframes rotate {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+button:hover {
+  background: var(--primary-color);
+}
+.theme-toggle {
+  position: fixed;
+  top: 15px; right: 15px;
+  background: none; border: none;
+  font-size: 1.5rem; cursor: pointer;
+  color: var(--accent-color);
+  z-index: 1000;
+  transition: transform 0.3s;
+}
+.theme-toggle:hover {
+  transform: scale(1.15);
+}
+section {
+  padding: 4rem 1rem; max-width: 1000px; margin: auto; text-align: center;
+}
 h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   color: var(--primary-color);
   margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
+  transition: color 0.4s;
 }
 .feature-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
 .card {
-  background: var(--card-bg); padding: 1.5rem;
-  border-radius: 15px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-  z-index: 1;
+  background: var(--card-bg);
+  padding: 1.5rem; border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.4s;
 }
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 footer {
-  text-align: center; padding: 2rem;
-  font-size: 0.9rem; color: #777;
+  text-align: center; padding: 2rem; font-size: 0.9rem; color: #777;
+  transition: color 0.4s;
 }
 .whatsapp {
-  position: fixed; bottom: 20px; right: 20px;
-  width: 55px; height: 55px; border-radius: 50%;
-  background: #25d366; display: flex; align-items: center; justify-content: center;
-  text-decoration: none; z-index: 1000;
+  position: fixed;
+  bottom: 20px; right: 20px;
+  width: 55px; height: 55px;
+  border-radius: 50%;
+  background: #25d366;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
 }
-.whatsapp img { width: 28px; height: 28px; }
-.marquee { overflow: hidden; white-space: nowrap; }
+.whatsapp:hover {
+  transform: scale(1.1);
+}
+.whatsapp img {
+  width: 28px; height: 28px;
+}
+/* Marquee valoraciones */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  width: 100%;
+}
 .marquee-content {
   display: inline-block;
   padding-left: 100%;
   animation: marquee 30s linear infinite;
 }
-.marquee-content.paused { animation-play-state: paused; }
-.marquee span { display: inline-block; margin-right: 3rem; font-size: 1rem; }
+.marquee-content.paused {
+  animation-play-state: paused;
+}
+.marquee span {
+  display: inline-block;
+  margin-right: 3rem;
+  font-size: 1rem;
+}
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
-canvas#backgroundCanvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
 </style>
 </head>
+
 <body>
-<canvas id="backgroundCanvas"></canvas>
 <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
 
 <header>
@@ -136,6 +177,29 @@ canvas#backgroundCanvas {
   </div>
 </section>
 
+<section id="portfolio">
+  <h2>Portfolio</h2>
+  <p>Transformamos negocios con estrategias visuales y automatizadas.</p>
+  <img src="https://source.unsplash.com/800x400/?business,website" alt="Portfolio NovaBoost" style="width:90%;max-width:800px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" loading="lazy">
+</section>
+
+<section id="valoraciones">
+  <h2>Valoraciones</h2>
+  <div class="marquee" id="marquee">
+    <div class="marquee-content" id="marqueeContent">
+      <span>★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</span>
+      <span>★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</span>
+      <span>★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</span>
+      <span>★★★★★ "Visualmente impactante y rápido." - Javier, Coach</span>
+      <span>★★★★★ "Triplicamos reservas con NovaBoost." - Marta, Academia</span>
+      <span>★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinario</span>
+      <span>★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</span>
+      <span>★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</span>
+      <span>★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</span>
+    </div>
+  </div>
+</section>
+
 <section id="contacto">
   <h2>Contáctanos</h2>
   <p>Rellena este formulario para comenzar tu transformación con NovaBoost.</p>
@@ -147,20 +211,6 @@ canvas#backgroundCanvas {
   </form>
 </section>
 
-<section id="valoraciones">
-  <h2>Valoraciones</h2>
-  <div class="marquee">
-    <div class="marquee-content" id="marqueeContent">
-      <span>★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</span>
-      <span>★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</span>
-      <span>★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</span>
-      <span>★★★★★ "Visualmente impactante y rápido." - Javier, Coach</span>
-      <span>★★★★★ "Triplicamos reservas con NovaBoost." - Marta, Academia</span>
-      <span>★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinario</span>
-    </div>
-  </div>
-</section>
-
 <footer>
 <p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
 </footer>
@@ -170,62 +220,18 @@ canvas#backgroundCanvas {
 </a>
 
 <script>
-// Theme toggle
 function toggleTheme() {
   document.body.classList.toggle('dark-mode');
   const icon = document.getElementById('themeToggle');
   icon.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 }
-// Pausa valoraciones
+
+// Control pausa valoraciones al mantener click/touch
 const marqueeContent = document.getElementById('marqueeContent');
 document.addEventListener('mousedown', () => marqueeContent.classList.add('paused'));
 document.addEventListener('mouseup', () => marqueeContent.classList.remove('paused'));
 document.addEventListener('touchstart', () => marqueeContent.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeContent.classList.remove('paused'));
-// Canvas fondo interactivo
-const canvas = document.getElementById('backgroundCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = innerWidth;
-canvas.height = innerHeight;
-let circles = [];
-class Circle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.r = Math.random() * 40 + 10;
-    this.s = Math.random() * 0.5 + 0.2;
-    this.o = 0.05 + Math.random() * 0.05;
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(197, 157, 95, ${this.o})`;
-    ctx.fill();
-  }
-  update() {
-    this.y -= this.s;
-    if (this.y + this.r < 0) {
-      this.y = canvas.height + this.r;
-      this.x = Math.random() * canvas.width;
-    }
-    this.draw();
-  }
-}
-function init() {
-  circles = [];
-  for (let i = 0; i < 30; i++) { circles.push(new Circle()); }
-}
-function animate() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  circles.forEach(circle => circle.update());
-  requestAnimationFrame(animate);
-}
-init(); animate();
-window.addEventListener('resize', () => {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-  init();
-});
 </script>
 </body>
 </html>
