@@ -4,56 +4,92 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>NovaBoost - Impulsa tu Marca</title>
-<meta name="description" content="Agencia creativa con diseño visual y automatización inteligente para captar clientes automáticamente." />
+<meta name="description" content="Agencia creativa con diseño visual y automatización inteligente para captar clientes automáticamente.">
 <link rel="icon" href="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" type="image/png" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-body,html{margin:0;padding:0;background:#F8F4E3;color:#2C3E50;font-family:'Inter',sans-serif;scroll-behavior:smooth;overflow-x:hidden;position:relative;}
-header{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;}
-header img{max-width:150px;margin-bottom:1rem;animation:fadeIn 2s;}
-@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-header h1{font-family:'DM Sans',sans-serif;font-size:8rem;font-weight:700;margin:0;background: linear-gradient(270deg,#2980B9,#3498DB,#2980B9);background-size: 600% 600%;-webkit-background-clip: text;-webkit-text-fill-color: transparent;animation: gradientShift 15s ease infinite, bounceIn 1.5s;}
-header h1:hover{filter:brightness(1.2);}
-@keyframes gradientShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-@keyframes bounceIn{0%{transform:scale(0.9);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
-header p{color:#34495E;max-width:600px;margin:1rem;font-size:1.6rem;opacity:0;animation:fadeUp 2s forwards;animation-delay:1s;}
-@keyframes fadeUp{to{opacity:1;transform:translateY(-10px);}}
-button{background:#2980B9;color:#fff;padding:1rem 2rem;border:none;border-radius:40px;cursor:pointer;font-weight:600;transition:all 0.3s;font-size:1.1rem;}
-button:hover{background:#3498DB;box-shadow:0 0 12px rgba(41,128,185,0.4);transform:scale(1.05);}
-nav{display:flex;justify-content:center;background:#fff;padding:1rem;position:sticky;top:0;z-index:999;box-shadow:0 2px 6px rgba(0,0,0,0.05);}
-nav a{color:#2C3E50;margin:0 1rem;text-decoration:none;font-weight:500;transition:color 0.3s;}
-nav a:hover{color:#2980B9;}
-section{padding:4rem 2rem;text-align:center;opacity:0;transform:translateY(30px);transition:opacity 1s ease, transform 1s ease;}
-section.visible{opacity:1;transform:translateY(0);}
-h2{color:#2980B9;margin-bottom:1rem;font-weight:700;font-size:2.8rem;font-family:'DM Sans',sans-serif;}
-p{max-width:600px;margin:0 auto 1rem;font-size:1.2rem;}
-.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;max-width:1000px;margin:auto;}
-.card{background:#fff;padding:1.5rem;border-radius:15px;transition:transform 0.3s,box-shadow 0.3s;border:1px solid #2980b922;}
-.card:hover{transform:translateY(-5px);box-shadow:0 10px 20px rgba(41,128,185,0.15);}
-.marquee-container{overflow:hidden;background:#EAE7DC;padding:1rem 0;cursor:pointer;position:relative;width:100%;}
-.marquee-track{display:flex;gap:4rem;animation:marquee 60s linear infinite;}
-.marquee-track.paused{animation-play-state:paused;}
-.marquee-item{flex-shrink:0;white-space:nowrap;font-weight:500;font-size:1.1rem;color:#2C3E50;}
-@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-footer{padding:2rem;background:#fff;color:#555;text-align:center;}
-.whatsapp{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;z-index:1000;box-shadow:0 2px 5px rgba(0,0,0,0.2);}
-form{max-width:500px;margin:2rem auto;text-align:left;}
-form input,form textarea{width:100%;padding:0.8rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:8px;background:#fff;color:#2C3E50;}
-form button{width:100%;}
-canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
+:root {
+  --color-bg: #fdfaf5;
+  --color-primary: #2c3e50;
+  --color-accent: #c59d5f;
+  --color-accent-light: #f1e3c3;
+  --color-text: #2c3e50;
+}
+* {margin:0;padding:0;box-sizing:border-box;}
+html,body {scroll-behavior:smooth;overflow-x:hidden;background:var(--color-bg);color:var(--color-text);font-family:'Nunito Sans',sans-serif;}
+header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg,#f8f4e3,#ffffff);
+}
+header img {
+  max-width: 160px;
+  margin-bottom: 1rem;
+  animation: fadeIn 2s;
+}
+@keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-primary);
+  position: relative;
+  animation: fadeSlide 2s;
+}
+@keyframes fadeSlide {
+  0% {opacity: 0; transform: translateY(20px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+header p {
+  max-width: 600px;
+  margin: 1rem;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  opacity: 0;
+  animation: fadeSlide 2s forwards;
+  animation-delay: 1s;
+}
+button {
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+button:hover {
+  background: var(--color-primary);
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(197, 157, 95, 0.4);
+}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
 </style>
 </head>
 <body>
-
 <canvas id="shapes"></canvas>
-
 <header>
 <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost">
 <h1>NovaBoost</h1>
-<p>Impulsamos tu marca con diseño visual elegante y automatización que atrae clientes mientras descansas.</p>
+<p>Impulsamos tu marca con diseño visual premium y automatización que capta clientes mientras descansas.</p>
 <button onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Impulsar mi marca</button>
 </header>
-
 <nav>
 <a href="#servicios">Servicios</a>
 <a href="#portfolio">Portfolio</a>
@@ -65,19 +101,19 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
 <section id="servicios">
 <h2>Servicios</h2>
 <div class="feature-grid">
-<div class="card"><h3>Diseño Web</h3><p>Webs elegantes, rápidas y optimizadas para convertir.</p></div>
-<div class="card"><h3>Automatización</h3><p>CRM, reservas y pagos automáticos mientras descansas.</p></div>
-<div class="card"><h3>Marketing Visual</h3><p>Contenido visual premium para redes que atrae clientes.</p></div>
-<div class="card"><h3>Funnels de Ventas</h3><p>Automatización de embudos para captar leads con facilidad.</p></div>
-<div class="card"><h3>SEO Estratégico</h3><p>Optimización en Google para atraer tráfico de calidad.</p></div>
-<div class="card"><h3>Branding & Identidad</h3><p>Construimos marcas memorables con coherencia visual.</p></div>
+<div class="card"><h3>Diseño Web Premium</h3><p>Webs elegantes y optimizadas que convierten visitas en clientes.</p></div>
+<div class="card"><h3>Automatización</h3><p>CRM, pagos y reservas funcionando en automático para ti.</p></div>
+<div class="card"><h3>Marketing Visual</h3><p>Contenido visual premium que fideliza a tu audiencia.</p></div>
+<div class="card"><h3>Funnels de Venta</h3><p>Embudos de conversión estratégicos que venden solos.</p></div>
+<div class="card"><h3>SEO Estratégico</h3><p>Posiciona tu web en Google para atraer clientes constantes.</p></div>
+<div class="card"><h3>Branding</h3><p>Construye una identidad visual sólida y memorable.</p></div>
 </div>
 </section>
 
 <section id="portfolio">
 <h2>Portfolio</h2>
-<p>Proyectos que transformaron negocios con NovaBoost.</p>
-<img src="https://source.unsplash.com/800x400/?website,creative" alt="Portfolio NovaBoost" style="width:90%;max-width:800px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" loading="lazy">
+<p>Transformamos negocios reales con estrategias visuales y automatizadas.</p>
+<img src="https://source.unsplash.com/800x400/?business,website" alt="Portfolio NovaBoost" style="width:90%;max-width:800px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" loading="lazy">
 </section>
 
 <section id="valoraciones">
@@ -94,82 +130,107 @@ canvas{position:fixed;top:0;left:0;pointer-events:none;z-index:0;}
     <div class="marquee-item">★★★★★ "Funnels efectivos que convierten." - Sofía, Spa Urbano</div>
   </div>
 </div>
-<p style="font-size:0.9rem;color:#555;">Mantén pulsado el mouse para pausar y suéltalo para continuar.</p>
+<p style="font-size:0.9rem;color:#555;">Mantén pulsado para pausar, suelta para continuar.</p>
 </section>
 
 <section id="faq">
 <h2>Preguntas Frecuentes</h2>
 <div class="feature-grid">
-<div class="card"><h3>¿Cuánto tarda el desarrollo?</h3><p>Entre 7 y 14 días según complejidad.</p></div>
-<div class="card"><h3>¿Incluyen automatización?</h3><p>Sí, integraciones de pagos, reservas y CRM.</p></div>
-<div class="card"><h3>¿Gestionan redes sociales?</h3><p>Sí, con paquetes de contenido visual premium.</p></div>
+<div class="card"><h3>¿Cuánto tarda el desarrollo?</h3><p>De 7 a 14 días según la complejidad del proyecto.</p></div>
+<div class="card"><h3>¿Incluyen automatización?</h3><p>Sí, configuramos reservas, pagos y CRM automatizados.</p></div>
+<div class="card"><h3>¿Gestionan redes sociales?</h3><p>Ofrecemos paquetes de contenido visual y gestión estratégica.</p></div>
 </div>
 </section>
 
 <section id="contacto">
 <h2>Contáctanos</h2>
-<p>Rellena el formulario para comenzar a escalar tu negocio con NovaBoost.</p>
+<p>Rellena este formulario para comenzar tu transformación con NovaBoost.</p>
 <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST">
 <input type="text" name="name" placeholder="Tu nombre" required>
 <input type="email" name="email" placeholder="Tu email" required>
-<textarea name="message" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
+<textarea name="message" rows="4" placeholder="Cuéntanos en qué podemos ayudarte" required></textarea>
 <button type="submit">Enviar</button>
 </form>
 </section>
-
 <footer>
 <p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
 </footer>
 
-<a href="https://wa.me/34679016719" class="whatsapp" title="WhatsApp NovaBoost">💬</a>
+<a href="https://wa.me/34679016719" class="whatsapp" title="Contáctanos por WhatsApp">💬</a>
 
 <script>
-// Mostrar secciones
-const sections = document.querySelectorAll('section');
-const showSections = () => { sections.forEach(sec => { const rect = sec.getBoundingClientRect(); if(rect.top <= window.innerHeight - 50) sec.classList.add('visible'); }); };
-window.addEventListener('scroll', showSections); showSections();
+// IntersectionObserver para animar secciones
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, {threshold: 0.1});
+document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-// Pausar valoraciones
+// Pausa valoraciones al mantener click
 const marqueeTrack = document.getElementById('marqueeTrack');
 document.addEventListener('mousedown', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused'));
 document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
 
-// CUADRADOS flotantes con rotación suave
+// Formas flotantes en canvas
 const canvas = document.getElementById('shapes');
 const ctx = canvas.getContext('2d');
-canvas.width = innerWidth; canvas.height = innerHeight;
-let squares = [];
-class Square {
-  constructor(){
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+let circles = [];
+
+class Circle {
+  constructor() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
-    this.size = Math.random() * 20 + 10;
-    this.angle = Math.random() * 2 * Math.PI;
-    this.rotationSpeed = (Math.random() - 0.5) * 0.01;
-    this.opacity = 0.05 + Math.random() * 0.05;
+    this.radius = Math.random() * 30 + 10;
+    this.angle = Math.random() * Math.PI * 2;
+    this.rotationSpeed = (Math.random() - 0.5) * 0.002;
+    this.opacity = 0.04 + Math.random() * 0.06;
+    this.color = 'rgba(41,128,185,' + this.opacity + ')';
   }
-  update(){
+  update() {
     this.angle += this.rotationSpeed;
   }
-  draw(){
+  draw() {
     ctx.save();
     ctx.translate(this.x, this.y);
     ctx.rotate(this.angle);
-    ctx.fillStyle = `rgba(41,128,185,${this.opacity})`;
-    ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+    ctx.beginPath();
+    ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = this.color;
+    ctx.fill();
     ctx.restore();
   }
 }
-function init(){ squares=[]; for(let i=0;i<40;i++){ squares.push(new Square()); } }
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  squares.forEach(s=>{ s.update(); s.draw(); });
+
+function init() {
+  circles = [];
+  for(let i = 0; i < 40; i++) {
+    circles.push(new Circle());
+  }
+}
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  circles.forEach(circle => {
+    circle.update();
+    circle.draw();
+  });
   requestAnimationFrame(animate);
 }
 init();
 animate();
+
+// Ajuste canvas al redimensionar
+window.addEventListener('resize', () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+  init();
+});
 </script>
 
 </body>
