@@ -16,80 +16,53 @@
   --color-text: #2c3e50;
 }
 * {margin:0;padding:0;box-sizing:border-box;}
-html,body {scroll-behavior:smooth;overflow-x:hidden;background:var(--color-bg);color:var(--color-text);font-family:'Nunito Sans',sans-serif;}
-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg,#f8f4e3,#ffffff);
-}
-header img {
-  max-width: 160px;
-  margin-bottom: 1rem;
-  animation: fadeIn 2s;
-}
+html,body {scroll-behavior:smooth;overflow-x:hidden;background:var(--color-bg);color:var(--color-text);font-family:'Nunito Sans',sans-serif;transition:background 0.5s,color 0.5s;}
+header {min-height: 100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;background: linear-gradient(135deg,#f8f4e3,#ffffff);}
+header img {max-width: 160px;margin-bottom: 1rem;animation: fadeIn 2s;}
 @keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
-header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 8vw, 8rem);
-  font-weight: 700;
-  margin: 0;
-  color: var(--color-primary);
-  position: relative;
-  animation: fadeSlide 2s;
-}
-@keyframes fadeSlide {
-  0% {opacity: 0; transform: translateY(20px);}
-  100% {opacity: 1; transform: translateY(0);}
-}
-header p {
-  max-width: 600px;
-  margin: 1rem;
-  font-size: 1.4rem;
-  color: var(--color-primary);
-  opacity: 0;
-  animation: fadeSlide 2s forwards;
-  animation-delay: 1s;
-}
-button {
-  background: var(--color-accent);
-  color: #fff;
-  padding: 0.9rem 2rem;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-  font-size: 1.1rem;
-  margin-top: 1rem;
-}
-button:hover {
-  background: var(--color-primary);
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(197, 157, 95, 0.4);
-}
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 0;
-}
+header h1 {font-family: 'Playfair Display', serif;font-size: clamp(3rem, 8vw, 8rem);font-weight: 700;margin: 0;color: var(--color-primary);position: relative;animation: fadeSlide 2s;}
+@keyframes fadeSlide {0% {opacity: 0; transform: translateY(20px);} 100% {opacity: 1; transform: translateY(0);}}
+header p {max-width: 600px;margin: 1rem;font-size: 1.4rem;color: var(--color-primary);opacity: 0;animation: fadeSlide 2s forwards;animation-delay: 1s;}
+button {background: var(--color-accent);color: #fff;padding: 0.9rem 2rem;border: none;border-radius: 50px;cursor: pointer;font-weight: 600;transition: transform 0.3s, box-shadow 0.3s, background 0.3s;font-size: 1.1rem;margin-top: 1rem;}
+button:hover {background: var(--color-primary);transform: scale(1.05);box-shadow: 0 0 12px rgba(197, 157, 95, 0.4);}
+canvas {position: fixed;top: 0;left: 0;pointer-events: none;z-index: 0;}
+nav {display: flex;justify-content: center;background-color: #000;padding: 1rem;position: sticky;top: 0;z-index: 998;}
+nav a {color: #fff;margin: 0 1rem;text-decoration: none;font-weight: 600;}
+nav a:hover {color: var(--color-accent);}
+.feature-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;max-width:1200px;margin:auto;padding:2rem;}
+.card {background: rgba(255,255,255,0.8);padding:1rem;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.1);transition: transform 0.3s;}
+.card:hover {transform: translateY(-5px);}
+.marquee-container {overflow: hidden;width: 100%;background: var(--color-accent-light);padding: 1rem;}
+.marquee-track {display: flex;gap: 2rem;animation: marquee 60s linear infinite;}
+.marquee-track.paused {animation-play-state: paused;}
+.marquee-item {flex-shrink: 0;white-space: nowrap;}
+@keyframes marquee {0% {transform: translateX(0);} 100% {transform: translateX(-100%);}}
+#preloader {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: #fdfaf5;display: flex;justify-content: center;align-items: center;z-index: 9999;transition: opacity 0.5s ease, visibility 0.5s ease;}
+#preloader.hidden {opacity: 0;visibility: hidden;}
+.pulse {width: 120px;animation: pulse 1.5s infinite;}
+@keyframes pulse {0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; }}
+#theme-toggle {position: fixed;top: 20px;right: 20px;background: var(--color-accent);color: #fff;border: none;border-radius: 50%;width: 50px;height: 50px;font-size: 1.5rem;cursor: pointer;z-index: 999;transition: background 0.3s, transform 0.3s;}
+#theme-toggle:hover {background: var(--color-primary);transform: scale(1.05);}
+body.dark-mode {--color-bg: #121212;--color-primary: #fdfaf5;--color-accent: #c59d5f;--color-accent-light: #1f1f1f;--color-text: #fdfaf5;background: var(--color-bg);color: var(--color-text);}
+footer {padding: 1rem;text-align: center;background: var(--color-primary);color: #fff;}
+.whatsapp {position: fixed;bottom: 20px;right: 20px;background: #25d366;color: white;border-radius: 50%;width: 60px;height: 60px;display: flex;align-items: center;justify-content: center;font-size: 28px;text-decoration: none;z-index: 1000;}
 </style>
 </head>
 <body>
+
+<div id="preloader">
+  <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="NovaBoost Logo" class="pulse">
+</div>
+<button id="theme-toggle" title="Cambiar tema">🌙</button>
 <canvas id="shapes"></canvas>
+
 <header>
 <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost">
 <h1>NovaBoost</h1>
 <p>Impulsamos tu marca con diseño visual premium y automatización que capta clientes mientras descansas.</p>
 <button onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Impulsar mi marca</button>
 </header>
+
 <nav>
 <a href="#servicios">Servicios</a>
 <a href="#portfolio">Portfolio</a>
@@ -113,7 +86,7 @@ canvas {
 <section id="portfolio">
 <h2>Portfolio</h2>
 <p>Transformamos negocios reales con estrategias visuales y automatizadas.</p>
-<img src="https://source.unsplash.com/800x400/?business,website" alt="Portfolio NovaBoost" style="width:90%;max-width:800px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" loading="lazy">
+<img src="https://source.unsplash.com/800x400/?business,website" alt="Portfolio NovaBoost" style="width:90%;max-width:800px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" loading="lazy" class="parallax-img">
 </section>
 
 <section id="valoraciones">
@@ -152,6 +125,7 @@ canvas {
 <button type="submit">Enviar</button>
 </form>
 </section>
+
 <footer>
 <p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
 </footer>
@@ -159,30 +133,46 @@ canvas {
 <a href="https://wa.me/34679016719" class="whatsapp" title="Contáctanos por WhatsApp">💬</a>
 
 <script>
-// IntersectionObserver para animar secciones
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
-  });
-}, {threshold: 0.1});
-document.querySelectorAll('section').forEach(section => observer.observe(section));
-
-// Pausa valoraciones al mantener click
+// Preloader ocultar
+window.addEventListener('load', () => {
+  document.getElementById('preloader').classList.add('hidden');
+});
+// Parallax en imagen
+const parallaxImage = document.querySelector('.parallax-img');
+window.addEventListener('scroll', () => {
+  const offset = window.pageYOffset;
+  parallaxImage.style.transform = 'translateY(' + offset * 0.15 + 'px)';
+});
+// Pausar valoraciones
 const marqueeTrack = document.getElementById('marqueeTrack');
 document.addEventListener('mousedown', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('mouseup', () => marqueeTrack.classList.remove('paused'));
 document.addEventListener('touchstart', () => marqueeTrack.classList.add('paused'));
 document.addEventListener('touchend', () => marqueeTrack.classList.remove('paused'));
-
-// Formas flotantes en canvas
+// Toggle dark mode
+const themeToggle = document.getElementById('theme-toggle');
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+  document.body.classList.add('dark-mode');
+  themeToggle.textContent = '☀️';
+}
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  let theme = 'light';
+  if (document.body.classList.contains('dark-mode')) {
+    theme = 'dark';
+    themeToggle.textContent = '☀️';
+  } else {
+    themeToggle.textContent = '🌙';
+  }
+  localStorage.setItem('theme', theme);
+});
+// Canvas shapes
 const canvas = document.getElementById('shapes');
 const ctx = canvas.getContext('2d');
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 let circles = [];
-
 class Circle {
   constructor() {
     this.x = Math.random() * canvas.width;
@@ -193,9 +183,7 @@ class Circle {
     this.opacity = 0.04 + Math.random() * 0.06;
     this.color = 'rgba(41,128,185,' + this.opacity + ')';
   }
-  update() {
-    this.angle += this.rotationSpeed;
-  }
+  update() { this.angle += this.rotationSpeed; }
   draw() {
     ctx.save();
     ctx.translate(this.x, this.y);
@@ -207,25 +195,14 @@ class Circle {
     ctx.restore();
   }
 }
-
-function init() {
-  circles = [];
-  for(let i = 0; i < 40; i++) {
-    circles.push(new Circle());
-  }
-}
+function init() { circles = []; for(let i = 0; i < 40; i++) { circles.push(new Circle()); } }
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  circles.forEach(circle => {
-    circle.update();
-    circle.draw();
-  });
+  circles.forEach(circle => { circle.update(); circle.draw(); });
   requestAnimationFrame(animate);
 }
 init();
 animate();
-
-// Ajuste canvas al redimensionar
 window.addEventListener('resize', () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
