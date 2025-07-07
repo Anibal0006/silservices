@@ -3,235 +3,471 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NovaBoost - Impulsa tu Marca</title>
-<meta name="description" content="Agencia creativa con diseño visual premium y automatización que capta clientes mientras descansas.">
-<link rel="icon" href="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" type="image/png" />
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<title>NovaBoost - Agencia Creativa Digital</title>
+<meta name="description" content="Agencia creativa que impulsa tu marca con diseño visual, automatización y estrategias de conversión." />
+<meta property="og:title" content="NovaBoost - Agencia Creativa Digital" />
+<meta property="og:description" content="Impulsamos tu marca con diseño visual, automatización y estrategias de conversión." />
+<meta property="og:image" content="https://tudominio.com/assets/novaboost-logo.png" />
+<meta property="og:type" content="website" />
+<link rel="icon" href="https://tudominio.com/assets/novaboost-logo.png" type="image/png" />
+
+<!-- Fuentes -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- AOS, GSAP, Lightbox -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#00ffff" />
+
+<!-- SEO JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "NovaBoost",
+  "url": "https://tudominio.com",
+  "logo": "https://tudominio.com/assets/novaboost-logo.png",
+  "sameAs": ["https://instagram.com/novaboost", "https://facebook.com/novaboost"],
+  "description": "Agencia creativa que impulsa tu marca con diseño visual, automatización y estrategias de conversión.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+34XXXXXXXXX",
+    "contactType": "customer service",
+    "areaServed": "ES",
+    "availableLanguage": ["Spanish", "English"]
+  }
+}
+</script>
+
+<!-- Estilos Base -->
 <style>
-:root {
-  --bg-color: #ffffff;
-  --primary-color: #2c3e50;
-  --accent-color: #c59d5f;
-  --text-color: #2c3e50;
-  --card-bg: rgba(0,0,0,0.05);
+/* Reseteo */
+* {margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth;}
+html, body {scroll-snap-type: y mandatory;}
+section {scroll-snap-align: start;}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #050505;
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
-body.dark-mode {
-  --bg-color: #1e1e1e;
-  --primary-color: #f0f0f0;
-  --accent-color: #c59d5f;
-  --text-color: #f0f0f0;
-  --card-bg: rgba(255,255,255,0.05);
+
+/* Loader */
+#loader {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: #000; display: flex; align-items: center; justify-content: center; z-index: 9999;
 }
-html, body {
-  margin: 0; padding: 0; box-sizing: border-box;
-  background: var(--bg-color); color: var(--text-color);
-  font-family: 'Nunito Sans', sans-serif;
-  scroll-behavior: smooth; overflow-x: hidden;
-  transition: background 0.4s, color 0.4s;
+
+/* Glassmorphism */
+.glass {
+  background: rgba(0,0,0,0.4);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 2rem;
+  margin: 1rem auto;
 }
-header {
-  min-height: 100vh; display: flex; flex-direction: column;
-  justify-content: center; align-items: center; text-align: center;
-  background: linear-gradient(135deg, var(--bg-color), #f8f8f8);
-  transition: background 0.4s;
+
+/* Botón modo oscuro/claro */
+#toggleTheme {
+  background: #00ffff; color: #000; border: none; border-radius: 5px;
+  padding: 0.5rem 1rem; cursor: pointer; margin-left: 1rem;
 }
-header img {
-  max-width: 140px; margin-bottom: 1rem;
-}
-header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 9vw, 9rem);
-  color: var(--primary-color); margin: 0;
-  transition: color 0.4s;
-}
-header p {
-  max-width: 600px; font-size: 1.3rem; margin: 1rem;
-  color: var(--primary-color);
-  transition: color 0.4s;
-}
-button {
-  background: var(--accent-color); color: #fff;
-  padding: 0.9rem 2rem; border: none; border-radius: 50px;
-  cursor: pointer; font-weight: 600; font-size: 1rem;
-  position: relative; overflow: hidden; z-index: 1;
-  transition: background 0.3s;
-}
-button::before {
-  content: '';
-  position: absolute;
-  top: -50%; left: -50%;
-  width: 200%; height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
-  animation: rotate 4s linear infinite;
-}
-@keyframes rotate {
-  0% {transform: rotate(0deg);}
-  100% {transform: rotate(360deg);}
-}
-button:hover {
-  background: var(--primary-color);
-}
-.theme-toggle {
-  position: fixed;
-  top: 15px; right: 15px;
-  background: none; border: none;
-  font-size: 1.5rem; cursor: pointer;
-  color: var(--accent-color);
-  z-index: 1000;
-  transition: transform 0.3s;
-}
-.theme-toggle:hover {
-  transform: scale(1.15);
-}
-section {
-  padding: 4rem 1rem; max-width: 1000px; margin: auto; text-align: center;
-}
-h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 2rem;
-  transition: color 0.4s;
-}
-.feature-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-}
+
+.light-mode {background: #f0f0f0; color: #000;}
+.light-mode nav {background: #fff;}
+.light-mode a {color: #007c7c;}
+.light-mode button {background: #007c7c; color: #fff;}
+
+/* Navbar */
+nav {display: flex; justify-content: center; background: #000; padding: 1rem; position: sticky; top: 0; z-index: 999;}
+nav a {color: #00ffff; margin: 0 1rem; text-decoration: none; font-weight: bold; transition: color 0.3s;}
+nav a:hover {color: #fff;}
+
+/* Secciones */
+section {padding: 5rem 2rem; max-width: 1200px; margin: auto; text-align: center;}
+h2 {font-size: 2.5rem; color: #00ffff; margin-bottom: 1rem; font-family: 'Orbitron', sans-serif;}
+p {max-width: 800px; margin: auto; color: #ddd;}
+
+/* Grid */
+.feature-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;}
+
+/* Cards */
 .card {
-  background: var(--card-bg);
-  padding: 1.5rem; border-radius: 15px;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.4s;
+  background: rgba(0,0,0,0.5);
+  padding: 1.5rem;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-footer {
-  text-align: center; padding: 2rem; font-size: 0.9rem; color: #777;
-  transition: color 0.4s;
-}
+.card:hover {transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,255,255,0.2);}
+
 .whatsapp {
-  position: fixed;
-  bottom: 20px; right: 20px;
-  width: 55px; height: 55px;
-  border-radius: 50%;
-  background: #25d366;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
-}
-.whatsapp:hover {
-  transform: scale(1.1);
-}
-.whatsapp img {
-  width: 28px; height: 28px;
-}
-/* Marquee valoraciones */
-.marquee {
-  overflow: hidden;
-  white-space: nowrap;
-  box-sizing: border-box;
-  width: 100%;
-}
-.marquee-content {
-  display: inline-block;
-  padding-left: 100%;
-  animation: marquee 30s linear infinite;
-}
-.marquee-content.paused {
-  animation-play-state: paused;
-}
-.marquee span {
-  display: inline-block;
-  margin-right: 3rem;
-  font-size: 1rem;
-}
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  position: fixed; bottom: 20px; right: 20px;
+  background: #25d366; color: white; border-radius: 50%;
+  width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
+  font-size: 30px; text-decoration: none; z-index: 1000;
 }
 </style>
 </head>
-
 <body>
-<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+<!-- Loader animado -->
+<div id="loader">
+  <svg width="100" height="100" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="45" stroke="#00ffff" stroke-width="10" fill="none" stroke-linecap="round">
+      <animateTransform attributeName="transform" type="rotate" dur="1s" repeatCount="indefinite" from="0 50 50" to="360 50 50" />
+    </circle>
+  </svg>
+</div>
 
-<header>
-  <img src="https://anibal0006.github.io/silservices/assets/novaboost-logo-transparent.png" alt="Logo NovaBoost">
-  <h1>NovaBoost</h1>
-  <p>Impulsamos tu marca con diseño visual premium y automatización que capta clientes mientras descansas.</p>
-  <button onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Impulsar mi marca</button>
+<!-- Navbar -->
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#galeria">Galería</a>
+  <a href="#proyectos">Proyectos</a>
+  <a href="#valoraciones">Valoraciones</a>
+  <a href="#lead">Regalo</a>
+  <a href="#contacto">Contacto</a>
+  <button id="toggleTheme">Modo Claro</button>
+</nav>
+
+<!-- Header hero -->
+<header id="inicio">
+  <h1 data-aos="fade-down">NovaBoost</h1>
+  <p data-aos="fade-up">Impulsamos tu marca con diseño visual, automatización inteligente y estrategias de conversión.</p>
 </header>
 
-<section id="servicios">
+<!-- Sección Servicios -->
+<section id="servicios" data-aos="fade-up">
   <h2>Servicios</h2>
   <div class="feature-grid">
-    <div class="card"><h3>Diseño Web Premium</h3><p>Webs elegantes y optimizadas que convierten visitas en clientes.</p></div>
-    <div class="card"><h3>Automatización</h3><p>CRM, pagos y reservas funcionando en automático para ti.</p></div>
-    <div class="card"><h3>Marketing Visual</h3><p>Contenido visual premium que fideliza a tu audiencia.</p></div>
-    <div class="card"><h3>Funnels de Venta</h3><p>Embudos de conversión estratégicos que venden solos.</p></div>
-    <div class="card"><h3>SEO Estratégico</h3><p>Posiciona tu web en Google para atraer clientes constantes.</p></div>
-    <div class="card"><h3>Branding</h3><p>Construye una identidad visual sólida y memorable.</p></div>
+    <div class="card"><h3>Diseño Web Premium</h3><p>Webs minimalistas, rápidas y optimizadas para conversión con estética 4K.</p></div>
+    <div class="card"><h3>Automatización Avanzada</h3><p>Conectamos CRM, reservas y pagos automáticos en tu web.</p></div>
+    <div class="card"><h3>Visual Marketing</h3><p>Reels, contenido visual y branding consistente para Instagram y redes.</p></div>
+    <div class="card"><h3>Asesoría Estratégica</h3><p>Optimización de embudos de venta y retención de clientes.</p></div>
   </div>
 </section>
 
-<section id="portfolio">
-  <h2>Portfolio</h2>
-  <p>Transformamos negocios con estrategias visuales y automatizadas.</p>
-  <img src="https://source.unsplash.com/800x400/?business,website" alt="Portfolio NovaBoost" style="width:90%;max-width:800px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);" loading="lazy">
-</section>
-
-<section id="valoraciones">
-  <h2>Valoraciones</h2>
-  <div class="marquee" id="marquee">
-    <div class="marquee-content" id="marqueeContent">
-      <span>★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</span>
-      <span>★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</span>
-      <span>★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</span>
-      <span>★★★★★ "Visualmente impactante y rápido." - Javier, Coach</span>
-      <span>★★★★★ "Triplicamos reservas con NovaBoost." - Marta, Academia</span>
-      <span>★★★★★ "Gestión automática de reservas y pagos." - Andrés, Veterinario</span>
-      <span>★★★★★ "Duplicamos reservas en 2 meses." - Laura, Spa & Wellness</span>
-      <span>★★★★★ "Automatización impecable y diseño premium." - Carlos, Consultor</span>
-      <span>★★★★★ "Mi tienda online vende mientras duermo." - Ana, Ecommerce</span>
-    </div>
+<!-- Sección Galería con Lightbox -->
+<section id="galeria" data-aos="fade-up">
+  <h2>Galería de Proyectos</h2>
+  <div class="feature-grid">
+    <a href="https://via.placeholder.com/800" data-lightbox="galeria" data-title="Proyecto 1">
+      <img src="https://via.placeholder.com/300" alt="Proyecto 1" style="width:100%;border-radius:10px;">
+    </a>
+    <a href="https://via.placeholder.com/800" data-lightbox="galeria" data-title="Proyecto 2">
+      <img src="https://via.placeholder.com/300" alt="Proyecto 2" style="width:100%;border-radius:10px;">
+    </a>
+    <a href="https://via.placeholder.com/800" data-lightbox="galeria" data-title="Proyecto 3">
+      <img src="https://via.placeholder.com/300" alt="Proyecto 3" style="width:100%;border-radius:10px;">
+    </a>
+    <a href="https://via.placeholder.com/800" data-lightbox="galeria" data-title="Proyecto 4">
+      <img src="https://via.placeholder.com/300" alt="Proyecto 4" style="width:100%;border-radius:10px;">
+    </a>
   </div>
 </section>
 
-<section id="contacto">
+<!-- Sección Proyectos con vídeo -->
+<section id="proyectos" data-aos="fade-up">
+  <h2>Proyectos y Resultados</h2>
+  <p>Clientes reales que incrementaron sus ventas y posicionamiento con NovaBoost.</p>
+  <iframe src="https://www.youtube.com/embed/ViFCOveYRCg" frameborder="0" allowfullscreen style="width:100%;max-width:800px;height:450px;border-radius:10px;"></iframe>
+</section>
+
+<!-- Sección Valoraciones -->
+<section id="valoraciones" data-aos="fade-up">
+  <h2>Valoraciones y Experiencias</h2>
+  <div class="feature-grid">
+    <div class="card"><h3>★★★★★</h3><p>"NovaBoost transformó nuestra web y duplicamos clientes en 3 meses."</p><p>- Laura G., Tienda de Ropa</p></div>
+    <div class="card"><h3>★★★★☆</h3><p>"Automatizamos pagos y reservas. Ahora todo es más fácil."</p><p>- David R., Centro Pilates</p></div>
+    <div class="card"><h3>★★★★★</h3><p>"Branding y reels premium, mis redes ahora atraen clientes constantemente."</p><p>- Ana P., Estilista</p></div>
+    <div class="card"><h3>★★★★★</h3><p>"El embudo de ventas de NovaBoost nos generó leads automáticamente."</p><p>- Javier L., Agencia de Viajes</p></div>
+  </div>
+</section>
+
+<!-- Lead Magnet -->
+<section id="lead" data-aos="fade-up">
+  <h2>🎁 Ebook Gratis: Mejora tu Web</h2>
+  <p>Descarga nuestro mini ebook y comienza a mejorar tu web para atraer más clientes.</p>
+  <iframe src="TU-URL-DE-MAILERLITE" width="100%" height="500" style="border:none;border-radius:10px;"></iframe>
+</section>
+
+<!-- Mapa interactivo con Leaflet -->
+<section id="mapa" data-aos="fade-up">
+  <h2>Encuéntranos</h2>
+  <div id="map" style="height:400px;border-radius:10px;"></div>
+</section>
+
+<!-- Formulario de contacto -->
+<section id="contacto" data-aos="fade-up">
   <h2>Contáctanos</h2>
-  <p>Rellena este formulario para comenzar tu transformación con NovaBoost.</p>
-  <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST" style="display:flex;flex-direction:column;gap:1rem;max-width:400px;margin:auto;">
+  <p>¿Listo para llevar tu marca al siguiente nivel?</p>
+  <form action="https://formsubmit.co/tuemail@tudominio.com" method="POST" class="glass">
     <input type="text" name="name" placeholder="Tu nombre" required>
-    <input type="email" name="email" placeholder="Tu correo electrónico" required>
-    <textarea name="message" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
-    <button type="submit">Enviar</button>
+    <input type="email" name="email" placeholder="Tu correo" required>
+    <textarea name="message" rows="5" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://tudominio.com/gracias.html">
+    <button type="submit">Enviar mensaje</button>
   </form>
 </section>
 
+<!-- Footer -->
 <footer>
-<p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
+  <p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
 </footer>
 
-<a href="https://wa.me/34679016719" class="whatsapp" title="Contáctanos por WhatsApp">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
-
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/34XXXXXXXXX" class="whatsapp" title="Habla con nosotros por WhatsApp">💬</a>
+<!-- Scripts finales -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-function toggleTheme() {
-  document.body.classList.toggle('dark-mode');
-  const icon = document.getElementById('themeToggle');
-  icon.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-}
-
-// Control pausa valoraciones al mantener click/touch
-const marqueeContent = document.getElementById('marqueeContent');
-document.addEventListener('mousedown', () => marqueeContent.classList.add('paused'));
-document.addEventListener('mouseup', () => marqueeContent.classList.remove('paused'));
-document.addEventListener('touchstart', () => marqueeContent.classList.add('paused'));
-document.addEventListener('touchend', () => marqueeContent.classList.remove('paused'));
+  AOS.init({ duration: 1200, once: true });
 </script>
+
+<!-- GSAP y ScrollTrigger para animaciones suaves -->
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  gsap.from("header h1", {opacity:0, y:-50, duration:1});
+  gsap.from("header p", {opacity:0, y:50, duration:1, delay:0.5});
+  gsap.utils.toArray("section").forEach(section => {
+    gsap.from(section, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+      }
+    });
+  });
+});
+</script>
+
+<!-- Loader ocultar -->
+<script>
+window.addEventListener("load", function(){
+  document.getElementById("loader").style.display = "none";
+});
+</script>
+
+<!-- Leaflet init -->
+<script>
+var map = L.map('map').setView([40.4168, -3.7038], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; NovaBoost'
+}).addTo(map);
+L.marker([40.4168, -3.7038]).addTo(map)
+  .bindPopup('NovaBoost HQ')
+  .openPopup();
+</script>
+
+<!-- Toggle modo claro/oscuro -->
+<script>
+document.getElementById("toggleTheme").addEventListener("click", function(){
+  document.body.classList.toggle("light-mode");
+});
+</script>
+
+<!-- Firebase Auth Área Clientes -->
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "TU_API_KEY",
+  authDomain: "TU_PROJECT_ID.firebaseapp.com",
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  auth.signInWithEmailAndPassword(email, password)
+    .then(userCredential => {
+      document.getElementById("login-area").style.display = "none";
+      document.getElementById("client-area").style.display = "block";
+      document.getElementById("user-email").innerText = userCredential.user.email;
+    })
+    .catch(error => alert("Error: " + error.message));
+}
+function logout() {
+  auth.signOut().then(() => {
+    document.getElementById("login-area").style.display = "block";
+    document.getElementById("client-area").style.display = "none";
+  });
+}
+</script>
+
+<!-- Service Worker para PWA -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js')
+    .then(reg => console.log('Service Worker registrado', reg))
+    .catch(err => console.log('Error al registrar SW', err));
+}
+</script>
+
+<!-- OneSignal Push Notifications -->
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+window.OneSignal = window.OneSignal || [];
+OneSignal.push(function() {
+  OneSignal.init({
+    appId: "TU_ONESIGNAL_APP_ID",
+  });
+});
+</script>
+
+<!-- Tawk.to Chat -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/TU_ID_TAWK/1XXXXXXX';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
 </body>
 </html>
+<!-- ================= BLOQUE 4: Archivos complementarios ================= -->
+
+<!-- MANIFEST -->
+<script type="application/json" id="manifest-json">
+{
+  "name": "NovaBoost - Agencia Creativa Digital",
+  "short_name": "NovaBoost",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#00ffff",
+  "description": "Agencia creativa que impulsa tu marca con diseño visual, automatización inteligente y estrategias de conversión.",
+  "icons": [
+    {
+      "src": "/assets/novaboost-logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/novaboost-logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+</script>
+
+<!-- SERVICE WORKER (sw.js) -->
+<script type="text/javascript" id="sw-js">
+const CACHE_NAME = "novaboost-cache-v1";
+const urlsToCache = [
+  "/",
+  "/index.html",
+  "/manifest.json",
+  "/assets/novaboost-logo.png"
+];
+
+self.addEventListener("install", event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
+  );
+});
+
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.map(key => {
+          if (key !== CACHE_NAME) {
+            return caches.delete(key);
+          }
+        })
+      )
+    )
+  );
+});
+
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
+  );
+});
+</script>
+
+<!-- ROBOTS.TXT -->
+<script type="text/plain" id="robots-txt">
+User-agent: *
+Allow: /
+Sitemap: https://tudominio.com/sitemap.xml
+</script>
+
+<!-- SITEMAP.XML -->
+<script type="application/xml" id="sitemap-xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tudominio.com/</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://tudominio.com/#servicios</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tudominio.com/#proyectos</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://tudominio.com/#contacto</loc>
+    <lastmod>2025-07-07</lastmod>
+    <priority>0.80</priority>
+  </url>
+</urlset>
+</script>
+
+<!-- README.MD -->
+<script type="text/plain" id="readme-md">
+# 🚀 NovaBoost - Agencia Creativa Digital
+
+Web premium responsive con animaciones GSAP, PWA, Leaflet, AOS, chat en vivo, push notifications, lead magnet y área de clientes con Firebase.
+
+## Funcionalidades
+
+✅ Diseño visual atractivo con Glassmorphism  
+✅ Loader animado y transiciones suaves  
+✅ Modo oscuro/claro interactivo  
+✅ PWA instalable con manifest.json y sw.js  
+✅ Lead magnet con MailerLite integrado  
+✅ Área de clientes Firebase  
+✅ Push Notifications con OneSignal  
+✅ Chat en vivo Tawk.to  
+✅ SEO avanzado con sitemap.xml y robots.txt  
+✅ Preparado para GitHub Pages / Netlify
+
+## Instalación
+
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/tuusuario/novaboost.git
