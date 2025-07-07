@@ -1,123 +1,872 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NovaBoost - Agencia Creativa Digital</title>
-<meta name="description" content="Agencia creativa que impulsa tu marca con diseño visual, automatización y estrategias de conversión.">
-<meta name="theme-color" content="#00ffff">
-<link rel="icon" href="https://anibal0006.github.io/silservices/assets/novaboost-logo.png" type="image/png">
-<link rel="manifest" href="manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NovaBoost - Creatividad Digital y Automatización</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+  <style>
+    body, html {
+      margin: 0; padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      overflow-x: hidden;
+    }
+    header {
+      height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #00ffff;
+    }
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      color: #cfcfcf;
+    }
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      z-index: -1;
+    }
+    .btn-cta {
+      background: #00ffff;
+      color: #000;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .btn-cta:hover {
+      transform: scale(1.05);
+      background: #00cccc;
+    }
+  </style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<header>
+  <h1><span id="typed"></span></h1>
+  <p>Impulsamos tu marca con creatividad, diseño visual y automatización para escalar tu negocio al siguiente nivel.</p>
+  <button class="btn-cta" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Descubre cómo</button>
+</header>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+  // Typed.js
+  var typed = new Typed('#typed', {
+    strings: ['Diseño Visual Impactante', 'Automatización Inteligente', 'Estrategias de Conversión'],
+    typeSpeed: 50,
+    backSpeed: 30,
+    loop: true
+  });
+
+  // Particles.js
+  particlesJS('particles-js',
+  {
+    "particles": {
+      "number": {"value":80,"density":{"enable":true,"value_area":800}},
+      "color": {"value":"#00ffff"},
+      "shape": {"type":"circle"},
+      "opacity": {"value":0.5,"random":false},
+      "size": {"value":3,"random":true},
+      "line_linked": {"enable":true,"distance":150,"color":"#00ffff","opacity":0.4,"width":1},
+      "move": {"enable":true,"speed":3,"direction":"none","random":false,"straight":false,"out_mode":"out"}
+    },
+    "interactivity": {
+      "detect_on":"canvas",
+      "events": {
+        "onhover": {"enable":true,"mode":"grab"},
+        "onclick": {"enable":true,"mode":"push"},
+        "resize":true
+      },
+      "modes": {
+        "grab": {"distance":200,"line_linked":{"opacity":0.5}},
+        "push": {"particles_nb":4}
+      }
+    },
+    "retina_detect":true
+  });
+</script>
+<section id="services" style="padding: 5rem 2rem; text-align: center;">
+  <h2 class="animate__animated animate__fadeInUp" style="font-family: 'Orbitron', sans-serif; color: #00ffff; font-size: 2.5rem; margin-bottom: 2rem;">Servicios que Elevan tu Negocio</h2>
+  <div style="max-width: 900px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
+      <h3 style="color:#00cccc;">Diseño Web Premium</h3>
+      <p>Webs visuales, rápidas y con estética atractiva adaptada a tu marca.</p>
+    </div>
+    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
+      <h3 style="color:#00cccc;">Automatización de Procesos</h3>
+      <p>Implementamos reservas automáticas, embudos de venta y CRM para ahorrar tiempo.</p>
+    </div>
+    <div style="background: rgba(0,0,0,0.4); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px);">
+      <h3 style="color:#00cccc;">Visual Marketing</h3>
+      <p>Diseños y reels atractivos para redes sociales que convierten visitas en clientes.</p>
+    </div>
+  </div>
+</section>
+<section id="pricing" style="padding: 5rem 2rem; background: #0d0d0d; text-align: center;">
+  <h2 class="animate__animated animate__fadeInUp" style="font-family: 'Orbitron', sans-serif; color: #00ffff; font-size: 2.5rem; margin-bottom: 2rem;">Planes Flexibles</h2>
+  <div style="max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+    <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px); transition: transform 0.3s;">
+      <h3 style="color:#00cccc;">Básico</h3>
+      <p style="font-size: 1.2rem;">€350</p>
+      <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+        <li>Landing Page</li>
+        <li>Optimización SEO básica</li>
+        <li>Formulario de contacto</li>
+      </ul>
+    </div>
+    <div style="background: rgba(0,255,255,0.08); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px); transform: scale(1.05);">
+      <h3 style="color:#00ffff;">Pro</h3>
+      <p style="font-size: 1.2rem;">€650</p>
+      <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+        <li>Web completa + Blog</li>
+        <li>SEO avanzado</li>
+        <li>Automatización de reservas</li>
+        <li>Integración redes sociales</li>
+      </ul>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 15px; backdrop-filter: blur(10px); transition: transform 0.3s;">
+      <h3 style="color:#00cccc;">Premium</h3>
+      <p style="font-size: 1.2rem;">€1200</p>
+      <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+        <li>Web avanzada + Ecommerce</li>
+        <li>SEO Premium</li>
+        <li>Automatización CRM y embudos</li>
+        <li>Visual Marketing IG</li>
+        <li>Soporte priorizado</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/css/splide.min.css">
+<section id="testimonials" style="padding: 5rem 2rem; text-align: center;">
+  <h2 style="font-family: 'Orbitron', sans-serif; color: #00ffff; font-size: 2.5rem; margin-bottom: 2rem;">Lo que dicen nuestros clientes</h2>
+  <div id="testimonial-slider" class="splide" style="max-width: 600px; margin: auto;">
+    <div class="splide__track">
+      <ul class="splide__list">
+        <li class="splide__slide">✨ “NovaBoost transformó nuestra web en 10 días.” - Laura, Moda</li>
+        <li class="splide__slide">✨ “Automatizamos reservas y vendemos mientras dormimos.” - Jorge, Estudio Yoga</li>
+        <li class="splide__slide">✨ “El branding visual elevó nuestra marca en Instagram.” - Marta, Estética</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/js/splide.min.js"></script>
+<script>
+  document.addEventListener( 'DOMContentLoaded', function () {
+    new Splide( '#testimonial-slider', {
+      type   : 'loop',
+      perPage: 1,
+      autoplay: true,
+      pauseOnHover: false,
+      interval: 3000,
+    } ).mount();
+  });
+</script>
+<section id="faq" style="padding: 5rem 2rem; text-align: center;">
+  <h2 style="font-family: 'Orbitron', sans-serif; color: #00ffff; font-size: 2.5rem; margin-bottom: 2rem;">Preguntas Frecuentes</h2>
+  <div style="max-width: 700px; margin: auto; text-align: left;">
+    <details style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+      <summary style="cursor: pointer; font-weight: bold;">¿En cuánto tiempo entregan mi web?</summary>
+      <p>Entre 7 a 14 días dependiendo del plan y la complejidad del proyecto.</p>
+    </details>
+    <details style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+      <summary style="cursor: pointer; font-weight: bold;">¿Ofrecen soporte post-lanzamiento?</summary>
+      <p>Sí, incluimos soporte técnico y mantenimiento según el plan seleccionado.</p>
+    </details>
+    <details style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 10px; margin-bottom: 1rem;">
+      <summary style="cursor: pointer; font-weight: bold;">¿Puedo pagar en cuotas?</summary>
+      <p>Claro, ofrecemos facilidades de pago para planes Pro y Premium.</p>
+    </details>
+  </div>
+</section>
+<section id="counters" style="padding: 5rem 2rem; background: #0d0d0d; text-align: center;">
+  <h2 style="font-family: 'Orbitron', sans-serif; color: #00ffff; font-size: 2.5rem; margin-bottom: 2rem;">Nuestros resultados</h2>
+  <div style="max-width: 800px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem;">
+    <div>
+      <h3 id="counter1" style="font-size: 2.5rem; color: #00cccc;">0</h3>
+      <p>Clientes felices</p>
+    </div>
+    <div>
+      <h3 id="counter2" style="font-size: 2.5rem; color: #00cccc;">0</h3>
+      <p>Proyectos entregados</p>
+    </div>
+    <div>
+      <h3 id="counter3" style="font-size: 2.5rem; color: #00cccc;">0</h3>
+      <p>Horas automatizadas</p>
+    </div>
+  </div>
+</section>
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  let counters = [
+    {id: "#counter1", end: 150},
+    {id: "#counter2", end: 300},
+    {id: "#counter3", end: 1200}
+  ];
+
+  counters.forEach(counter => {
+    let countObj = {val: 0};
+    gsap.to(countObj, {
+      val: counter.end,
+      duration: 3,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: counter.id,
+        start: "top 80%",
+      },
+      onUpdate: () => {
+        document.querySelector(counter.id).textContent = Math.floor(countObj.val);
+      }
+    });
+  });
+</script>
+<button id="toggle-theme" style="position: fixed; bottom: 20px; right: 20px; background: #00ffff; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer;">🌙</button>
+
+<script>
+  const toggleTheme = document.getElementById("toggle-theme");
+  toggleTheme.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    toggleTheme.textContent = document.body.classList.contains("light-mode") ? "☀️" : "🌙";
+  });
+</script>
 
 <style>
-* {margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth;}
-body {font-family:'Montserrat',sans-serif; background:#050505; color:#fff; overflow-x:hidden;}
-header {height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; background:url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat; position:relative;}
-header::after {content:''; position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.6);}
-header h1 {font-family:'Orbitron',sans-serif; font-size:3rem; color:#00ffff; z-index:1;}
-header p {max-width:700px; margin-top:1rem; font-size:1.2rem; z-index:1;}
-nav {display:flex; justify-content:center; padding:1rem; position:sticky; top:0; background:#000; z-index:999;}
-nav a {color:#00ffff; margin:0 1rem; text-decoration:none; font-weight:bold; transition:.3s;}
-nav a:hover {color:#fff;}
-section {padding:4rem 2rem; max-width:1200px; margin:auto; text-align:center;}
-h2 {font-size:2.5rem; color:#00ffff; margin-bottom:1rem; font-family:'Orbitron',sans-serif;}
-.feature-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem;}
-.card {background:rgba(0,0,0,0.6); border:1px solid #00ffff33; padding:1.5rem; border-radius:12px; transition:.3s;}
-.card:hover {transform:translateY(-5px); box-shadow:0 5px 15px rgba(0,255,255,0.2);}
-.card h3 {color:#00cccc; margin-bottom:.5rem;}
-button {background:#00ffff; color:#000; border:none; border-radius:5px; padding:1rem; cursor:pointer; font-weight:bold;}
-button:hover {background:#00cccc;}
-footer {background:#000; text-align:center; padding:1rem; font-size:.9rem; color:#777;}
-.whatsapp {position:fixed; bottom:20px; right:20px; background:#25d366; color:#fff; border-radius:50%; width:55px; height:55px; display:flex; align-items:center; justify-content:center; font-size:24px; text-decoration:none; z-index:1000;}
-#map {height:300px; border-radius:10px; margin-top:1rem;}
-input, textarea {width:100%; padding:1rem; margin:.5rem 0; border:none; border-radius:5px; background:#1a1a1a; color:#fff;}
+  .light-mode {
+    background: #f0f0f0;
+    color: #222;
+  }
+  .light-mode header h1,
+  .light-mode h2,
+  .light-mode h3 {
+    color: #00aaaa !important;
+  }
 </style>
-</head>
+<footer style="background: #000; text-align: center; padding: 2rem;">
+  <p style="margin-bottom: 1rem;">© 2025 NovaBoost. Todos los derechos reservados.</p>
+  <div style="display: flex; justify-content: center; gap: 1rem;">
+    <a href="https://instagram.com" target="_blank" style="color: #00ffff; font-size: 1.5rem;">📸</a>
+    <a href="https://facebook.com" target="_blank" style="color: #00ffff; font-size: 1.5rem;">📘</a>
+    <a href="https://wa.me/34679016719" target="_blank" style="color: #00ffff; font-size: 1.5rem;">💬</a>
+  </div>
+</footer>
+<section id="gallery" style="padding: 5rem 2rem; text-align: center;">
+  <h2 style="font-family: 'Orbitron', sans-serif; color: #00ffff; font-size: 2.5rem; margin-bottom: 2rem;">Nuestros Proyectos</h2>
+  <div style="margin-bottom: 2rem;">
+    <button class="filter-btn" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="web">Web</button>
+    <button class="filter-btn" data-filter="branding">Branding</button>
+    <button class="filter-btn" data-filter="marketing">Marketing</button>
+  </div>
+  <div id="gallery-items" style="max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+    <div class="gallery-item" data-category="web" style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 10px;">
+      <p>Proyecto Web 1</p>
+    </div>
+    <div class="gallery-item" data-category="branding" style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 10px;">
+      <p>Branding 1</p>
+    </div>
+    <div class="gallery-item" data-category="marketing" style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 10px;">
+      <p>Marketing 1</p>
+    </div>
+    <div class="gallery-item" data-category="web" style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 10px;">
+      <p>Proyecto Web 2</p>
+    </div>
+    <div class="gallery-item" data-category="branding" style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 10px;">
+      <p>Branding 2</p>
+    </div>
+    <div class="gallery-item" data-category="marketing" style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 10px;">
+      <p>Marketing 2</p>
+    </div>
+  </div>
+</section>
+<script>
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
 
-<body>
-<header>
-  <h1 data-aos="fade-down">NovaBoost</h1>
-  <p data-aos="fade-up">Impulsamos tu marca con diseño visual, automatización inteligente y estrategias de conversión.</p>
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+      galleryItems.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          item.style.display = 'block';
+          item.style.opacity = '1';
+          item.style.transform = 'scale(1)';
+        } else {
+          item.style.opacity = '0';
+          item.style.transform = 'scale(0.8)';
+          setTimeout(() => item.style.display = 'none', 300);
+        }
+      });
+    });
+  });
+</script>
+<header id="hero-video" style="position: relative; height: 100vh; overflow: hidden;">
+  <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;">
+    <source src="https://cdn.coverr.co/videos/coverr-aerial-view-of-city-buildings-7949/1080p.mp4" type="video/mp4">
+  </video>
+  <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: -1;"></div>
+  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; padding: 0 1rem;">
+    <h1 style="font-family: 'Orbitron', sans-serif; font-size: 3rem; color: #00ffff; margin-bottom: 1rem;" class="animate__animated animate__fadeInDown">Impulsa tu Marca</h1>
+    <p style="font-size: 1.2rem; color: #f0f0f0; max-width: 600px;" class="animate__animated animate__fadeInUp">Con automatización, visual marketing y diseño premium, tu negocio se transforma y escala de forma inteligente.</p>
+    <button class="btn-cta animate__animated animate__pulse animate__infinite" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})" style="margin-top: 2rem; padding: 1rem 2rem; font-size: 1rem; border: none; border-radius: 30px; background: #00ffff; color: #000; font-weight: bold; cursor: pointer;">Descubre nuestros servicios</button>
+  </div>
 </header>
+<script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.6.2/dist/simpleParallax.min.js"></script>
+<img src="https://images.unsplash.com/photo-1612831814327-02f4c3fbfa18?fit=crop&w=1400&q=80" class="parallax-img" style="width:100%; border-radius: 20px; margin-top: 2rem;" alt="Decorativo">
+<script>
+  var image = document.getElementsByClassName('parallax-img');
+  new simpleParallax(image, {
+    scale: 1.3,
+    delay: 0.5,
+    transition: 'cubic-bezier(0,0,0,1)'
+  });
+</script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+  ScrollReveal().reveal('h2', { 
+    duration: 1000,
+    origin: 'bottom',
+    distance: '50px',
+    reset: false
+  });
 
-<nav>
-  <a href="#servicios">Servicios</a>
-  <a href="#galeria">Galería</a>
-  <a href="#proyectos">Proyectos</a>
-  <a href="#valoraciones">Valoraciones</a>
-  <a href="#contacto">Contacto</a>
-</nav>
+  ScrollReveal().reveal('.card, .plan, .gallery-item', { 
+    duration: 1000,
+    origin: 'bottom',
+    distance: '30px',
+    interval: 100,
+    reset: false
+  });
+</script>
+<button id="scrollTopBtn" style="position: fixed; bottom: 80px; right: 20px; background: #00ffff; color: #000; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; display: none;">↑</button>
 
-<section id="servicios" data-aos="fade-up">
-  <h2>Servicios</h2>
-  <div class="feature-grid">
-    <div class="card"><h3>Diseño Web Premium</h3><p>Webs rápidas, minimalistas y enfocadas en conversión.</p></div>
-    <div class="card"><h3>Automatización</h3><p>CRM, pagos y reservas integradas y automáticas.</p></div>
-    <div class="card"><h3>Visual Marketing</h3><p>Reels e imagen de marca para redes sociales.</p></div>
-    <div class="card"><h3>Asesoría Estratégica</h3><p>Escalamos tu marca con estrategias efectivas.</p></div>
+<script>
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+  window.onscroll = function() {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  };
+  scrollTopBtn.onclick = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
+<div id="loader" style="position: fixed; top:0; left:0; width:100%; height:100%; background:#000; display:flex; justify-content:center; align-items:center; z-index:9999;">
+  <div class="spinner"></div>
+</div>
+<style>
+  .spinner {
+    border: 6px solid rgba(0,255,255,0.2);
+    border-top: 6px solid #00ffff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+  }
+</style>
+<script>
+  window.addEventListener("load", function(){
+    const loader = document.getElementById("loader");
+    loader.style.opacity = "0";
+    loader.style.transition = "opacity 0.5s ease";
+    setTimeout(() => { loader.style.display = "none"; }, 500);
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.3/dist/vanilla-tilt.min.js"></script>
+<script>
+  VanillaTilt.init(document.querySelectorAll(".card"), {
+    max: 15,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.2,
+  });
+</script>
+button:hover, .btn-cta:hover {
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+  transform: scale(1.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+h2:hover {
+  animation: bounce 0.6s;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #eee;
+  background: #0a0a0a;
+}
+a {
+  color: #00ffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+a:hover {
+  color: #ffffff;
+}
+.card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,255,255,0.15);
+}
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<div id="particles-js" style="position: fixed; width: 100%; height: 100%; z-index: -5; top: 0; left: 0;"></div>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+    "color": { "value": "#00ffff" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.3, "random": true },
+    "size": { "value": 3, "random": true },
+    "line_linked": { "enable": true, "distance": 150, "color": "#00ffff", "opacity": 0.2, "width": 1 },
+    "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } },
+    "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.3 } }, "push": { "particles_nb": 4 } }
+  },
+  "retina_detect": true
+});
+</script>
+<section id="blog" style="padding: 5rem 2rem; text-align: center;">
+  <h2 style="font-family: 'Orbitron', sans-serif; color: #00ffff; font-size: 2.5rem; margin-bottom: 2rem;">Últimos Artículos</h2>
+  <div style="max-width: 1000px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+    <div class="card">
+      <h3>🚀 Cómo automatizar reservas en tu web</h3>
+      <p style="font-size: 0.9rem;">Aprende a instalar sistemas de reserva y pagos automáticos en tu web para vender mientras duermes.</p>
+      <a href="blog/automatizar-reservas.html" style="color: #00ffff; font-weight: bold;">Leer más →</a>
+    </div>
+    <div class="card">
+      <h3>🎨 Tips de Visual Marketing para Instagram</h3>
+      <p style="font-size: 0.9rem;">Descubre estrategias visuales que aumentan la interacción y convierten seguidores en clientes.</p>
+      <a href="blog/visual-marketing.html" style="color: #00ffff; font-weight: bold;">Leer más →</a>
+    </div>
+    <div class="card">
+      <h3>💡 Embudos de conversión para negocios locales</h3>
+      <p style="font-size: 0.9rem;">Cómo crear embudos efectivos para aumentar ventas en negocios físicos y online.</p>
+      <a href="blog/embudos-negocios.html" style="color: #00ffff; font-weight: bold;">Leer más →</a>
+    </div>
   </div>
 </section>
+<meta name="robots" content="index, follow" />
+<meta property="og:url" content="https://tudominio.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://tudominio.com/assets/novaboost-cover.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="NovaBoost - Agencia Creativa Digital" />
+<meta name="twitter:description" content="Impulsamos tu marca con automatización, diseño visual y marketing inteligente." />
+<meta name="twitter:image" content="https://tudominio.com/assets/novaboost-cover.png" />
+<div id="scroll-progress" style="position: fixed; top: 0; left: 0; height: 4px; background: #00ffff; width: 0%; z-index: 9999; transition: width 0.2s;"></div>
 
-<section id="galeria" data-aos="fade-up">
-  <h2>Galería de Proyectos</h2>
-  <div class="feature-grid">
-    <img src="https://via.placeholder.com/300" alt="Proyecto 1" style="border-radius:10px;">
-    <img src="https://via.placeholder.com/300" alt="Proyecto 2" style="border-radius:10px;">
-    <img src="https://via.placeholder.com/300" alt="Proyecto 3" style="border-radius:10px;">
-    <img src="https://via.placeholder.com/300" alt="Proyecto 4" style="border-radius:10px;">
+<script>
+window.addEventListener('scroll', () => {
+  const scrollProgress = document.getElementById('scroll-progress');
+  const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (window.scrollY / totalHeight) * 100;
+  scrollProgress.style.width = progress + "%";
+});
+</script>
+<img src="ruta-de-imagen.jpg" alt="Descripción" loading="lazy">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+gsap.from("#iconoAnimado circle", {
+  scrollTrigger: {
+    trigger: "#iconoAnimado",
+    start: "top 80%",
+    toggleActions: "play none none none"
+  },
+  drawSVG: "0%",
+  duration: 2,
+  ease: "power1.out"
+});
+</script>
+<section id="portfolio" style="padding: 5rem 2rem; text-align: center;">
+  <h2 style="font-family: 'Orbitron', sans-serif; color: #00ffff;">Portfolio Destacado</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 1000px; margin: auto;">
+    <div class="card portfolio-item" onclick="openModal('Proyecto 1', 'Descripción del proyecto 1')">Proyecto 1</div>
+    <div class="card portfolio-item" onclick="openModal('Proyecto 2', 'Descripción del proyecto 2')">Proyecto 2</div>
+    <div class="card portfolio-item" onclick="openModal('Proyecto 3', 'Descripción del proyecto 3')">Proyecto 3</div>
   </div>
 </section>
-
-<section id="proyectos" data-aos="fade-up">
-  <h2>Proyectos y Resultados</h2>
-  <p>Clientes reales que transformaron su negocio con NovaBoost.</p>
-  <iframe src="https://www.youtube.com/embed/ViFCOveYRCg" frameborder="0" allowfullscreen style="width:100%;max-width:800px;height:400px;border-radius:10px;margin-top:1rem;"></iframe>
-</section>
-
-<section id="valoraciones" data-aos="fade-up">
-  <h2>Valoraciones</h2>
-  <div class="feature-grid">
-    <div class="card"><h3>★★★★★</h3><p>"NovaBoost cambió por completo mi web, ahora vendo más."</p><p>- Laura G.</p></div>
-    <div class="card"><h3>★★★★☆</h3><p>"Automatizamos reservas y pagos, todo más sencillo."</p><p>- David R.</p></div>
-    <div class="card"><h3>★★★★★</h3><p>"Los reels y branding de NovaBoost elevaron mi negocio."</p><p>- Ana P.</p></div>
-    <div class="card"><h3>★★★★★</h3><p>"Logramos leads en automático gracias a su asesoría."</p><p>- Javier L.</p></div>
+<div id="modalPortfolio" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:10000;">
+  <div style="background:#121212; padding:2rem; border-radius:10px; max-width:400px; text-align:center;">
+    <h3 id="modalTitle" style="color:#00ffff;"></h3>
+    <p id="modalDesc" style="color:#ccc;"></p>
+    <button onclick="closeModal()" style="margin-top:1rem; padding:0.5rem 1rem; background:#00ffff; border:none; border-radius:5px; cursor:pointer;">Cerrar</button>
   </div>
+</div>
+<script>
+function openModal(title, desc) {
+  document.getElementById("modalTitle").innerText = title;
+  document.getElementById("modalDesc").innerText = desc;
+  document.getElementById("modalPortfolio").style.display = "flex";
+}
+function closeModal() {
+  document.getElementById("modalPortfolio").style.display = "none";
+}
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<section id="mapa" style="padding: 5rem 2rem; text-align: center;">
+  <h2 style="font-family: 'Orbitron', sans-serif; color: #00ffff;">Dónde encontrarnos</h2>
+  <div id="map" style="height: 400px; max-width: 800px; margin: 2rem auto; border-radius: 10px; overflow: hidden;"></div>
 </section>
+<script>
+  var map = L.map('map').setView([40.4168, -3.7038], 13); // Cambia por tus coordenadas
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+  L.marker([40.4168, -3.7038]).addTo(map)
+    .bindPopup('Aquí está NovaBoost.')
+    .openPopup();
+</script>
+<script>
+document.querySelectorAll("form").forEach(form => {
+  form.addEventListener("submit", function(event) {
+    let valid = true;
+    this.querySelectorAll("input[required], textarea[required]").forEach(input => {
+      if (!input.value.trim()) {
+        input.style.border = "2px solid red";
+        valid = false;
+      } else {
+        input.style.border = "none";
+      }
+    });
+    if (!valid) {
+      event.preventDefault();
+      alert("Por favor, completa todos los campos obligatorios.");
+    }
+  });
+});
+</script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
 
-<section id="contacto" data-aos="fade-up">
-  <h2>Contacto</h2>
-  <p>Listo para llevar tu marca al siguiente nivel.</p>
-  <form action="https://formsubmit.co/Anibal.vargas1@icloud.com" method="POST">
-    <input type="text" name="name" placeholder="Tu nombre" required>
-    <input type="email" name="email" placeholder="Tu correo" required>
-    <textarea name="message" placeholder="Cuéntanos tu proyecto" rows="5" required></textarea>
+gsap.from("h2", {
+  scrollTrigger: {
+    trigger: "h2",
+    start: "top 80%",
+    toggleActions: "play none none none"
+  },
+  opacity: 0,
+  y: 50,
+  duration: 1,
+  ease: "power2.out",
+  stagger: 0.2
+});
+
+gsap.from(".card", {
+  scrollTrigger: {
+    trigger: ".card",
+    start: "top 85%",
+    toggleActions: "play none none none"
+  },
+  opacity: 0,
+  y: 30,
+  duration: 0.8,
+  ease: "power2.out",
+  stagger: 0.1
+});
+</script>
+User-agent: *
+Allow: /
+Sitemap: https://tudominio.com/sitemap.xml
+<div id="loader" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;display:flex;align-items:center;justify-content:center;z-index:9999;">
+  <svg width="80" height="80" viewBox="0 0 50 50">
+    <circle cx="25" cy="25" r="20" stroke="#00ffff" stroke-width="4" fill="none" stroke-linecap="round">
+      <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" from="0 25 25" to="360 25 25"/>
+    </circle>
+  </svg>
+</div>
+<script>
+window.addEventListener("load", function(){
+  const loader = document.getElementById("loader");
+  loader.style.opacity = "0";
+  loader.style.transition = "opacity 0.5s ease";
+  setTimeout(() => loader.style.display = "none", 500);
+});
+</script>
+.glass {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+}
+<section class="glass" style="margin: 2rem auto; max-width: 800px;">
+  <h2>¿Por qué elegir NovaBoost?</h2>
+  <p>Ofrecemos diseño visual, automatización y estrategias que impulsan tu marca con resultados reales y medibles.</p>
+</section>
+html, body {
+  scroll-snap-type: y mandatory;
+}
+section {
+  scroll-snap-align: start;
+}
+<button id="toggleTheme" style="margin-left:1rem; background:#00ffff; color:#000; border:none; border-radius:5px; padding:0.5rem 1rem; cursor:pointer;">🌙</button>
+<script>
+const toggleTheme = document.getElementById("toggleTheme");
+toggleTheme.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+});
+</script>
+.light-mode {
+  background: #f0f0f0;
+  color: #000;
+}
+.light-mode nav {
+  background: #fff;
+}
+.light-mode a {
+  color: #007c7c;
+}
+.light-mode button {
+  background: #007c7c;
+  color: #fff;
+}
+<section id="contacto" style="padding:5rem 2rem;text-align:center;">
+  <h2 style="font-family:'Orbitron',sans-serif;color:#00ffff;">Contáctanos</h2>
+  <form action="https://formsubmit.co/TUCORREO@correo.com" method="POST" class="glass" style="max-width:500px;margin:auto;">
+    <input type="text" name="name" placeholder="Nombre" required>
+    <input type="email" name="email" placeholder="Correo" required>
+    <textarea name="message" placeholder="Mensaje" required></textarea>
     <button type="submit">Enviar</button>
   </form>
 </section>
-
-<footer>
-  <p>&copy; 2025 NovaBoost. Todos los derechos reservados.</p>
-</footer>
-
-<a href="https://wa.me/34XXXXXXXXX" class="whatsapp" title="WhatsApp NovaBoost">💬</a>
-
-<!-- Scripts -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+<section id="galeria" style="padding:5rem 2rem;text-align:center;">
+  <h2 style="font-family:'Orbitron',sans-serif;color:#00ffff;">Galería de Proyectos</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:1000px;margin:auto;">
+    <a href="https://via.placeholder.com/800" data-lightbox="galeria" data-title="Proyecto 1">
+      <img src="https://via.placeholder.com/300" alt="Proyecto 1" style="width:100%;border-radius:10px;">
+    </a>
+    <a href="https://via.placeholder.com/800" data-lightbox="galeria" data-title="Proyecto 2">
+      <img src="https://via.placeholder.com/300" alt="Proyecto 2" style="width:100%;border-radius:10px;">
+    </a>
+    <a href="https://via.placeholder.com/800" data-lightbox="galeria" data-title="Proyecto 3">
+      <img src="https://via.placeholder.com/300" alt="Proyecto 3" style="width:100%;border-radius:10px;">
+    </a>
+    <a href="https://via.placeholder.com/800" data-lightbox="galeria" data-title="Proyecto 4">
+      <img src="https://via.placeholder.com/300" alt="Proyecto 4" style="width:100%;border-radius:10px;">
+    </a>
+  </div>
+</section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script>
-AOS.init({duration:1200});
-gsap.from("header h1", {opacity:0, y:-50, duration:1});
-gsap.from("header p", {opacity:0, y:50, duration:1, delay:0.5});
+gsap.utils.toArray("section").forEach(section => {
+  gsap.from(section, {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    scrollTrigger: {
+      trigger: section,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    }
+  });
+});
 </script>
 <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
-    .then(reg => console.log('Service Worker registrado', reg.scope))
-    .catch(err => console.error('Error al registrar Service Worker:', err));
+gsap.utils.toArray("section").forEach(section => {
+  gsap.from(section, {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    scrollTrigger: {
+      trigger: section,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    }
+  });
+});
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "NovaBoost",
+  "url": "https://tudominio.com",
+  "logo": "https://tudominio.com/assets/novaboost-logo.png",
+  "sameAs": [
+    "https://www.instagram.com/novaboost",
+    "https://www.facebook.com/novaboost"
+  ],
+  "description": "Agencia creativa digital que impulsa tu marca con diseño visual, automatización y estrategias de conversión.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+34XXXXXXXXX",
+    "contactType": "customer service",
+    "areaServed": "ES",
+    "availableLanguage": ["Spanish", "English"]
+  }
+}
+</script>
+/assets
+  /images
+  /css
+  /js
+index.html
+robots.txt
+sitemap.xml
+README.md
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Área de Clientes - NovaBoost</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<section style="padding:5rem 2rem;text-align:center;">
+  <h2>Área de Clientes</h2>
+  <p>Inicia sesión para acceder a tus proyectos, materiales y facturas.</p>
+  <div id="login-area">
+    <input type="email" id="email" placeholder="Correo electrónico" required />
+    <input type="password" id="password" placeholder="Contraseña" required />
+    <button onclick="login()">Iniciar Sesión</button>
+  </div>
+  <div id="client-area" style="display:none;">
+    <h3>Bienvenido, <span id="user-email"></span></h3>
+    <p>Aquí encontrarás tus recursos:</p>
+    <ul>
+      <li><a href="https://tudominio.com/proyecto1.pdf" target="_blank">Proyecto 1</a></li>
+      <li><a href="https://tudominio.com/propuesta.pdf" target="_blank">Presupuesto PDF</a></li>
+      <li><a href="https://tudominio.com/factura.pdf" target="_blank">Factura</a></li>
+    </ul>
+    <button onclick="logout()">Cerrar sesión</button>
+  </div>
+</section>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  auth.signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      document.getElementById("login-area").style.display = "none";
+      document.getElementById("client-area").style.display = "block";
+      document.getElementById("user-email").innerText = userCredential.user.email;
+    })
+    .catch((error) => alert("Error: " + error.message));
+}
+
+function logout() {
+  auth.signOut().then(() => {
+    document.getElementById("login-area").style.display = "block";
+    document.getElementById("client-area").style.display = "none";
+  });
 }
 </script>
 </body>
 </html>
+<section id="cursos" style="padding:5rem 2rem;text-align:center;">
+  <h2>Cursos y Mentorías</h2>
+  <p>Aprende a crear webs como NovaBoost y estrategias de marketing que venden.</p>
+  <div style="max-width:600px;margin:auto;">
+    <h3>🚀 Curso: Web de Agencia Premium</h3>
+    <p>Incluye lecciones paso a paso, plantillas premium y soporte directo.</p>
+    <button onclick="window.location.href='https://tucheckoutstripe.com'">Comprar ahora</button>
+  </div>
+</section>
+{
+  "name": "NovaBoost",
+  "short_name": "NovaBoost",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00ffff",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#00ffff" />
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js").then(reg => {
+    console.log("Service Worker registrado", reg);
+  });
+}
+</script>
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "TU-APP-ID-DE-ONESIGNAL",
+    });
+  });
+</script>
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/TU-ID-DE-TAWK/1XXXXXXXX';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<section id="lead" style="padding:5rem 2rem;text-align:center;">
+  <h2>🎁 Consigue Gratis: 7 Errores en la web que destruyen ventas</h2>
+  <p>Descubre cómo mejorar tu web y atraer más clientes con nuestro mini ebook gratuito.</p>
+  <iframe src="TU-URL-DE-FORMULARIO-DE-MAILERLITE" width="100%" height="500" style="border:none;"></iframe>
+</section>
